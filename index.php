@@ -126,7 +126,7 @@
 		 			<tr>
 		 			<td width="90%">
 							 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
-								 '.$tab[0].'
+								 '.$tab[0].'&nbsp;&nbsp;-&nbsp;&nbsp;Le&nbsp;'.date("d/m/Y à H:i:s",strtotime($tab[3])).'
 			 				 </a>
  					</td>
  					<td width="10%">
