@@ -121,10 +121,10 @@
 	foreach ($rss as $tab) {
 		$i++;
 		echo '	<div class="accordion-group">
-		 <div class="accordion-heading">
+		 <div class="accordion-heading"><div class="span7">
 		 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
 		 '.$tab[0].'
-		 </a><img align="right" width="70px" src="./img/'.$tab[5].'.jpg"/>
+		 </a></div><div class="span1"><img align="right" width="70px" src="./img/'.$tab[5].'.jpg"/></div>
 		 </div>
 		 <div id="collapse'.$i.'" class="accordion-body collapse">
 		 <div class="accordion-inner">
