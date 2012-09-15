@@ -121,23 +121,28 @@
 	foreach ($rss as $tab) {
 		$i++;
 		echo '	<div class="accordion-group">
-		 <div class="accordion-heading"><div class="span7">
-		 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
-		 '.$tab[0].'
-		 </a></div><div class="span1"><img align="right" width="70px" src="./img/'.$tab[5].'.jpg"/></div>
-		 </div>
-		 <div id="collapse'.$i.'" class="accordion-body collapse">
-		 <div class="accordion-inner">
-		 '.$tab[4].'
-		 </div>
-		 </div>
-		 </div>';
-
-		/*echo '<div class="news_box" id="news_box'.$i.'" onclick="document.getElementById(\'new_'.$i.'\').style.display=\'block\'" onmouseover="this.style.backgroundColor = \'#B2B2B2\'" onmouseout="this.style.backgroundColor = \'\'">
-		 <div class="news_box_title">'.$tab[0].'</div><div id="new_'.$i.'" style="display:none;">'.$tab[4].'</div>
-		 <div class="news_box_date">posté le '.date("d/m/Y",strtotime($tab[3])).'</div>
-		 '.$tab[2].'</div>';
-		 */
+		 			<div class="accordion-heading">
+		 			<table width="100%">
+		 			<tr>
+		 			<td width="90%">
+							 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
+								 '.$tab[0].'
+			 				 </a>
+ 					</td>
+ 					<td width="10%">
+	 						<img align="right" width="70px" src="./img/'.$tab[5].'.jpg"/>
+					</td>
+					</tr>
+					</table>
+					</div>
+	 				<div id="collapse'.$i.'" class="accordion-body collapse">
+	 					<div class="span12">	
+							 <div class="accordion-inner">
+		 						'.$tab[4].'
+		 					</div>
+		 				</div>
+	 				</div>
+		 		</div>';
 	}
 		?>
 		</div>
