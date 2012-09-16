@@ -136,9 +136,15 @@
 					</table>
 					</div>
 	 				<div id="collapse'.$i.'" class="accordion-body collapse">
-	 					<div class="span12">	
+	 					<div class="span11">	
 							 <div class="accordion-inner">
 		 						'.$tab[4].'
+		 					</div>
+		 				</div>
+		 				<div class="span1">	
+							 <div class="accordion-inner">
+		 						<img src="./img/facebook.jpg"/><br/><br/>
+		 						<img src="./img/google_plus.png"/><br/><br/>
 		 					</div>
 		 				</div>
 	 				</div>
