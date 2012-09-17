@@ -29,4 +29,8 @@
 	//mettre à jour la date_maj dans categorie
 	//sa irais mieux en JAVA !!!
 //fin de fonction
+
+
+
+//Comment gerer les 'articles favoris' : fonction php ? ( comment l'apellé?) autre page ne generant aucun affichage ? + javascript ( etoile qui devient jaune ou autre....)
 ?>
