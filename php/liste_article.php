@@ -25,5 +25,8 @@
 		//Recuperer le fichier flux.xml
 		//le parser
 		//ajouter chaque news dans la table
+		
+	//mettre à jour la date_maj dans categorie
+	//sa irais mieux en JAVA !!!
 //fin de fonction
 ?>
