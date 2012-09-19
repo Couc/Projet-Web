@@ -114,9 +114,13 @@
 	<div class="span2"></div>
 	<div class="span8">
 <div class="accordion" id="accordion2">
+	
+
 <?php
 
-	$rss = lit_rss("feed.xml", array("title", "link", "description", "pubDate", "content:encoded","dc:creator"));
+	$rss = lit_rss("http://rss.lemonde.fr/c/205/f/3058/index.rss", array("title", "link", "description", "pubDate", "content:encoded","dc:creator"));
+	//$feed_url='http://feeds2.feedburner.com/KorbensBlog-UpgradeYourMind';
+	//$rss = simplexml_load_file($feed_url);
 	$i = 0;
 	foreach ($rss as $tab) {
 		$i++;
@@ -137,8 +141,7 @@
 					</div>
 	 				<div id="collapse'.$i.'" class="accordion-body collapse">
 	 					<div class="span11">	
-							 <div class="accordion-inner">
-		 						'.$tab[4].'
+							 <div class="accordion-inner"><iframe src="'.$tab[1].'"></iframe>
 		 					</div>
 		 				</div>
 		 				<div class="span1">	
