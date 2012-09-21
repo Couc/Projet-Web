@@ -70,14 +70,11 @@
 			}
 		}
 	?>
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-inverse">
       <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
+        <div class="container-fluid" style="height:200px;">
+          <a class="brand" href="#" style="margin-top:75px;margin-left:75px;" >ENEW | Every News EveryWhere</a>
+          
           
           <div class="btn-group pull-right">
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -90,9 +87,15 @@
               <li><a href="#">Sign Out</a></li>
             </ul>
           </div>
-          <div class="nav-collapse">
+          <div class="nav-collapse" style="margin-top:75px;margin-left:600px;">
             <ul class="nav">
-              <li class="active"><a href="index.php">Acceuil</a></li>
+              <li class="active" style="margin-left:20px;"><a href="index.php">Acceuil</a></li>
+              <li class="" style="margin-left:20px;"><a href="index.php">Catégorie</a></li>
+              <li class="" style="margin-left:20px;"><a href="index.php">Catégorie</a></li>
+              <li class="" style="margin-left:20px;"><a href="index.php">Catégorie</a></li>
+              <li class="" style="margin-left:20px;"><a href="index.php">Catégorie</a></li>
+              <li class="" style="margin-left:20px;"><a href="index.php">A propos</a></li>
+              
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -118,7 +121,7 @@
 
 <?php
 
-	$rss = lit_rss("http://rss.lemonde.fr/c/205/f/3058/index.rss", array("title", "link", "description", "pubDate", "content:encoded","dc:creator"));
+	$rss = lit_rss("http://fullfeeds.org/fullfeed.php?url=www.leparisien.fr/une/rss.xml", array("title", "link", "description", "pubDate", "content:encoded","dc:creator"));
 	//$feed_url='http://feeds2.feedburner.com/KorbensBlog-UpgradeYourMind';
 	//$rss = simplexml_load_file($feed_url);
 	$i = 0;
@@ -141,8 +144,7 @@
 					</div>
 	 				<div id="collapse'.$i.'" class="accordion-body collapse">
 	 					<div class="span11">	
-							 <div class="accordion-inner"><iframe src="'.$tab[1].'"></iframe>
-		 					</div>
+							 <div class="accordion-inner">'.html_entity_decode($tab[2]).'</div>
 		 				</div>
 		 				<div class="span1">	
 							 <div class="accordion-inner">
