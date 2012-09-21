@@ -73,7 +73,7 @@
     <div class="navbar navbar-inverse">
       <div class="navbar-inner">
         <div class="container-fluid" style="height:200px;">
-          <a class="brand" href="#" style="margin-top:75px;margin-left:75px;" >ENEW | Every News EveryWhere</a>
+          <a class="brand" href="#" style="margin-top:75px;margin-left:75px;" ><img src="img/logo blanc.png" style="margin-left:60px;"/><br>Every News EveryWhere</a>
           
           
           <div class="btn-group pull-right">
