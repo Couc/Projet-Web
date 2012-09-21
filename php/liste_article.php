@@ -38,12 +38,12 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>PMA</title>
+		<title>EN</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<!-- Le styles -->
-		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="../css/bootstrap.css" rel="stylesheet">
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -61,32 +61,6 @@
 
 				// on découpe la chaine obtenue en items
 				$tmp = preg_split("/<\/?" . "item" . ">/", $chaine);
-
-				// pour chaque item
-				for ($i = 1; $i < sizeof($tmp) - 1; $i += 2)
-
-				// on lit chaque objet de l'item
-					foreach ($objets as $objet) {
-
-						// on découpe la chaine pour obtenir le contenu de l'objet
-						$tmp2 = preg_split("/<\/?" . $objet . ">/", $tmp[$i]);
-
-						// on ajoute le contenu de l'objet au tableau resultat
-						$resultat[$i - 1][] = @$tmp2[1];
-					}
-
-				// on retourne le tableau resultat
-				return $resultat;
-			}
-		}
-
-		function lit_rsss($fichier, $objets) {
-
-			// on lit tout le fichier
-			if ($chaine = @implode("", @file($fichier))) {
-
-				// on découpe la chaine obtenue en items
-				$tmp = preg_split("/<\/?" . "channel" . ">/", $chaine);
 
 				// pour chaque item
 				for ($i = 1; $i < sizeof($tmp) - 1; $i += 2)
@@ -138,11 +112,11 @@
     <div class="container-fluid">
      <div class="row">
         <div class="hero-unit">
-  <h1>Heading</h1>
-  <p>Tagline</p>
+  <h1>Logo d'entete</h1>
+  <p>Description</p>
   <p>
     <a class="btn btn-primary btn-large">
-      Learn more
+      Plus d'infos sur le site
     </a>
   </p>
 </div>
@@ -177,7 +151,7 @@
 					</div>
 	 				<div id="collapse'.$i.'" class="accordion-body collapse">
 	 					<div class="span11">	
-							 <div class="accordion-inner"><iframe src="'.$tab[1].'"></iframe>
+							 <div class="accordion-inner"><div class="span11">'.html_entity_decode($tab[2]).'</div>
 		 					</div>
 		 				</div>
 		 				<div class="span1">	
@@ -202,7 +176,7 @@
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script type="text/javascript" src ="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-		<script src="./js/bootstrap.js"></script>
+		<script src="../js/bootstrap.js"></script>
 		<!--<script src="js/bootstrap-alert.js"></script>-->
 	</body>
 </html>
