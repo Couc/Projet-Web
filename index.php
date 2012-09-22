@@ -104,7 +104,7 @@
 
     <div class="container-fluid">
      <div class="row">
-        <div class="hero-unit">
+        <div class="hero-unit" style='background-image: url("img/logo_grand.png")'>
   <h1>Heading</h1>
   <p>Tagline</p>
   <p>
