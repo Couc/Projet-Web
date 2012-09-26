@@ -71,9 +71,9 @@ include ('php/_A8s2f9g714ef.php');
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit" style="background-image: url(img/baniere.jpg)">
+      <div class="hero-unit" style="background-image: url(img/visual.png);">
         <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p>This is a template for a simple marketing or informational website.<br>It includes a large callout called the hero unit and three supporting pieces<br> of content. Use it as a starting point to create something more unique.</p>
         <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
       </div>
 
