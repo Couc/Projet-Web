@@ -1,3 +1,6 @@
+<?php
+include ('php/_A8s2f9g714ef.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -135,7 +138,7 @@
       </div>
 
       <hr>
-
+	
 
       <footer>
         <p>&copy; Lanternier Thomas & Boulachin Clément Copyright 2012</p>
