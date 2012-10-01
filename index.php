@@ -82,7 +82,7 @@ include ('php/_A8s2f9g714ef.php');
         <ul class="thumbnails">
               <li class="span8">
                 <div class="thumbnail">
-                  <img src="img/a-la-une.jpg" alt="" style="height:200px;width:620px;">
+                  <img src="img/alaune.png" alt="" style="height:200px;width:620px;">
                   <div class="caption">
                     <h3>Titre du dernier article</h3>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -93,7 +93,7 @@ include ('php/_A8s2f9g714ef.php');
              
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="http://placehold.it/300x200" alt="">
+                  <img src="img/High_tech.png" alt="">
                   <div class="caption">
                     <h3>High Tech</h3>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -106,7 +106,7 @@ include ('php/_A8s2f9g714ef.php');
             <ul class="thumbnails">
               <li class="span4">
                 <div class="thumbnail">
-                  <img src="http://placehold.it/300x200" alt="">
+                  <img src="img/sport.png" alt="">
                   <div class="caption">
                     <h3>Sport</h3>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula.</p>

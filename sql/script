@@ -1,4 +1,4 @@
-# script créé le : Fri Sep 21 14:26:54 CEST 2012 -   syntaxe MySQL ;
+# script crï¿½ï¿½ le : Fri Sep 21 14:26:54 CEST 2012 -   syntaxe MySQL ;
 
 # use  VOTRE_BASE_DE_DONNEE ;
 
@@ -35,8 +35,8 @@ ALTER TABLE CATEGORIE_FAV ADD CONSTRAINT FK_Cat_Fav_login FOREIGN KEY (login) RE
 
 CREATE TABLE SOURCE (id_source int AUTO_INCREMENT NOT NULL,
 id_cat INT,
-libelle INT,
-lien INT,
+libelle CHAR(50),
+lien CHAR(255),
 PRIMARY KEY (id_source, id_cat) ) ENGINE=InnoDB;
 ALTER TABLE SOURCE ADD CONSTRAINT FK_Source_idcat FOREIGN KEY (id_cat) REFERENCES CATEGORIE (id_cat);
 
