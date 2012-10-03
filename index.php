@@ -97,7 +97,7 @@ include ('php/_A8s2f9g714ef.php');
                   <div class="caption">
                     <h3>High Tech</h3>
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary">En savoir plus</a> </p>
+                    <p><a href="php/liste_article.php?id=1" class="btn btn-primary">En savoir plus</a> </p>
                   </div>
                 </div>
               </li>

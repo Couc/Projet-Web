@@ -1,5 +1,78 @@
 <?php
 include ('_A8s2f9g714ef.php');
+mysql_query("SET NAMES UTF8");
+?>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>ENEW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+   <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+   
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#"><img src="img/logo blanc.png" alt=""/></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="Email">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <div class="row-fluid">
+<div class="span2"></div>
+<div class="span8">
+<div class="accordion" id="accordion2">
+    <?php
 //Connexion à la base
 
 
@@ -34,106 +107,31 @@ include ('_A8s2f9g714ef.php');
 
 
 //Comment gerer les 'articles favoris' : fonction php ? ( comment l'apellé?) autre page ne generant aucun affichage ? + javascript ( etoile qui devient jaune ou autre....)
-?>
-<!DOCTYPE html>
-<html lang="fr">
-	<head>
-		<meta charset="utf-8">
-		<title>EN</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="author" content="">
-		<!-- Le styles -->
-		<link href="../css/bootstrap.css" rel="stylesheet">
-		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-		<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		<!-- Le fav and touch icons -->
-		<!-- Script js-->
-		<script type="text/javascript"></script>
-	</head>
-	<body>
-		<?php
-		function lit_rss($fichier, $objets) {
 
-			// on lit tout le fichier
-			if ($chaine = @implode("", @file($fichier))) {
-
-				// on découpe la chaine obtenue en items
-				$tmp = preg_split("/<\/?" . "item" . ">/", $chaine);
-
-				// pour chaque item
-				for ($i = 1; $i < sizeof($tmp) - 1; $i += 2)
-
-				// on lit chaque objet de l'item
-					foreach ($objets as $objet) {
-
-						// on découpe la chaine pour obtenir le contenu de l'objet
-						$tmp2 = preg_split("/<\/?" . $objet . ">/", $tmp[$i]);
-
-						// on ajoute le contenu de l'objet au tableau resultat
-						$resultat[$i - 1][] = @$tmp2[1];
-					}
-
-				// on retourne le tableau resultat
-				return $resultat;
-			}
-		}
-	?>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          
-          <div class="btn-group pull-right">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i> Utilisateur
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Profile</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
-            </ul>
-          </div>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="index.php">Acceuil</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-     <div class="row">
-        <div class="hero-unit">
-  <h1>Logo d'entete</h1>
-  <p>Description</p>
-  <p>
-    <a class="btn btn-primary btn-large">
-      Plus d'infos sur le site
-    </a>
-  </p>
-</div>
-<div class="row-fluid">
-	<div class="span2"></div>
-	<div class="span8">
-<div class="accordion" id="accordion2">
-	
-
-<?php
-
-	$rss = lit_rss("http://rss.lemonde.fr/c/205/f/3058/index.rss", array("title", "link", "description", "pubDate", "content:encoded","dc:creator"));
-	//$feed_url='http://feeds2.feedburner.com/KorbensBlog-UpgradeYourMind';
-	//$rss = simplexml_load_file($feed_url);
-	$i = 0;
-	foreach ($rss as $tab) {
+$sql = "SELECT * FROM SOURCE WHERE id_cat=".$_GET['id'].";";
+//exécution de notre requête SQL:
+$query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+//récupération avec mysql_fetch_array() et affichage du résultat :
+$id_src="";
+$sepa=", ";
+$i=0;
+while ($result = mysql_fetch_assoc($query)) {
+	if($i==0){
+		$id_src=$result['id_source'];
+	}
+	else{
+		$id_src=$id_src."".$sepa."".$result['id_source'];
+	}
+	$i++;
+}
+if(strlen($id_src)>2){
+	$id_src=substr($id_src, 0,strlen($id_src)-2);
+}
+	$sql = "SELECT * FROM ARTICLE WHERE id_source IN (".$id_src.") ORDER BY DATE DESC;";
+	//exécution de notre requête SQL:
+	$query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");
+	//récupération avec mysql_fetch_array() et affichage du résultat :
+	while ($result = mysql_fetch_assoc($query)) {
 		$i++;
 		echo '	<div class="accordion-group">
 		 			<div class="accordion-heading">
@@ -141,18 +139,18 @@ include ('_A8s2f9g714ef.php');
 		 			<tr>
 		 			<td width="90%">
 							 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
-								 '.$tab[0].'&nbsp;&nbsp;-&nbsp;&nbsp;Le&nbsp;'.date("d/m/Y à H:i:s",strtotime($tab[3])).'
+								 '.$result['titre'].'&nbsp;&nbsp;-&nbsp;&nbsp;Le&nbsp;'.$result['date'].'
 			 				 </a>
  					</td>
  					<td width="10%">
-	 						<img align="right" width="70px" src="./img/'.$tab[5].'.jpg"/>
+	 						<img align="right" width="70px" src="../img/'.$result['id_source'].'.jpg"/>
 					</td>
 					</tr>
 					</table>
 					</div>
 	 				<div id="collapse'.$i.'" class="accordion-body collapse">
 	 					<div class="span11">	
-							 <div class="accordion-inner"><div class="span11">'.html_entity_decode($tab[2]).'</div>
+							 <div class="accordion-inner"><div class="span11">'.html_entity_decode($result['contenu']).'</div>
 		 					</div>
 		 				</div>
 		 				<div class="span1">	
