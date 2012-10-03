@@ -13,7 +13,7 @@ mysql_query("SET NAMES UTF8");
 		while ($result2 = mysql_fetch_assoc($query)) {
 			$derdate = $result2['date'];
 		}
-		$rss = lit_rss("http://fulltextrssfeed.com/feeds2.feedburner.com/KorbensBlog-UpgradeYourMind", array("title", "link", "description", "pubDate"));
+		$rss = lit_rss("http://fulltextrssfeed.com/".$result['lien'], array("title", "link", "description", "pubDate"));
 		foreach ($rss as $tab) {
 			if (doubleval(date("YmdHi", strtotime($tab[3]))) > doubleval($derdate)) {
 				$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . convert_chars_to_entities($tab[0]) . "','" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[2]))) . "','" . date("YmdHi", strtotime($tab[3])) . "')";
