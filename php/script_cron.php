@@ -21,7 +21,7 @@ while ($result = mysql_fetch_assoc($query)) {
 	foreach ($rss as $tab) {
 		if (doubleval(date("YmdHi", strtotime($tab[3]))) > doubleval($derdate)) {
 			echo ('je rentre là');
-			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[0]))) . "','" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[2]))) . "','" . date("YmdHi", strtotime($tab[3])) . "')";
+			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . addslashes($tab[0]) . "','" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[2]))) . "','" . date("YmdHi", strtotime($tab[3])) . "')";
 			$queryInsert = mysql_query($sqlInsert) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 
 		}

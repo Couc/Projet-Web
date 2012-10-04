@@ -150,7 +150,7 @@ if(strlen($id_src)>2){
 					</div>
 	 				<div id="collapse'.$i.'" class="accordion-body collapse">
 	 					<div class="span11">	
-							 <div class="accordion-inner"><div class="span11">'.html_entity_decode($result['contenu']).'</div>
+							 <div class="accordion-inner"><div class="span11">'.htmlspecialchars_decode($result['contenu']).'</div>
 		 					</div>
 		 				</div>
 		 				<div class="span1">	
