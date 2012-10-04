@@ -1,6 +1,7 @@
 <?php
 include ('_A8s2f9g714ef.php');
 mysql_query("SET NAMES UTF8");
+set_time_limit(0);
 $sql = "SELECT * FROM SOURCE;";
 //exécution de notre requête SQL:
 $query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
