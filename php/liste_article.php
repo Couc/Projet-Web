@@ -125,7 +125,7 @@ while ($result = mysql_fetch_assoc($query)) {
 	$i++;
 }
 if(strlen($id_src)>2){
-	$id_src=substr($id_src, 0,strlen($id_src)-2);
+	$id_src=substr($id_src, 0,strlen($id_src)-4);
 }
 	$sql = "SELECT * FROM ARTICLE WHERE id_source IN (".$id_src.") ORDER BY DATE DESC;";
 	//exécution de notre requête SQL:

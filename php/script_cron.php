@@ -1,29 +1,36 @@
 <?php
 include ('_A8s2f9g714ef.php');
 mysql_query("SET NAMES UTF8");
-	$sql = "SELECT * FROM SOURCE;";
-	//exécution de notre requête SQL:
-	$query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-	//récupération avec mysql_fetch_array() et affichage du résultat :
-	while ($result = mysql_fetch_assoc($query)) {
-		$idsrc=$result['id_source'];
-		$sql = "select date from article WHERE id_source='". $idsrc . "' order by date desc limit 1;";
-		$query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-		$derdate=0;
-		while ($result2 = mysql_fetch_assoc($query)) {
-			$derdate = $result2['date'];
-		}
-		$rss = lit_rss("http://fulltextrssfeed.com/".$result['lien'], array("title", "link", "description", "pubDate"));
-		foreach ($rss as $tab) {
-			if (doubleval(date("YmdHi", strtotime($tab[3]))) > doubleval($derdate)) {
-				$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . convert_chars_to_entities($tab[0]) . "','" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[2]))) . "','" . date("YmdHi", strtotime($tab[3])) . "')";
-				$queryInsert = mysql_query($sqlInsert) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-	
-			}
-		}
-		$fich=fopen("cron.log","a+");
-		fwrite($fich, "le cron est passé\n");
+$sql = "SELECT * FROM SOURCE;";
+//exécution de notre requête SQL:
+$query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+//récupération avec mysql_fetch_array() et affichage du résultat :
+$ii=0;
+while ($result = mysql_fetch_assoc($query)) {
+	echo $result['lien'].'<br>';
+	$ii++;
+	$idsrc=$result['id_source'];
+	$sql2 = "select date from article WHERE id_source='". $idsrc . "' order by date desc limit 1;";
+	$query2 = mysql_query($sql2) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+	$derdate=0;
+	while ($result2 = mysql_fetch_assoc($query2)) {
+		echo('je boucle ici');
+		$derdate = $result2['date'];
 	}
+	$rss = lit_rss("http://fulltextrssfeed.com/".$result['lien'], array("title", "link", "description", "pubDate"));
+	foreach ($rss as $tab) {
+		if (doubleval(date("YmdHi", strtotime($tab[3]))) > doubleval($derdate)) {
+			echo ('je rentre là');
+			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[0]))) . "','" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[2]))) . "','" . date("YmdHi", strtotime($tab[3])) . "')";
+			$queryInsert = mysql_query($sqlInsert) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+
+		}
+	}
+	$fich=fopen("cron.log","a+");
+	fwrite($fich, "le cron est passé\n");
+	fclose($fich);
+}
+echo $ii;
 
 //$rss = lit_rss("http://rss.lemonde.fr/c/205/f/3058/index.rss", array("title", "link", "description", "pubDate", "content:encoded","dc:creator"));
 
