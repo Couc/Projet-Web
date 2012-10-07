@@ -79,6 +79,7 @@ INSERT INTO CATEGORIE (id_cat,libelle,description,date_maj,image) VALUES (null,'
 
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,1,'le_monde_politique','www.lemonde.fr/rss/tag/politique.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'le_monde_science','www.lemonde.fr/rss/tag/sciences.xml');
+INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,3,'le_monde_sport','www.lemonde.fr/rss/tag/sport.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'le_monde_tech','www.lemonde.fr/rss/tag/technologies.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,4,'le_monde_economie','www.lemonde.fr/rss/tag/economie.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,1,'le_parisien_politique','www.leparisien.fr/politique/rss.xml');
@@ -100,8 +101,6 @@ INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,4,'presse_europe
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,3,'presse_europe_sport','www.presseurop.eu/fr/taxonomy/term/17/%2A/feed');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'presse_europe_tech','www.presseurop.eu/fr/taxonomy/term/4/%2A/feed');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'presse_europ,tech','www.presseurop.eu/fr/taxonomy/term/32/%2A/feed');
-INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'jeuxvideo','www.jeuxvideo.com/rss/rss-news.xml');
-INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'jeuxvideo','www.jeuxvideo.com/rss/rss-articles.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'jeuxvideo','www.jeuxvideo.com/rss/rss.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,3,'lequipe','www.lequipe.fr/rss/actu_rss.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,3,'sports','www.sports.fr/fr/cmc/rss.xml');

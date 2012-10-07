@@ -143,7 +143,7 @@ if(strlen($id_src)>2){
 			 				 </a>
  					</td>
  					<td width="10%">
-	 						<img align="right" width="70px" src="../img/'.$result['id_source'].'.jpg"/>
+	 						<img align="right" width="35px" src="../img/'.$result['id_source'].'.jpg"/>
 					</td>
 					</tr>
 					</table>
@@ -177,6 +177,27 @@ if(strlen($id_src)>2){
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script type="text/javascript" src ="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 		<script src="../js/bootstrap.js"></script>
+		<script type='text/javascript'>
+			    jQuery(
+	        function ($) {
+	            var centre;
+	            var fleche = $('<img src="../images/fleche.gif" id="fleche"/>');
+	            centre = $('#volet-droit #centre');
+	            centre.append(fleche);
+	         
+	            centre.bind('scroll', function () {
+	                if (centre.scrollTop() + centre.innerHeight() >= centre[0].scrollHeight) {
+	                    fleche.hide(400);
+	                }
+	                else if (centre[0].scrollHeight > centre.innerHeight()) {
+	                    fleche.show(400);
+	                }
+	            });
+	    centre.trigger('scroll')
+	        }
+	    );
+			
+		</script>
 		<!--<script src="js/bootstrap-alert.js"></script>-->
 	</body>
 </html>
