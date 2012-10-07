@@ -69,7 +69,7 @@ mysql_query("SET NAMES UTF8");
       </div>
     </div>
     <div class="row-fluid">
-<div class="span2"></div>
+
 <div class="span8">
 <div class="accordion" id="accordion2">
     <?php
@@ -165,7 +165,8 @@ if(strlen($id_src)>2){
 		?>
 		</div>
 </div>
-<div class="span2"></div>
+<div class="span4">
+	
 
 </div>
 		</div><!-- row  -->
