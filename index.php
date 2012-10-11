@@ -42,7 +42,7 @@ include ('php/_A8s2f9g714ef.php');
           <a class="brand" href="#"><img src="img/logo blanc.png" alt=""/></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="index.php">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
               <li class="dropdown">
@@ -68,16 +68,22 @@ include ('php/_A8s2f9g714ef.php');
       </div>
     </div>
 
+	  <div class="hero-unit hidden-phone" style="width:100%;">
+	  	<div class="container">
+	  		
+		  		<div class="texte" style="float:left;">
+		        <h1 style="margin-left:-40px;">Incroyablement simple<br> et intuitif,<br>toutes vos news<br> à portée de clic</h1>
+		       
+		        <p><a class="btn btn-primary btn-large" style="margin-top:20px;margin-left:-40px;">Learn more &raquo;</a></p>
+		        </div>
+		        <div class="image hidden-phone hidden-tablet" style="float:left;position:absolute;width:600px;right:0;">
+		        	<img src="img/visual1.png" alt="image" style="opacity: 0.7;"/>
+		        </div>
+	       
+       </div>
+      </div>
     <div class="container">
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit" style="background-image: url(img/visual.png);">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website.<br>It includes a large callout called the hero unit and three supporting pieces<br> of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-      </div>
-
-      <!-- Example row of columns -->
       <div class="row-fluid">
         <ul class="thumbnails">
               <li class="span8">
