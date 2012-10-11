@@ -1,6 +1,6 @@
 <?php
-			
-			$query = mysql_query("SELECT * FROM commentaires WHERE id_art = ".$_GET['id_art'].";");
+include ('_A8s2f9g714ef.php');
+			$query = mysql_query("SELECT * FROM commentaires WHERE id_art=".$_GET['id_art'].";") or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");;
 			
 				while($result = mysql_fetch_assoc($query))				
 				{
