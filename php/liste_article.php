@@ -1,5 +1,6 @@
 <?php
 include ('_A8s2f9g714ef.php');
+include ('comment.class.php');
 mysql_query("SET NAMES UTF8");
 ?>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ mysql_query("SET NAMES UTF8");
 
     <!-- Le styles -->
     <link href="../css/bootstrap.css" rel="stylesheet">
-    
+    <link href="../css/style_comment.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -138,7 +139,7 @@ if(strlen($id_src)>2){
 		 			<table width="100%">
 		 			<tr>
 		 			<td width="90%">
-							 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
+							 <a onclick="def_art(this);" id="'.$result['id_art'].'" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
 								 '.$result['titre'].'&nbsp;&nbsp;-&nbsp;&nbsp;Le&nbsp;'.$result['date'].'
 			 				 </a>
  					</td>
@@ -166,7 +167,29 @@ if(strlen($id_src)>2){
 		</div>
 </div>
 <div class="span4">
-	
+	<div id="comment_general">
+		
+	</div>
+	<div id="addCommentContainer">
+    <p>Add a Comment</p>
+    <form id="addCommentForm" method="post" action="">
+        <div>
+            <label for="name">Your Name</label>
+            <input type="text" name="name" id="name" />
+
+            <label for="email">Your Email</label>
+            <input type="text" name="email" id="email" />
+
+
+            <label for="body">Comment Body</label>
+            <textarea name="body" id="body" cols="20" rows="5"></textarea>
+
+            <input type="button" id="submit" value="Submit" onclick="Change();"/>
+            <input type="hidden" id="id_art" value="" onchange="id_article();" />
+        </div>
+    </form>
+</div>
+
 
 </div>
 		</div><!-- row  -->
@@ -182,5 +205,58 @@ if(strlen($id_src)>2){
 			
 		</script>
 		<!--<script src="js/bootstrap-alert.js"></script>-->
+		<script type="text/javascript">
+		
+		function id_article(){
+		
+		var id_art = document.getElementById('id_art').value;
+		
+		xmlhttp=new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        document.getElementById("comment_general").innerHTML+=xmlhttp.responseText;
+                        
+                    }
+            }
+            xmlhttp.open("GET","liste_comment.php?id_art="+id_art,true);
+            xmlhttp.send();
+		}
+		
+		
+		function def_art(obj){
+			var id;
+			id=obj.id;
+			document.getElementById('id_art').value = id;
+			document.getElementById('id_art').onchange();
+		}
+
+			
+		function Change()
+			{	
+			
+			var name = document.getElementById('name').value;
+        	var email = document.getElementById('email').value;
+        	var body = document.getElementById('body').value;
+        	
+        	
+            xmlhttp=new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        document.getElementById("comment_general").innerHTML+=xmlhttp.responseText;
+                        
+                    }
+            }
+            xmlhttp.open("GET","submit.php?name="+name+"&email="+email+"&body="+body+"&id_art="+id,true);
+            xmlhttp.send();
+		}
+
+		</script>
+		
 	</body>
 </html>
