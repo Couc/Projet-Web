@@ -7,13 +7,18 @@ $sql=mysql_query("SELECT * FROM ARTICLE WHERE date<'".$_GET['last']."' AND id_so
 while($result=mysql_fetch_assoc($sql))
 {
 	$i++;
+	$annee = substr($result['date'],0,4);
+		$mois = substr($result['date'],4,2);
+		$jour = substr($result['date'],6,2);
+		$heure = substr($result['date'],8,2);
+		$minutes = substr($result['date'],10,2);
 	echo '	<div class="accordion-group" id="'.$result['date'].'">
 		 			<div class="accordion-heading">
 		 			<table width="100%">
 		 			<tr>
 		 			<td width="90%">
 							 <a onclick="def_art(this);" id="'.$result['id_art'].'" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
-								 '.$result['titre'].'&nbsp;&nbsp;-&nbsp;&nbsp;Le&nbsp;'.$result['date'].'
+								 '.$result['titre'].'&nbsp;&nbsp;-&nbsp;&nbsp;Le&nbsp;'.$jour.'/'.$mois.'/'.$annee.'&nbsp;à&nbsp;'.$heure.':'.$minutes.'
 			 				 </a>
  					</td>
  					<td width="10%">
