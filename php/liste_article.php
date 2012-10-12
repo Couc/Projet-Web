@@ -125,16 +125,17 @@ while ($result = mysql_fetch_assoc($query)) {
 	}
 	$i++;
 }
-if(strlen($id_src)>2){
-	$id_src=substr($id_src, 0,strlen($id_src)-4);
-}
-	$sql = "SELECT * FROM ARTICLE WHERE id_source IN (".$id_src.") ORDER BY DATE DESC;";
+echo ('<input type="hidden" class="id_source" value="'.$id_src.'"/>');
+
+	$sql = "SELECT * FROM ARTICLE WHERE id_source IN (".$id_src.") ORDER BY DATE DESC LIMIT 20;";
 	//exécution de notre requête SQL:
 	$query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");
 	//récupération avec mysql_fetch_array() et affichage du résultat :
+	$i=0;
+	$j=0;
 	while ($result = mysql_fetch_assoc($query)) {
 		$i++;
-		echo '	<div class="accordion-group">
+		echo '	<div class="accordion-group" id="'.$result['date'].'">
 		 			<div class="accordion-heading">
 		 			<table width="100%">
 		 			<tr>
@@ -163,6 +164,7 @@ if(strlen($id_src)>2){
 	 				</div>
 		 		</div>';
 	}
+echo'<input type="hidden" class="increment" value="'.$i.'"/>';
 		?>
 		</div>
 </div>
@@ -274,6 +276,68 @@ if(strlen($id_src)>2){
 		
 
 		</script>
+		<script type="text/javascript">
+ 
+$(document).ready(function(){ // Quand le document est complètement chargé
+ 
+	var load = false; // aucun chargement de commentaire n'est en cours
+ 
+	/* la fonction offset permet de récupérer la valeur X et Y d'un élément
+	dans une page. Ici on récupère la position du dernier div qui 
+	a pour classe : ".commentaire" */
+	var offset = $('.accordion-group:last').offset(); 
+ 
+	$(window).scroll(function(){ // On surveille l'évènement scroll
+ 
+		/* Si l'élément offset est en bas de scroll, si aucun chargement 
+		n'est en cours, si le nombre de commentaire affiché est supérieur 
+		à 5 et si tout les commentaires ne sont pas affichés, alors on 
+		lance la fonction. */
+		if((offset.top-$(window).height() <= $(window).scrollTop()) 
+		&& load==false && ($('.accordion-group').size()>=5) && 
+		($('.accordion-group').size()!=$('.nb_com').text())){
+ 
+			// la valeur passe à vrai, on va charger
+			load = true;
+ 
+			//On récupère l'id du dernier commentaire affiché
+			var last_id = $('.accordion-group:last').attr('id');
+			var idsrc = $('.id_source').attr('value');
+			var i = $('.increment').attr('value');
+ 
+			//On affiche un loader
+			$('.loadmore').show();
+ 
+			//On lance la fonction ajax
+			$.ajax({
+				url: './article_ajax.php',
+				type: 'get',
+				data: 'last='+last_id+'&idsrc='+idsrc+'&increment='+i,
+ 
+				//Succès de la requête
+				success: function(data) {
+ 
+					//On masque le loader
+					$('.loadmore').fadeOut(500);
+					/* On affiche le résultat après
+					le dernier commentaire */
+					$('.accordion-group:last').after(data);
+					/* On actualise la valeur offset
+					du dernier commentaire */
+					$('.increment').val(parseInt(i)+20);
+					offset = $('.accordion-group:last').offset();
+					//On remet la valeur à faux car c'est fini
+					load = false;
+				}
+			});
+		}
+ 
+ 
+	});
+ 
+});
+ 
+</script>
 		
 	</body>
 </html>
