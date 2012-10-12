@@ -44,7 +44,7 @@ mysql_query("SET NAMES UTF8");
           <a class="brand" href="#"><img src="img/logo blanc.png" alt=""/></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
+              <li class="active"><a href="../index.php">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
               <li class="dropdown">
@@ -71,7 +71,7 @@ mysql_query("SET NAMES UTF8");
     </div>
     <div class="row-fluid">
 
-<div class="span8">
+<div class="span8" style="margin-left:20px;">
 <div class="accordion" id="accordion2">
     <?php
 //Connexion à la base
@@ -168,11 +168,11 @@ echo'<input type="hidden" class="increment" value="'.$i.'"/>';
 		?>
 		</div>
 </div>
-<div class="span4">
+<div class="span3 hidden-phone" style="margin-left:20px;">
 	<div id="comment_general">
 		
 	</div>
-	<div id="addCommentContainer">
+	<div id="addCommentContainer" style="display: none;">
     <p>Add a Comment</p>
     <form id="addCommentForm" method="post" action="">
         <div>
@@ -186,7 +186,7 @@ echo'<input type="hidden" class="increment" value="'.$i.'"/>';
             <label for="body">Comment Body</label>
             <textarea name="body" id="body" cols="20" rows="5"></textarea>
 
-            <input type="button" id="submit" value="Submit" onclick="Change();"/>
+            <input type="reset" id="submit" value="Submit" onclick="Change();"/>
             <input type="hidden" id="id_art" value="" onchange="id_article();" />
         </div>
     </form>
@@ -208,7 +208,7 @@ echo'<input type="hidden" class="increment" value="'.$i.'"/>';
 		</script>
 		<!--<script src="js/bootstrap-alert.js"></script>-->
 		<script type="text/javascript">
-		
+		var id_temp=0;
 		function id_article(){
 		
 		var id_art = document.getElementById('id_art').value;
@@ -232,7 +232,23 @@ echo'<input type="hidden" class="increment" value="'.$i.'"/>';
 			var id;
 			id=obj.id;
 			document.getElementById('id_art').value = id;
-			document.getElementById('id_art').onchange();
+			
+			if(id_temp!= id)
+			{
+				document.getElementById('comment_general').innerHTML="";
+				document.getElementById('id_art').onchange();
+				document.getElementById('addCommentContainer').style.display="block";
+				document.getElementById('comment_general').style.display="block";
+				id_temp=id;
+			}
+			else
+			{
+				document.getElementById('comment_general').innerHTML="";
+				document.getElementById('addCommentContainer').style.display="none";
+				document.getElementById('comment_general').style.display="none";
+				id_temp=0;
+			}
+			
 		}
 
 			
@@ -242,7 +258,7 @@ echo'<input type="hidden" class="increment" value="'.$i.'"/>';
 			var name = document.getElementById('name').value;
         	var email = document.getElementById('email').value;
         	var body = document.getElementById('body').value;
-        	
+        	var id_art = document.getElementById('id_art').value;
         	
             xmlhttp=new XMLHttpRequest();
 
@@ -254,9 +270,10 @@ echo'<input type="hidden" class="increment" value="'.$i.'"/>';
                         
                     }
             }
-            xmlhttp.open("GET","submit.php?name="+name+"&email="+email+"&body="+body+"&id_art="+id,true);
+            xmlhttp.open("GET","submit.php?name="+name+"&email="+email+"&body="+body+"&id_art="+id_art,true);
             xmlhttp.send();
 		}
+		
 
 		</script>
 		<script type="text/javascript">
