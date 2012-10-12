@@ -12,6 +12,7 @@ include ('php/_A8s2f9g714ef.php');
 
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     
     <style type="text/css">
       body {
@@ -31,52 +32,46 @@ include ('php/_A8s2f9g714ef.php');
 
   <body>
 
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+    	
       <div class="navbar-inner">
+      	
         <div class="container">
+        	
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
+          
           <a class="brand" href="#"><img src="img/logo blanc.png" alt=""/></a>
+          
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="index.php">Home</a></li>
-              <li><a href="#about">About</a></li>
+              <li class="active"><a href="index.php">Accueil</a></li>
+              <li><a href="#about">Catégorie</a></li>
+              <li><a href="#contact">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
             </ul>
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
-            </form>
-          </div><!--/.nav-collapse -->
+            <ul class="nav pull-right">
+              <a href="#" class="btn btn-primary"><i class="icon-user icon-white"></i>  Se connecter</a>
+              
+            </ul>
+           </div><!--/.nav-collapse -->
+           
         </div>
       </div>
     </div>
 
-	  <div class="hero-unit hidden-phone" style="width:100%;">
+	  <div class="hero-unit hidden-phone">
 	  	<div class="container">
 	  		
 		  		<div class="texte" style="float:left;">
-		        <h1 style="margin-left:-40px;">Incroyablement simple<br> et intuitif,<br>toutes vos news<br> à portée de clic</h1>
+		        <h1>Incroyablement simple<br> et intuitif,<br>toutes vos news<br> à portée de clic</h1>
 		       
-		        <p><a class="btn btn-primary btn-large" style="margin-top:20px;margin-left:-40px;">Learn more &raquo;</a></p>
+		        <p><a class="btn btn-primary btn-large">S'inscrire &raquo;</a></p>
 		        </div>
-		        <div class="image hidden-phone hidden-tablet" style="float:left;position:absolute;width:600px;right:0;">
+		        <div class="image-hero hidden-phone hidden-tablet">
 		        	<img src="img/visual1.png" alt="image" style="opacity: 0.7;"/>
 		        </div>
 	       
@@ -144,14 +139,89 @@ include ('php/_A8s2f9g714ef.php');
       </div>
 
       <hr>
-	
-
-      <footer>
-        <p>&copy; Lanternier Thomas & Boulachin Clément Copyright 2012</p>
-      </footer>
 
     </div> <!-- /container -->
+	<div id="extra" style="background-color:#222;border-top:1px solid;color:white;padding:20px;margin-top:20px;">
+	
+	<div class="inner">
+		
+		<div class="container">
+			
+			<div class="row-fluid">
+				
+				<div class="span3">
+					
+					<h3><span class="slash">>></span></span> About Us</h3>
+					
+					<p>ENEW est un site créé par 2 étudiants en licence informatique a l'IUT de Belfort.<br>Ce site a pour but de centraliser toutes vos news.</p>
+					
+				</div> <!-- /span4 -->
+				
+				
+				<div class="span3 offset1">
+					
+					<h3><span class="slash">>></span> Explore</h3>				
+					
+					<ul class="footer-links clearfix">
+						<li><a href="/" style="text-decoration: none;color:#777;list-style:none;">Accueil</a></li>
+                        <li><a href="/themes" style="text-decoration: none;color:#777;list-style:none;">Catégories</a></li>
+                        <li><a href="/faq" style="text-decoration: none;color:#777;list-style:none;">A propos</a></li>
+                        
+                    </ul>
+					
+				</div> <!-- /span3 -->
+				
+				
+				<div class="span3">
+					
+										
+				</div> <!-- /span3 -->
+				
+				
+				<div class="span2">
+					
+					<h3><span class="slash">>></span> Social</h3>				
+					
+					<ul class="footer-links clearfix">
+                        <li><a href="http://facebook.com/" style="text-decoration: none;color:#777;list-style:none;">Facebook</a></li>
+                        <li><a href="http://twitter.com/" style="text-decoration: none;color:#777;list-style:none;">Twitter</a></li>
+                    </ul>
+					
+				</div> <!-- /span3 -->
+				
+				
+				
+			</div> <!-- /row -->
+			
+		</div> <!-- /container -->
+		
+	</div> <!-- /inner -->
+	
+</div> <!-- /#extra -->
 
+
+
+<div id="footer" style="background-color: #333;">
+					
+	<div class="inner">
+	
+		<div class="container">
+		
+			<div class="row">
+				<div id="footer-copyright" class="span4">
+					&copy; 2012 ENEW, all rights reserved.
+				</div> <!-- /span4 -->
+				
+				<div id="footer-terms" class="span8">
+					Built by <a href="javascript:;">LANTERNIER Thomas & BOULACHIN Clément.</a>
+				</div> <!-- /span8 -->
+			</div> <!-- /row -->
+			
+		</div> <!-- /container -->
+		
+	</div> <!-- /inner -->
+	
+</div> <!-- /#footer -->
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
