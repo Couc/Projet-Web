@@ -44,6 +44,7 @@ id_source INT,
 titre CHAR(100),
 contenu TEXT,
 date CHAR(12),
+description CHAR(255),
 PRIMARY KEY (id_art) ) ENGINE=InnoDB;
 ALTER TABLE ARTICLE ADD CONSTRAINT FK_ART_idsource FOREIGN KEY (id_source) REFERENCES SOURCE (id_source);
 

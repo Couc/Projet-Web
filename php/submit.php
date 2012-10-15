@@ -17,7 +17,7 @@ mysql_query("SET NAMES UTF8");
 	echo "
 			<div class=\"comment\">
 				<div class=\"name\">".$_GET["name"]."</div>
-				<div class=\"date\">".date("D F Y")."</div>
+				<div class=\"date\">".date("d F Y")."</div>
 				<p>".$_GET["body"]."</p>
 			</div>
 		";

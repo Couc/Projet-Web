@@ -19,14 +19,30 @@ while ($result = mysql_fetch_assoc($query)) {
 		$derdate = $result2['date'];
 	}
 	$rss = lit_rss("http://fulltextrssfeed.com/".$result['lien'], array("title", "link", "description", "pubDate"));
+	$rss1 = lit_rss("http://".$result['lien'],array("description","pubDate"));
+	$j=1;
+	foreach ($rss1 as $tab1) 
+				{
+				echo ('je rentre là pour la description');
+				${'desc'.$j} = $tab1[0];
+				//$sqlInsert1 = " UPDATE ARTICLE set description = '". mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab1[0])))."' WHERE id_art = LAST_INSERT_ID();";
+				//$queryInsert1 = mysql_query($sqlInsert1) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+				$j++;
+				}
+	$jj=1;
 	foreach ($rss as $tab) {
 		if (doubleval(date("YmdHi", strtotime($tab[3]))) > doubleval($derdate)) {
 			echo ('je rentre là');
-			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . addslashes($tab[0]) . "','" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[2]))) . "','" . date("YmdHi", strtotime($tab[3])) . "')";
+			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . addslashes($tab[0]) . "','" . mysql_real_escape_string(utf8_encode(convert_chars_to_entities($tab[2]))) . "','" . date("YmdHi", strtotime($tab[3])) . "',null)";
 			$queryInsert = mysql_query($sqlInsert) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-
+			$sqlInsert1 = " UPDATE ARTICLE set description = '". mysql_real_escape_string(utf8_encode(convert_chars_to_entities(${'desc'.$jj})))."' WHERE id_art = LAST_INSERT_ID();";
+			$queryInsert1 = mysql_query($sqlInsert1) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+				
 		}
+		$jj++;
 	}
+	
+	
 	$fich=fopen("../../cron.log","a+");
 	fwrite($fich, "le cron est passé\n");
 	fclose($fich);

@@ -144,10 +144,11 @@ echo ('<input type="hidden" class="id_source" value="'.$id_src.'"/>');
 		 			<div class="accordion-heading">
 		 			<table width="100%">
 		 			<tr>
-		 			<td width="90%">
+		 			<td width="">
 							 <a onclick="def_art(this);" id="'.$result['id_art'].'" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
 								 '.$result['titre'].'&nbsp;&nbsp;-&nbsp;&nbsp;Le&nbsp;'.$jour.'/'.$mois.'/'.$annee.'&nbsp;à&nbsp;'.$heure.':'.$minutes.'
-			 				 </a>
+							 </a>
+			 				 
  					</td>
  					<td width="10%">
 	 						<img align="right" width="35px" src="../img/'.$result['id_source'].'.jpg"/>
