@@ -28,7 +28,7 @@ while ($result = mysql_fetch_assoc($query)) {
 		}
 	}
 	$fich=fopen("../../cron.log","a+");
-	fwrite($fich, "le cron est passé\n");
+	fwrite($fich, "le cron est passé à \n");
 	fclose($fich);
 }
 echo $ii;
