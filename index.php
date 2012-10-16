@@ -17,7 +17,7 @@ include ('php/_A8s2f9g714ef.php');
     <style type="text/css">
       body {
         padding-top: 60px;
-        padding-bottom: 40px;
+        
       }
     </style>
    <link href="css/bootstrap-responsive.css" rel="stylesheet">
@@ -141,6 +141,7 @@ include ('php/_A8s2f9g714ef.php');
       <hr>
 
     </div> <!-- /container -->
+    
 	<div id="extra" style="background-color:#222;border-top:1px solid;color:white;padding:20px;margin-top:20px;">
 	
 	<div class="inner">
@@ -201,7 +202,7 @@ include ('php/_A8s2f9g714ef.php');
 
 
 
-<div id="footer" style="background-color: #333;">
+<div id="footer" style="background-color: black;color: #333;padding: 20px 0px;">
 					
 	<div class="inner">
 	
@@ -213,7 +214,7 @@ include ('php/_A8s2f9g714ef.php');
 				</div> <!-- /span4 -->
 				
 				<div id="footer-terms" class="span8">
-					Built by <a href="javascript:;">LANTERNIER Thomas & BOULACHIN Clément.</a>
+					<p class="pull-right">Built by<a href=""  style="text-decoration: none;color:white;"> LANTERNIER Thomas & BOULACHIN Clément.</a></p>
 				</div> <!-- /span8 -->
 			</div> <!-- /row -->
 			
@@ -222,6 +223,8 @@ include ('php/_A8s2f9g714ef.php');
 	</div> <!-- /inner -->
 	
 </div> <!-- /#footer -->
+
+
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
