@@ -1,8 +1,10 @@
-
+body{
+	background-image:url(../img/bg_diag.png);
+	
+}
 .hero-unit{
 	
 margin-top:-10px;
-
 background: #3399cc url(../img/gradient-bg.png) repeat-y left;
 -o-background-size: 100% 100%;
 -moz-background-size: 100% 100%;
