@@ -2,6 +2,8 @@ body{
 	background-image:url(../img/bg_diag.png);
 	
 }
+
+/***************************** Image accueil si pas connecté **************************/
 .hero-unit{
 	
 margin-top:-10px;
@@ -31,7 +33,7 @@ background-size: 100% 100%;
 	width:600px;
 	right:0;
 }
-
+/****************************************************************************/
 footer{
 	height:300px;
 	background-color:#111111;
@@ -39,6 +41,128 @@ footer{
 	opacity:0.8;
 }
 
-.divider{
-    
+/*********************** Accueil si connecté ********************************/
+
+#div-slider{
+	
+	margin-top:40px;
+}
+#span-article{
+	border-right:1px solid rgba(0, 0, 0, 0.2);
+	margin-right:30px;
+	float:left;
+}
+.drapeau{
+	background:url(../img/h3_end.png) no-repeat left top;
+	padding:0 0 0 12px;
+	height:38px;
+	width:90%;
+}
+.drapeau span{
+	background: url(../img/h3_start.png) no-repeat right top;
+	padding: 0 20px 0 10px;
+	color: white;
+	height: 38px;
+	line-height: 36px;
+	display: block;
+	float: left;
+}
+#article-accueil{
+	float:left;
+	padding:10px 10px 10px 10px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	width:90%;
+}
+#article-accueil-slide{
+	float:left;
+	padding:10px 10px 10px 10px;
+	width:90%;
+}
+#info-post-accueil{
+	width:160px;
+	padding: 10px 0 0 10px;
+	float:left;
+}
+#icone-accueil{
+	margin-right:4px;
+	margin-bottom:7px;
+}
+#icone-accueil-last{
+	margin-right:4px;
+	}
+#post-accueil{
+	width:90%;
+	padding-left: 10px;
+	border-left:1px solid #333;
+	float:left;
+}
+#post-accueil header{
+	border-left:4px solid blue; 
+	padding-left:10px;
+}
+#info-post-tablet{
+	width:100%;
+}
+#icone-accueil-tablet-first{
+	margin-right:4px;
+	float:left;
+}
+#icone-accueil-tablet{
+	float:left;
+	margin-right:4px;
+	margin-left:4px;
+}
+#icone-accueil-tablet-last{
+	margin-right:4px;	
+}
+aside{
+	top:320px;
+	padding-top:50px;
+	position: absolute;
+	left:70%;
+
+}
+@media (max-width:768px) {
+	
+	#scroll{
+		display:none;
+		
+	}
+
+}
+@media (max-width:1200px) {
+	#info-post-accueil{
+		display:none;
+		
+	}
+
+}
+@media (min-width:1200px) {
+	#info-post-tablet{
+		display:none;
+		
+	}
+	#post-accueil{
+		width:72%;
+	}
+}
+/************************slider***********************/
+.rslides_tabs{
+	margin-top:15px;
+	list-style: none;
+	
+}
+.rslides_tabs li{
+	float:left;
+	margin-right:10px;
+	
+}
+
+.rslides_tabs li a:hover{
+	text-decoration:none;
+	
+}
+.rslides_here{
+  content:url("../img/button_selec.png");
+
 }
