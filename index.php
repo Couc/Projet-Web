@@ -63,7 +63,7 @@ include ('php/_A8s2f9g714ef.php');
       </div>
     </div>
 
-	  <div class="hero-unit hidden-phone">
+	  <!--<div class="hero-unit hidden-phone">
 	  	<div class="container">
 	  		
 		  		<div class="texte" style="float:left;">
@@ -76,69 +76,239 @@ include ('php/_A8s2f9g714ef.php');
 		        </div>
 	       
        </div>
-      </div>
+   </div>-->
     <div class="container">
 
       <div class="row-fluid">
-        <ul class="thumbnails">
-              <li class="span8">
-                <div class="thumbnail">
-                  <img src="img/alaune.png" alt="" style="height:200px;width:620px;">
-                  <div class="caption">
-                    <h3>Titre du dernier article</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="php/liste_article.php?id=1" class="btn btn-primary">En savoir plus</a> </p>
-                  </div>
-                </div>
-              </li>
-             
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/High_tech.png" alt="">
-                  <div class="caption">
-                    <h3>High Tech</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="php/liste_article.php?id=2" class="btn btn-primary">En savoir plus</a> </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-            
-            <ul class="thumbnails">
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="img/sport.png" alt="">
-                  <div class="caption">
-                    <h3>Sport</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula.</p>
-                    <p><a href="php/liste_article.php?id=3" class="btn btn-primary">En savoir plus</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="http://placehold.it/300x200" alt="">
-                  <div class="caption">
-                    <h3>Monde</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="php/liste_article.php?id=4" class="btn btn-primary">En savoir plus</a></p>
-                  </div>
-                </div>
-              </li>
-              <li class="span4">
-                <div class="thumbnail">
-                  <img src="http://placehold.it/300x200" alt="">
-                  <div class="caption">
-                    <h3>People</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="php/liste_article.php?id=5" class="btn btn-primary">En savoir plus</a> </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
+      	<div class="span12" style="border-bottom: 1px solid rgba(0, 0, 0, 0.2);margin-top:40px;">
+        	<div class="slider_control" style="width:100%;">
+        		<h3 class="drapeau" style="background:url(img/h3_end.png) no-repeat left top;padding:0 0 0 12px;height:38px;width:850px;">
+        			<span style="background: url(img/h3_start.png) no-repeat right top;padding: 0 20px 0 10px;color: white;height: 38px;line-height: 36px;display: block;float: left;">Les articles les plus aimés</span>
+        		</h3>
+        		<a href="#" id="precedent" style="float: left;width: 22px;height: 16px;margin-left: 0px;text-indent: -9999px;background: url(img/carrousel_left.png) no-repeat;position: absolute;top: 10px;right: 19px;"></a>
+        		<a href="#" id="suivant" style="float: right;width: 22px;height: 16px;margin-left: 16px;text-indent: -9999px;background: url(img/carrousel_right.png) no-repeat;position: absolute;top: 10px;right: -2px;"></a>
+        	</div>
+        	<div class="slider_content" style="margin-left:100px;">
+        		<ul>
+        			<li id="article_x">
+        				<article style="float:left;padding:10px 10px 10px 10px;">
+        		
+			        		<div id="info-post" style="width:160px;padding: 10px 0 0 10px;float:left;">
+			        			<i class="icon-calendar" style="margin-right:4px;margin-bottom:7px;"></i><date>Mon 06 Nov 2012</date>
+			        			<br>
+			        			<span id="author" ><i class="icon-user" style="margin-right:4px;margin-bottom:7px;"></i>Korben</span>
+			        			<br>
+			        			<span id="categorie" ><i class="icon-tasks" style="margin-right:4px;margin-bottom:7px;"></i>High-Tech</span>
+			        			<br>
+			        			<span id="nombre_commentaire" ><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
+			        			
+			        		</div>
+			        		<div id="post" style="padding-left: 10px;border-left:1px solid #333;float:left;width:500px;">
+			        			<header style="border-left:4px solid blue; padding-left:10px;">
+			        				<h4>Voici un petit titre juste pour tester</h4>
+			        			</header>
+			        			
+			        			<div id="article">
+			        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+			        					, when an unknown printer took a galley of type and ...</p>
+			        				<a>Read more<i class="icon-chevron-right"></i></a>
+			        			</div>
+			        			
+			        		</div>
+			        		
+			        	</article>
+        			</li>
+        		</ul>
+        	</div>
+        </div>
+       
+        <div class="span10">
+        	<div class="span10" style="border-right:1px solid rgba(0, 0, 0, 0.2);margin-right:30px;float:left;">
+        		<div class="slider_control">
+	        		<h3 class="drapeau" style="background:url(img/h3_end.png) no-repeat left top;padding:0 0 0 12px;height:38px;width:90%;">
+	        			<span style="background: url(img/h3_start.png) no-repeat right top;padding: 0 20px 0 10px;color: white;height: 38px;line-height: 36px;display: block;float: left;">A la une</span>
+	        		</h3>
+	        		
+        		</div>
+        	<article style="float:left;padding:10px 10px 10px 10px;">
+        		
+        		<div id="info-post" style="width:160px;padding: 10px 0 0 10px;float:left;">
+        			<i class="icon-calendar" style="margin-right:4px;margin-bottom:7px;"></i><date>Mon 06 Nov 2012</date>
+        			<br>
+        			<span id="author" ><i class="icon-user" style="margin-right:4px;margin-bottom:7px;"></i>Korben</span>
+        			<br>
+        			<span id="categorie" ><i class="icon-tasks" style="margin-right:4px;margin-bottom:7px;"></i>High-Tech</span>
+        			<br>
+        			<span id="nombre_commentaire" ><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
+        			
+        		</div>
+        		<div id="post" style="padding-left: 10px;border-left:1px solid #333;float:left;width:500px;">
+        			<header style="border-left:4px solid blue; padding-left:10px;">
+        				<h4>Voici un petit titre juste pour tester</h4>
+        			</header>
+        			
+        			<div id="article">
+        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        					, when an unknown printer took a galley of type and ...</p>
+        				<a>Read more<i class="icon-chevron-right"></i></a>
+        			</div>
+        			
+        		</div>
+        		
+        	</article>
+        	<hr style="width:100%;">
+        	<article style="float:left;padding:10px 10px 10px 10px;">
+        		
+        		<div id="info-post" style="width:160px;padding: 10px 0 0 10px;float:left;">
+        			<i class="icon-calendar" style="margin-right:4px;margin-bottom:7px;"></i><date>Mon 06 Nov 2012</date>
+        			<br>
+        			<span id="author" ><i class="icon-user" style="margin-right:4px;margin-bottom:7px;"></i>Korben</span>
+        			<br>
+        			<span id="categorie" ><i class="icon-tasks" style="margin-right:4px;margin-bottom:7px;"></i>High-Tech</span>
+        			<br>
+        			<span id="nombre_commentaire" ><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
+        			
+        		</div>
+        		<div id="post" style="padding-left: 10px;border-left:1px solid #333;float:left;width:500px;">
+        			<header style="border-left:4px solid blue; padding-left:10px;">
+        				<h4>Voici un petit titre juste pour tester</h4>
+        			</header>
+        			
+        			<div id="article">
+        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        					, when an unknown printer took a galley of type and ...</p>
+        				<a>Read more<i class="icon-chevron-right"></i></a>
+        			</div>
+        			
+        		</div>
+        		
+        	</article>
+        	<hr style="width:100%;">
+        	<article style="float:left;padding:10px 10px 10px 10px;">
+        		
+        		<div id="info-post" style="width:160px;padding: 10px 0 0 10px;float:left;">
+        			<i class="icon-calendar" style="margin-right:4px;margin-bottom:7px;"></i><date>Mon 06 Nov 2012</date>
+        			<br>
+        			<span id="author" ><i class="icon-user" style="margin-right:4px;margin-bottom:7px;"></i>Korben</span>
+        			<br>
+        			<span id="categorie" ><i class="icon-tasks" style="margin-right:4px;margin-bottom:7px;"></i>High-Tech</span>
+        			<br>
+        			<span id="nombre_commentaire" ><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
+        			
+        		</div>
+        		<div id="post" style="padding-left: 10px;border-left:1px solid #333;float:left;width:500px;">
+        			<header style="border-left:4px solid blue; padding-left:10px;">
+        				<h4>Voici un petit titre juste pour tester</h4>
+        			</header>
+        			
+        			<div id="article">
+        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        					, when an unknown printer took a galley of type and ...</p>
+        				<a>Read more<i class="icon-chevron-right"></i></a>
+        			</div>
+        			
+        		</div>
+        		
+        	</article>
+        	<hr style="width:100%;">
+        	<article style="float:left;padding:10px 10px 10px 10px;">
+        		
+        		<div id="info-post" style="width:160px;padding: 10px 0 0 10px;float:left;">
+        			<i class="icon-calendar" style="margin-right:4px;margin-bottom:7px;"></i><date>Mon 06 Nov 2012</date>
+        			<br>
+        			<span id="author" ><i class="icon-user" style="margin-right:4px;margin-bottom:7px;"></i>Korben</span>
+        			<br>
+        			<span id="categorie" ><i class="icon-tasks" style="margin-right:4px;margin-bottom:7px;"></i>High-Tech</span>
+        			<br>
+        			<span id="nombre_commentaire" ><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
+        			
+        		</div>
+        		<div id="post" style="padding-left: 10px;border-left:1px solid #333;float:left;width:500px;">
+        			<header style="border-left:4px solid blue; padding-left:10px;">
+        				<h4>Voici un petit titre juste pour tester</h4>
+        			</header>
+        			
+        			<div id="article">
+        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        					, when an unknown printer took a galley of type and ...</p>
+        				<a>Read more<i class="icon-chevron-right"></i></a>
+        			</div>
+        			
+        		</div>
+        		
+        	</article>
+        	<hr style="width:100%;">
+        	<article style="float:left;padding:10px 10px 10px 10px;">
+        		
+        		<div id="info-post" style="width:160px;padding: 10px 0 0 10px;float:left;">
+        			<i class="icon-calendar" style="margin-right:4px;margin-bottom:7px;"></i><date>Mon 06 Nov 2012</date>
+        			<br>
+        			<span id="author" ><i class="icon-user" style="margin-right:4px;margin-bottom:7px;"></i>Korben</span>
+        			<br>
+        			<span id="categorie" ><i class="icon-tasks" style="margin-right:4px;margin-bottom:7px;"></i>High-Tech</span>
+        			<br>
+        			<span id="nombre_commentaire" ><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
+        			
+        		</div>
+        		<div id="post" style="padding-left: 10px;border-left:1px solid #333;float:left;width:500px;">
+        			<header style="border-left:4px solid blue; padding-left:10px;">
+        				<h4>Voici un petit titre juste pour tester</h4>
+        			</header>
+        			
+        			<div id="article">
+        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        					, when an unknown printer took a galley of type and ...</p>
+        				<a>Read more<i class="icon-chevron-right"></i></a>
+        			</div>
+        			
+        		</div>
+        		
+        	</article>
+        	<hr style="width:100%;">
+        	<article style="float:left;padding:10px 10px 10px 10px;">
+        		
+        		<div id="info-post" style="width:160px;padding: 10px 0 0 10px;float:left;">
+        			<i class="icon-calendar" style="margin-right:4px;margin-bottom:7px;"></i><date>Mon 06 Nov 2012</date>
+        			<br>
+        			<span id="author" ><i class="icon-user" style="margin-right:4px;margin-bottom:7px;"></i>Korben</span>
+        			<br>
+        			<span id="categorie" ><i class="icon-tasks" style="margin-right:4px;margin-bottom:7px;"></i>High-Tech</span>
+        			<br>
+        			<span id="nombre_commentaire" ><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
+        			
+        		</div>
+        		<div id="post" style="padding-left: 10px;border-left:1px solid #333;float:left;width:500px;">
+        			<header style="border-left:4px solid blue; padding-left:10px;">
+        				<h4>Voici un petit titre juste pour tester</h4>
+        			</header>
+        			
+        			<div id="article">
+        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+        					, when an unknown printer took a galley of type and ...</p>
+        				<a>Read more<i class="icon-chevron-right"></i></a>
+        			</div>
+        			
+        		</div>
+        		
+        	</article>
+        	<hr style="width:100%;">
+        	</div><!--span10 des articles-->
+        	<div class="span2" id="scroll" style="top:360px;padding-top:50px;left:65%;position: absolute;margin-left:2%;">
+        		<h4>Catégorie</h4>
+        		<br>
+        		<p>A la une</p>
+        		<hr>
+        		<p>High-Tech</p>
+        		<hr>
+        		<p>Sport</p>
+        		<hr>
+        		<p>Politique</p>
+        	</div>
+        </div><!--span10 content -->
+        
       </div>
 
-      <hr>
+      
 
     </div> <!-- /container -->
     
@@ -230,7 +400,73 @@ include ('php/_A8s2f9g714ef.php');
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
-   
+   <script type="text/javascript">
+	window.onscroll = function() {
+	    var scroll = (document.documentElement.scrollTop ||
+	        document.body.scrollTop);
+	    if(scroll>480)
+	        document.getElementById('scroll').style.top = scroll+'px';
+	}
+</script>
+<script type="text/javascript">
+	
+	$j(function(){ 
+
+    // Gallery
+    if($j("#slider_gallery").length){
+
+        // Declare variables
+        var totalImages = $j("#slider_gallery > li").length,
+            imageWidth = $j("#slider_gallery > li:first").outerWidth(true),
+            totalWidth = imageWidth * totalImages,
+            visibleImages = Math.round($j("#slider_gallery-wrap").width() / imageWidth),
+            visibleWidth = visibleImages * imageWidth,
+            stopPosition = (visibleWidth - totalWidth);
+
+        $j("#slider_gallery").width(totalWidth);
+
+        $j("#slider_gallery-prev").click(function(){
+            if($j("#slider_gallery").position().left < -20 && !$j("#slider_gallery").is(":animated")){
+                $j("#slider_gallery-prev").fadeIn();
+                $j("#slider_gallery").animate({opacity:0.4},{
+												  duration: 300,
+												  complete: function(){
+													  
+													  $j(this).animate({
+																		   left : "+=" + imageWidth + "px"}
+																		   ,{  duration: 300, easing: 'easeInOutExpo',
+																			   complete: function(){ $j(this).animate({opacity:1});
+																			}
+																		   });
+												  }
+										});
+            }
+            return false;
+        });
+
+        $j("#slider_gallery-next").click(function(){
+            if($j("#slider_gallery").position().left > stopPosition && !$j("#slider_gallery").is(":animated")){
+                $j("#slider_gallery").animate({opacity:0.4},{
+												  duration: 300,
+												  complete: function(){
+													  
+													  $j(this).animate({
+																		   left : "-=" + imageWidth + "px"}
+																		   ,{	duration: 300, easing: 'easeInOutExpo',
+																			   complete: function(){ $j(this).animate({opacity:1});
+																			}
+																		   });
+												  }
+										});
+            }
+            return false;
+        });
+			
+    }
+
+});
+
+</script>
     
 
   </body>
