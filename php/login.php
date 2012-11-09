@@ -52,10 +52,7 @@ include ('_A8s2f9g714ef.php');
               <li><a href="#contact">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
-            <ul class="nav pull-right">
-              <a href="php/login.php" class="btn btn-primary"><i class="icon-user icon-white"></i>  Se connecter</a>
-              
-            </ul>
+            
            </div><!--/.nav-collapse -->
            
         </div>
@@ -77,9 +74,9 @@ include ('_A8s2f9g714ef.php');
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/slider.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/slider.js"></script>
    <script type="text/javascript">
 	window.onscroll = function() {
 	    var scroll = (document.documentElement.scrollTop ||
@@ -89,7 +86,7 @@ include ('_A8s2f9g714ef.php');
 	        
 	}
 </script>
-<script src="js/responsiveslides.js"></script>
+<script src="../js/responsiveslides.js"></script>
   <script>
     $(function () {
 
