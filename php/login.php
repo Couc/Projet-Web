@@ -13,14 +13,14 @@ include ('_A8s2f9g714ef.php');
     <!-- Le styles -->
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="../css/responsiveslides.css" />
     <style type="text/css">
       body {
         padding-top: 60px;
         
       }
     </style>
-   <link href="css/bootstrap-responsive.css" rel="stylesheet">
+   <link href="../css/bootstrap-responsive.css" rel="stylesheet">
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,7 +31,7 @@ include ('_A8s2f9g714ef.php');
   </head>
 
   <body>
-  	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar navbar-inverse navbar-fixed-top">
     	
       <div class="navbar-inner">
       	
@@ -43,21 +43,25 @@ include ('_A8s2f9g714ef.php');
             <span class="icon-bar"></span>
           </a>
           
-          <a class="brand" href="#"><img src="../img/logo blanc.png" alt=""/></a>
+          <a class="brand" href="#"><img src="img/logo blanc.png" alt=""/></a>
           
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="../index.php">Accueil</a></li>
+              <li class="active"><a href="index.php">Accueil</a></li>
               <li><a href="#about">Catégorie</a></li>
               <li><a href="#contact">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
-            
+            <ul class="nav pull-right">
+              <a href="php/login.php" class="btn btn-primary"><i class="icon-user icon-white"></i>  Se connecter</a>
+              
+            </ul>
            </div><!--/.nav-collapse -->
            
         </div>
       </div>
     </div>
+
     
     <div class="container">
     	<div class="row-fluid">
@@ -70,4 +74,35 @@ include ('_A8s2f9g714ef.php');
   	 </div>
   	</div>
   	
-  </body></html>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/slider.js"></script>
+   <script type="text/javascript">
+	window.onscroll = function() {
+	    var scroll = (document.documentElement.scrollTop ||
+	        document.body.scrollTop);
+	    if(scroll>320)
+	        document.getElementById('scroll').style.top = scroll+'px';
+	        
+	}
+</script>
+<script src="js/responsiveslides.js"></script>
+  <script>
+    $(function () {
+
+        // Slideshow 2
+      $("#slider2").responsiveSlides({
+        auto: false,
+        pager: true,
+        speed: 300,
+        maxwidth: 1000
+      });
+
+     
+    });
+  </script>
+  </body>
+</html>
