@@ -54,7 +54,7 @@ include ('php/_A8s2f9g714ef.php');
               <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
-              <a href="#" class="btn btn-primary"><i class="icon-user icon-white"></i>  Se connecter</a>
+              <a href="php/login.php" class="btn btn-primary"><i class="icon-user icon-white"></i>  Se connecter</a>
               
             </ul>
            </div><!--/.nav-collapse -->
