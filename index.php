@@ -1,5 +1,6 @@
 <?php
 include ('php/_A8s2f9g714ef.php');
+mysql_query("SET NAMES UTF8");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
