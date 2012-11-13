@@ -53,32 +53,16 @@ include ('_A8s2f9g714ef.php');
 		<div class="container">
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="span6" style="text-align:center;border-right:1px solid #313030;">
+					<div class="span6" id='div-border' >
 						<p>
-							<h3>Se connecter</h3>
+							<h3 style='margin-bottom:30px;'>Se connecter</h3>
 						</p>
 						<form>
-							<div class="span11">
-								<div class="span5">
-									Login
-								</div>
-								<div class="span1">
-									&nbsp;
-								</div>
-								<div class="span5">
-									<input type='text'/>
-								</div>
-								<div class="span5">
-									Login
-								</div>
-								<div class="span1">
-									&nbsp;
-								</div>
-								<div class="span5">
-									<input type='text'/>
-								</div>
-								
-							</div>
+									<label style='float:left;width:30%;margin-right:30px;'>Login</label>
+									<input style='float:left;' type='text'/>
+									<label style='float:left;width:30%;margin-right:30px;'>Mot de passe</label>
+									<input style='float:left;' type='text'/>
+									<input type='submit' class='btn btn-primary' style="width:30%;margin-top:30px;margin-left:50%" value="Connexion"/>
 						</form>
 					</div>
 					<div class="span6" style="text-align:center">
