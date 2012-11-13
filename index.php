@@ -91,126 +91,51 @@ include ('php/_A8s2f9g714ef.php');
         	
         	<div class="slider_content" style="width:100%;">
         		 <ul class="rslides" id="slider2" style="width:100%;">
-				      <li class="article-accueil-slide"style="float:left;position:relative;
-	list-style-type:none;">
+        		 	<?php
+        		 	$sql_article="SELECT * FROM ARTICLE ORDER BY id_art DESC LIMIT 5;";
+					$query_article = mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+        		 	
+					while($result_article=mysql_fetch_assoc($query_article)){
+						echo"<li class=\"article-accueil-slide\" style=\"float:left;position:relative;list-style-type:none;\">
         				        		
-			        		<div id="info-post-accueil">
-			        			<i class="icon-calendar" id="icone-accueil"></i><date>Mon 06 Nov 2012</date>
+			        		<div id=\"info-post-accueil\">
+			        			<i class=\"icon-calendar\" id=\"icone-accueil\"></i><date>Mon 06 Nov 2012</date>
 			        			<br>
-			        			<span id="author" ><i class="icon-user" id="icone-accueil"></i>Korben</span>
+			        			<span id=\"author\" ><i class=\"icon-user\" id=\"icone-accueil\"></i>Korben</span>
 			        			<br>
-			        			<span id="categorie" ><i class="icon-tasks" id="icone-accueil"></i>High-Tech</span>
+			        			<span id=\"categorie\" ><i class=\"icon-tasks\" id=\"icone-accueil\"></i>High-Tech</span>
 			        			<br>
-			        			<span id="nombre_commentaire" ><i class="icon-comment" id="icone-accueil"></i>10 comments</span>
+			        			<span id=\"nombre_commentaire\" ><i class=\"icon-comment\" id=\"icone-accueil\"></i>10 comments</span>
 			        			<br>
-        						<span id="nombre_likes" ><i class="icon-thumbs-up" id="icone-accueil-last" ></i>25 likes</span>
+        						<span id=\"nombre_likes\" ><i class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>25 likes</span>
 			        		</div>
-			        		<div id="post-accueil">
+			        		<div id=\"post-accueil\">
 			        			<header>
-			        				<h4>Voici un petit titre juste pour tester</h4>
+			        				<h4>".addslashes($result_article['titre'])."</h4>
 			        			</header>
 			        			
-			        			<div id="article">
-			        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-			        					, when an unknown printer took a galley of type and ...</p>
-			        				<a>Read more<i class="icon-chevron-right"></i></a>
+			        			<div id=\"article\">
+			        				<p>".addslashes($result_article['description'])."</p>
+			        				<a>Read more<i class=\"icon-chevron-right\"></i></a>
 			        				
-			        				<div id="info-post-tablet">	
-		        						<i class="icon-calendar" id="icone-accueil-tablet-first"></i><date style="float:left;">Mon 06 Nov 2012</date>
+			        				<div id=\"info-post-tablet\">	
+		        						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\"></i><date style=\"float:left;\">Mon 06 Nov 2012</date>
 					        			
-					        			<span id="author" id="icone-accueil-tablet" style=""><i class="icon-user" style="margin-right:4px;"></i>Korben</span>
+					        			<span id=\"author\" id=\"icone-accueil-tablet\"><i class=\"icon-user\" style=\"margin-right:4px;\"></i>Korben</span>
 					        			
-					        			<span id="categorie" id="icone-accueil-tablet"><i class="icon-tasks" style="margin-right:4px;"></i>High-Tech</span>
+					        			<span id=\"categorie\" id=\"icone-accueil-tablet\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>High-Tech</span>
 					        			
-					        			<span id="nombre_commentaire" id="icone-accueil-tablet"><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
+					        			<span id=\"nombre_commentaire\" id=\"icone-accueil-tablet\"><i class=\"icon-comment\" style=\"margin-right:4px;\"></i>10 comments</span>
 					        			
-					        			<span id="nombre_likes" id="icone-accueil-tablet-last"><i class="icon-thumbs-up" style="margin-right:4px;"></i>25 likes</span>
+					        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>25 likes</span>
         							</div>
 			        			</div>
 			        			
 			        		</div>
 			        
-        			</li>
-				      <li class="article-accueil-slide"style="float:left;position:relative;
-	list-style-type:none;">
-        				        		
-			        		<div id="info-post-accueil">
-			        			<i class="icon-calendar" id="icone-accueil"></i><date>Mon 06 Nov 2012</date>
-			        			<br>
-			        			<span id="author" ><i class="icon-user" id="icone-accueil"></i>Korben</span>
-			        			<br>
-			        			<span id="categorie" ><i class="icon-tasks" id="icone-accueil"></i>High-Tech</span>
-			        			<br>
-			        			<span id="nombre_commentaire" ><i class="icon-comment" id="icone-accueil"></i>10 comments</span>
-			        			<br>
-        						<span id="nombre_likes" ><i class="icon-thumbs-up" id="icone-accueil-last" ></i>25 likes</span>
-			        		</div>
-			        		<div id="post-accueil">
-			        			<header>
-			        				<h4>Voici un petit titre juste pour tester</h4>
-			        			</header>
-			        			
-			        			<div id="article">
-			        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-			        					, when an unknown printer took a galley of type and ...</p>
-			        				<a>Read more<i class="icon-chevron-right"></i></a>
-			        				
-			        				<div id="info-post-tablet">	
-		        						<i class="icon-calendar" id="icone-accueil-tablet-first"></i><date style="float:left;">Mon 06 Nov 2012</date>
-					        			
-					        			<span id="author" id="icone-accueil-tablet" style=""><i class="icon-user" style="margin-right:4px;"></i>Korben</span>
-					        			
-					        			<span id="categorie" id="icone-accueil-tablet"><i class="icon-tasks" style="margin-right:4px;"></i>High-Tech</span>
-					        			
-					        			<span id="nombre_commentaire" id="icone-accueil-tablet"><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
-					        			
-					        			<span id="nombre_likes" id="icone-accueil-tablet-last"><i class="icon-thumbs-up" style="margin-right:4px;"></i>25 likes</span>
-        							</div>
-			        			</div>
-			        			
-			        		</div>
-			        
-        			</li>
-				      <li class="article-accueil-slide"style="float:left;position:relative;
-	list-style-type:none;">
-        				        		
-			        		<div id="info-post-accueil">
-			        			<i class="icon-calendar" id="icone-accueil"></i><date>Mon 06 Nov 2012</date>
-			        			<br>
-			        			<span id="author" ><i class="icon-user" id="icone-accueil"></i>Korben</span>
-			        			<br>
-			        			<span id="categorie" ><i class="icon-tasks" id="icone-accueil"></i>High-Tech</span>
-			        			<br>
-			        			<span id="nombre_commentaire" ><i class="icon-comment" id="icone-accueil"></i>10 comments</span>
-			        			<br>
-        						<span id="nombre_likes" ><i class="icon-thumbs-up" id="icone-accueil-last" ></i>25 likes</span>
-			        		</div>
-			        		<div id="post-accueil">
-			        			<header>
-			        				<h4>Voici un petit titre juste pour tester</h4>
-			        			</header>
-			        			
-			        			<div id="article">
-			        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-			        					, when an unknown printer took a galley of type and ...</p>
-			        				<a>Read more<i class="icon-chevron-right"></i></a>
-			        				
-			        				<div id="info-post-tablet">	
-		        						<i class="icon-calendar" id="icone-accueil-tablet-first"></i><date style="float:left;">Mon 06 Nov 2012</date>
-					        			
-					        			<span id="author" id="icone-accueil-tablet" style=""><i class="icon-user" style="margin-right:4px;"></i>Korben</span>
-					        			
-					        			<span id="categorie" id="icone-accueil-tablet"><i class="icon-tasks" style="margin-right:4px;"></i>High-Tech</span>
-					        			
-					        			<span id="nombre_commentaire" id="icone-accueil-tablet"><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
-					        			
-					        			<span id="nombre_likes" id="icone-accueil-tablet-last"><i class="icon-thumbs-up" style="margin-right:4px;"></i>25 likes</span>
-        							</div>
-			        			</div>
-			        			
-			        		</div>
-			        
-        			</li>
+        			</li>";
+					}
+        		 	?>
     					
         		</ul>
         	</div>
@@ -224,7 +149,55 @@ include ('php/_A8s2f9g714ef.php');
 	        		</h3>
 	        		
         		</div>
-        	<article id="article-accueil">
+        		
+        		<?php
+        		$sql_article="SELECT * FROM ARTICLE ORDER BY id_art DESC LIMIT 30;";
+				$query_article=mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+        		 	
+					while($result_article=mysql_fetch_assoc($query_article)){
+						
+						
+						echo"<article id=\"article-accueil\">
+        		
+        		<div id=\"info-post-accueil\" >
+        			<i class=\"icon-calendar\" id=\"icone-accueil\" ></i><date>Mon 06 Nov 2012</date>
+        			<br>
+        			<span id=\"author\" ><i class=\"icon-user\" id=\"icone-accueil\" ></i>Korben</span>
+        			<br>
+        			<span id=\"categorie\" ><i class=\"icon-tasks\" id=\"icone-accueil\" ></i>High-Tech</span>
+        			<br>
+        			<span id=\"nombre_commentaire\" ><i class=\"icon-comment\" id=\"icone-accueil\" ></i>10 comments</span>
+        			<br>
+        			<span id=\"nombre_likes\" ><i class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>25 likes</span>
+        		</div>
+        		<div id=\"post-accueil\">
+        			<header>
+        				<h4>".strip_tags($result_article['titre'])."</h4>
+        			</header>
+        			
+        			<div id=\"article\">
+        				<p>".strip_tags($result_article['description'])."</p>
+        				<div id=\"info-post-tablet\">	
+        						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\"></i><date style=\"float:left;\">Mon 06 Nov 2012</date>
+			        			
+			        			<span id=\"author\" id=\"icone-accueil-tablet\" ><i class=\"icon-user\" style=\"margin-right:4px;\"></i>Korben</span>
+			        			
+			        			<span id=\"categorie\" id=\"icone-accueil-tablet\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>High-Tech</span>
+			        			
+			        			<span id=\"nombre_commentaire\" id=\"icone-accueil-tablet\"><i class=\"icon-comment\" style=\"margin-right:4px;\"></i>10 comments</span>
+			        			
+			        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>25 likes</span>
+        				</div>
+        				<a>Read more<i class=\"icon-chevron-right\"></i></a>
+        			</div>
+        			
+        		</div>
+        		
+        	</article>";
+						
+					}
+        		?>
+        	<!--<article id="article-accueil">
         		
         		<div id="info-post-accueil" >
         			<i class="icon-calendar" id="icone-accueil" ></i><date>Mon 06 Nov 2012</date>
@@ -338,7 +311,7 @@ include ('php/_A8s2f9g714ef.php');
         				</div>
         		</div>
         		
-        	</article>
+        	</article>-->
         	
         	        	
         	</div><!--span10 des articles-->

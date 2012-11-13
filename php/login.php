@@ -63,6 +63,7 @@ include ('_A8s2f9g714ef.php');
 									<label style='float:left;width:30%;margin-right:30px;'>Mot de passe</label>
 									<input style='float:left;' type='text'/>
 									<input type='submit' class='btn btn-primary' style="width:30%;margin-top:30px;margin-left:50%" value="Connexion"/>
+
 						</form>
 					</div>
 					<div class="span6" style="text-align:center">
