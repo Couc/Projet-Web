@@ -166,3 +166,14 @@ aside{
   content:url("../img/button_selec.png");
 
 }
+/**********************Login***************************/
+#div-border{
+	text-align:center;
+	border-right:1px solid #313030;
+	
+}
+@media (max-width:767px) {
+	#div-border{
+		border-right:none;
+	}
+}
