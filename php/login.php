@@ -58,27 +58,11 @@ include ('_A8s2f9g714ef.php');
 							<h3>Se connecter</h3>
 						</p>
 						<form>
-							<div class="span11">
-								<div class="span5">
-									Login
-								</div>
-								<div class="span1">
-									&nbsp;
-								</div>
-								<div class="span5">
-									<input type='text'/>
-								</div>
-								<div class="span5">
-									Login
-								</div>
-								<div class="span1">
-									&nbsp;
-								</div>
-								<div class="span5">
-									<input type='text'/>
-								</div>
-								
-							</div>
+							<label style="float:left;margin-right:30px;width:150px;">Login</label>
+							<input style="float:left;" type="text" />
+							
+							<label style="float:left;margin-right:30px;width:150px;">Mot de passe</label>
+							<input type="password" style="float:left;"/>
 						</form>
 					</div>
 					<div class="span6" style="text-align:center">
