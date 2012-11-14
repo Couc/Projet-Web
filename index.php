@@ -172,11 +172,11 @@ include ('php/_A8s2f9g714ef.php');
         		</div>
         		<div id=\"post-accueil\">
         			<header>
-        				<h4>".strip_tags($result_article['titre'])."</h4>
+        				<h4>".html_entity_decode($result_article['titre'])."</h4>
         			</header>
         			
         			<div id=\"article\">
-        				<p>".strip_tags($result_article['description'])."</p>
+        				<p>".html_entity_decode($result_article['description'])."</p>
         				<div id=\"info-post-tablet\">	
         						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\"></i><date style=\"float:left;\">Mon 06 Nov 2012</date>
 			        			
