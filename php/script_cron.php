@@ -78,10 +78,9 @@ function lit_rss($fichier, $objets) {
 }
 function strip_cdata($string)
 {
-    preg_match_all('/<!\[CDATA\[(.*?)\]\]>/is', $string, $matches);
+    preg_match_all('/<!\[cdata\[(.*?)\]\]>/is', $string, $matches);
 	
     $string= str_replace($matches[0], $matches[1], $string);
-	//$string = str_replace("]]>", "", $string);
 	return $string;
 	
 } 
