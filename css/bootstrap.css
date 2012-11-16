@@ -5765,10 +5765,10 @@ a.badge:hover {
   display: block;
 }
 
-.invisible {
+/*.invisible {
   visibility: hidden;
 }
-
+*/
 .affix {
   position: fixed;
 }

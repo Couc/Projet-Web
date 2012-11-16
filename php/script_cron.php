@@ -33,9 +33,9 @@ while ($result = mysql_fetch_assoc($query)) {
 	foreach ($rss as $tab) {
 		if (doubleval(date("YmdHi", strtotime($tab[3]))) > doubleval($derdate)) {
 			echo ('je rentre là');
-			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . addslashes($tab[0]) . "','" . mysql_real_escape_string(strip_cdata(strip_tags(htmlspecialchars_decode($tab[2])))) . "','" . date("YmdHi", strtotime($tab[3])) . "',null)";
+			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . addslashes($tab[0]) . "','" . mysql_real_escape_string(strip_tags(strip_cdata(htmlspecialchars_decode($tab[2])),"<p><a><br><img>")) . "','" . date("YmdHi", strtotime($tab[3])) . "',null)";
 			$queryInsert = mysql_query($sqlInsert) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-			$sqlInsert1 = " UPDATE ARTICLE set description = '". mysql_real_escape_string(strip_cdata(strip_tags(htmlspecialchars_decode(${'desc'.$jj}))))."' WHERE id_art = LAST_INSERT_ID();";
+			$sqlInsert1 = " UPDATE ARTICLE set description = '". mysql_real_escape_string(strip_tags(strip_cdata(htmlspecialchars_decode(${'desc'.$jj})),"<p><a><br><img>"))."' WHERE id_art = LAST_INSERT_ID();";
 			$queryInsert1 = mysql_query($sqlInsert1) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 				
 		}
@@ -78,11 +78,9 @@ function lit_rss($fichier, $objets) {
 }
 function strip_cdata($string)
 {
-    preg_match_all('/<!\[CDATA\[(.*?)\]\]>/is', $string, $matches);
+    preg_match_all('/<!\[cdata\[(.*?)\]\]>/is', $string, $matches);
 	
-    $string= str_replace($matches[0], $matches[1], $string);
-	//$string = str_replace("]]>", "", $string);
-	return $string;
+    return str_replace($matches[0], $matches[1], $string);
 	
 } 
 function convert_chars_to_entities( $str )
