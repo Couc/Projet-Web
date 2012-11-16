@@ -198,122 +198,7 @@ mysql_query("SET NAMES UTF8");
 						
 					}
         		?>
-        	<!--<article id="article-accueil">
-        		
-        		<div id="info-post-accueil" >
-        			<i class="icon-calendar" id="icone-accueil" ></i><date>Mon 06 Nov 2012</date>
-        			<br>
-        			<span id="author" ><i class="icon-user" id="icone-accueil" ></i>Korben</span>
-        			<br>
-        			<span id="categorie" ><i class="icon-tasks" id="icone-accueil" ></i>High-Tech</span>
-        			<br>
-        			<span id="nombre_commentaire" ><i class="icon-comment" id="icone-accueil" ></i>10 comments</span>
-        			<br>
-        			<span id="nombre_likes" ><i class="icon-thumbs-up" id="icone-accueil-last" ></i>25 likes</span>
-        		</div>
-        		<div id="post-accueil">
-        			<header>
-        				<h4>Voici un petit titre juste pour tester</h4>
-        			</header>
-        			
-        			<div id="article">
-        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-        					, when an unknown printer took a galley of type and ...
-        				</p>
-        				<div id="info-post-tablet">	
-        						<i class="icon-calendar" id="icone-accueil-tablet-first"></i><date style="float:left;">Mon 06 Nov 2012</date>
-			        			
-			        			<span id="author" id="icone-accueil-tablet" style=""><i class="icon-user" style="margin-right:4px;"></i>Korben</span>
-			        			
-			        			<span id="categorie" id="icone-accueil-tablet"><i class="icon-tasks" style="margin-right:4px;"></i>High-Tech</span>
-			        			
-			        			<span id="nombre_commentaire" id="icone-accueil-tablet"><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
-			        			
-			        			<span id="nombre_likes" id="icone-accueil-tablet-last"><i class="icon-thumbs-up" style="margin-right:4px;"></i>25 likes</span>
-        				</div>
-        				<a>Read more<i class="icon-chevron-right"></i></a>
-        			</div>
-        			
-        		</div>
-        		
-        	</article>
-        	
-        	<article id="article-accueil">
-        		
-        		<div id="info-post-accueil" >
-        			<i class="icon-calendar" id="icone-accueil"></i><date>Mon 06 Nov 2012</date>
-        			<br>
-        			<span id="author" ><i class="icon-user" id="icone-accueil"></i>Korben</span>
-        			<br>
-        			<span id="categorie" ><i class="icon-tasks" id="icone-accueil"></i>High-Tech</span>
-        			<br>
-        			<span id="nombre_commentaire" ><i class="icon-comment" id="icone-accueil"></i>10 comments</span>
-        			<br>
-        			<span id="nombre_likes" ><i class="icon-thumbs-up" id="icone-accueil-last"></i>25 likes</span>
-        		</div>
-        		<div id="post-accueil">
-        			<header>
-        				<h4>Voici un petit titre juste pour tester</h4>
-        			</header>
-        			
-        			<div id="article">
-        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-        					, when an unknown printer took a galley of type and ...</p>
-        				<a>Read more<i class="icon-chevron-right"></i></a>
-        			</div>
-        			<div id="info-post-tablet" >	
-        						<i class="icon-calendar" id="icone-accueil-tablet-first"></i><date style="float:left;">Mon 06 Nov 2012</date>
-			        			
-			        			<span id="author" id="icone-accueil-tablet"><i class="icon-user" style="margin-right:4px;"></i>Korben</span>
-			        			
-			        			<span id="categorie" id="icone-accueil-tablet"><i class="icon-tasks" style="margin-right:4px;"></i>High-Tech</span>
-			        			
-			        			<span id="nombre_commentaire" id="icone-accueil-tablet"><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
-			        			
-			        			<span id="nombre_likes" id="icone-accueil-tablet-last"><i class="icon-thumbs-up" style="margin-right:4px;"></i>25 likes</span>
-        				</div>
-        		</div>
-        		
-        	</article>
-        	
-        	<article id="article-accueil">
-        		
-        		<div id="info-post-accueil" >
-        			<i class="icon-calendar" id="icone-accueil"></i><date>Mon 06 Nov 2012</date>
-        			<br>
-        			<span id="author" ><i class="icon-user" id="icone-accueil"></i>Korben</span>
-        			<br>
-        			<span id="categorie" ><i class="icon-tasks" id="icone-accueil"></i>High-Tech</span>
-        			<br>
-        			<span id="nombre_commentaire" ><i class="icon-comment" id="icone-accueil"></i>10 comments</span>
-        			<br>
-        			<span id="nombre_likes" ><i class="icon-thumbs-up" id="icone-accueil-last"></i>25 likes</span>
-        		</div>
-        		<div id="post-accueil">
-        			<header>
-        				<h4>Voici un petit titre juste pour tester</h4>
-        			</header>
-        			
-        			<div id="article">
-        				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-        					, when an unknown printer took a galley of type and ...</p>
-        				<a>Read more<i class="icon-chevron-right"></i></a>
-        			</div>
-        			<div id="info-post-tablet" >	
-        						<i class="icon-calendar" id="icone-accueil-tablet-first"></i><date style="float:left;">Mon 06 Nov 2012</date>
-			        			
-			        			<span id="author" id="icone-accueil-tablet"><i class="icon-user" style="margin-right:4px;"></i>Korben</span>
-			        			
-			        			<span id="categorie" id="icone-accueil-tablet"><i class="icon-tasks" style="margin-right:4px;"></i>High-Tech</span>
-			        			
-			        			<span id="nombre_commentaire" id="icone-accueil-tablet"><i class="icon-comment" style="margin-right:4px;"></i>10 comments</span>
-			        			
-			        			<span id="nombre_likes" id="icone-accueil-tablet-last"><i class="icon-thumbs-up" style="margin-right:4px;"></i>25 likes</span>
-        				</div>
-        		</div>
-        		
-        	</article>-->
-        	
+        	        	
         	        	
         	</div><!--span10 des articles-->
         	<aside class="span2" id="scroll" >
@@ -436,7 +321,10 @@ mysql_query("SET NAMES UTF8");
 	        document.body.scrollTop);
 	    if(scroll>320)
 	        document.getElementById('scroll').style.top = scroll+'px';
-	        
+	    if(scroll > document.documentElement.scrollHeight - 730)
+	    {	
+	    	document.getElementById('scroll').style.top= document.documentElement.scrollHeight - 730 +'px';
+	    }
 	}
 </script>
 <script src="js/responsiveslides.js"></script>

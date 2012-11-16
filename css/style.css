@@ -122,9 +122,23 @@ aside{
 	left:70%;
 
 }
+#scroll-cat{
+	top:100px;
+	padding-top:50px;
+	position: absolute;
+	left:75%;
+}
 @media (max-width:768px) {
 	
 	#scroll{
+		display:none;
+		
+	}
+
+}
+@media (max-width:768px) {
+	
+	#scroll-cat{
 		display:none;
 		
 	}
