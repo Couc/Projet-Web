@@ -51,17 +51,16 @@ include ('_A8s2f9g714ef.php');
 			</div>
 		</div>
 		<div class="container">
-			
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="span6" id='div-border' >
 						<?php
-			if(isset($_GET['msgco'])){
-			echo('	<div class="alert alert-error">
-						Error, please try again !
-    				</div>');
-			}
-			?>
+						if (isset($_GET['msgco'])) {
+							echo('	<div class="alert alert-error">
+Error, please try again ! 
+</div>');
+						}
+						?>
 						<p>
 							<h3 style='margin-bottom:30px;'>Se connecter</h3>
 						</p>
@@ -74,21 +73,32 @@ include ('_A8s2f9g714ef.php');
 						</form>
 					</div>
 					<div class="span6" style="text-align:center">
-						
+						<?php
+						if (isset($_GET['msginerr'])) {
+							echo('	<div class="alert alert-error">
+									Error, please try again !
+									</div>');
+						}
+						else if(isset($_GET['msginsuc'])) {
+							echo('	<div class="alert alert-success">
+									Succes, You can now login ;-)
+									</div>');
+						}
+						?>
 						<p>
 							<h3 style='margin-bottom:30px;'>S'inscrire</h3>
 						</p>
 						<form style='text-align:left;' action='inscription.php' method='POST'>
 							<label style='float:left;width:45%;margin-right:30px;'>E-mail</label>
-							<input style='float:left;' type='email' placeholder='email@example.com' required/>
+							<input style='float:left;' type='email' name='email' placeholder='email@example.com' required/>
 							<label style='float:left;width:45%;margin-right:30px;'>Confirmation E-mail</label>
-							<input style='float:left;' type='email' placeholder='email@example.com' required/>
+							<input style='float:left;' type='email' name='email2' placeholder='email@example.com' required/>
 							<label style='float:left;width:45%;margin-right:30px;'>Login</label>
-							<input style='float:left;' type='text' required placeholder='username'/>
+							<input style='float:left;' type='text' name='username' required placeholder='username'/>
 							<label style='float:left;width:45%;margin-right:30px;'>Mot de passe</label>
-							<input style='float:left;' type='password' required placeholder='password'/>
+							<input style='float:left;' type='password' name='password' required placeholder='password'/>
 							<label style='float:left;width:45%;margin-right:30px;'>Confirmation Mot de passe</label>
-							<input style='float:left;' type='password' required placeholder='password'/>
+							<input style='float:left;' type='password' name='password2' required placeholder='password'/>
 							<input type='submit' class='btn btn-primary' style="width:30%;margin-top:30px;margin-left:50%" value="Inscription"/>
 						</form>
 					</div>

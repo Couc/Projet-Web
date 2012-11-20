@@ -10,7 +10,7 @@ while ($result = mysql_fetch_assoc($query)) {
 	$pwbase=$result['password'];
 }
 
-if($pwbase==$pw){
+if($pwbase==md5($pw)){
 	
 	header('Location: ../index.php');
 	
