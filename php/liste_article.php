@@ -72,7 +72,29 @@ mysql_query("SET NAMES UTF8");
         	<div class="span10" id="span-article">
         		<div class="slider_control">
 	        		<h3 class="drapeau">
-	        			<span>High-Tech</span>
+	        			<?php
+	        			switch($_GET['id_cat'])
+						{
+							case 0:
+	        					echo"<span>A la une</span>";
+								break;
+							case 1:
+								echo"<span>Politique</span>";
+								break;
+							case 2:
+								echo"<span>High-Tech</span>";
+								break;
+							case 3:
+								echo"<span>Sport</span>";
+								break;
+							case 4:
+								echo"<span>Economie</span>";
+								break;
+							case 5:
+								echo"<span>People</span>";
+								break;
+						}
+	        			?>
 	        		</h3>
 	        		
         		</div>
@@ -135,17 +157,17 @@ mysql_query("SET NAMES UTF8");
         		<div style="width:100px;text-align:center;">
 	        		<h4>Catégorie</h4>
 	        		<br>
-	        		<a href="php/liste_article.php?id_cat=0">A la une</a>
+	        		<a href="liste_article.php?id_cat=0">A la une</a>
 	        		<hr style="margin-bottom:4px;">
-	        		<a href="php/liste_article.php?id_cat=2">High-Tech</a>
+	        		<a href="liste_article.php?id_cat=2">High-Tech</a>
 	        		<hr style="margin-bottom:4px;">
-	        		<a href="php/liste_article.php?id_cat=3">Sport</a>
+	        		<a href="liste_article.php?id_cat=3">Sport</a>
 	        		<hr style="margin-bottom:4px;">
-	        		<a href="php/liste_article.php?id_cat=1">Politique</a>
+	        		<a href="liste_article.php?id_cat=1">Politique</a>
 	        		<hr style="margin-bottom:4px;">
-	        		<a href="php/liste_article.php?id_cat=4">Economie</a>
+	        		<a href="liste_article.php?id_cat=4">Economie</a>
 	        		<hr style="margin-bottom:4px;">
-	        		<a href="php/liste_article.php?id_cat=0">People</a>
+	        		<a href="liste_article.php?id_cat=5">People</a>
 	        	</div>
         	</aside>
         
