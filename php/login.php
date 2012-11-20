@@ -30,7 +30,7 @@ include ('_A8s2f9g714ef.php');
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
-					<a class="brand" href="#"><img src="img/logo blanc.png" alt=""/></a>
+					<a class="brand" href="#"><img src="../img/logo blanc.png" alt=""/></a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="active">
@@ -51,9 +51,17 @@ include ('_A8s2f9g714ef.php');
 			</div>
 		</div>
 		<div class="container">
+			
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="span6" id='div-border' >
+						<?php
+			if(isset($_GET['msgco'])){
+			echo('	<div class="alert alert-error">
+						Error, please try again !
+    				</div>');
+			}
+			?>
 						<p>
 							<h3 style='margin-bottom:30px;'>Se connecter</h3>
 						</p>
@@ -66,6 +74,7 @@ include ('_A8s2f9g714ef.php');
 						</form>
 					</div>
 					<div class="span6" style="text-align:center">
+						
 						<p>
 							<h3 style='margin-bottom:30px;'>S'inscrire</h3>
 						</p>
