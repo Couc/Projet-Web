@@ -49,7 +49,7 @@ mysql_query("SET NAMES UTF8");
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="index.php">Accueil</a></li>
-              <li><a href="#about">Catégorie</a></li>
+              <li><a href="php/liste_article.php">Catégorie</a></li>
               <li><a href="#contact">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -106,9 +106,9 @@ mysql_query("SET NAMES UTF8");
 			        			<br>
 			        			<span id=\"categorie\" ><i class=\"icon-tasks\" id=\"icone-accueil\"></i>High-Tech</span>
 			        			<br>
-			        			<span id=\"nombre_commentaire\" ><i class=\"icon-comment\" id=\"icone-accueil\"></i>10 comments</span>
+			        			<span id=\"nombre_commentaire\" ><i class=\"icon-comment\" id=\"icone-accueil\"></i>".$result_article['nb_comment']." comments</span>
 			        			<br>
-        						<span id=\"nombre_likes\" ><i class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>25 likes</span>
+        						<span id=\"nombre_likes\" ><i class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
 			        		</div>
 			        		<div id=\"post-accueil\">
 			        			<header>
@@ -126,9 +126,9 @@ mysql_query("SET NAMES UTF8");
 					        			
 					        			<span id=\"categorie\" id=\"icone-accueil-tablet\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>High-Tech</span>
 					        			
-					        			<span id=\"nombre_commentaire\" id=\"icone-accueil-tablet\"><i class=\"icon-comment\" style=\"margin-right:4px;\"></i>10 comments</span>
+					        			<span id=\"nombre_commentaire\" id=\"icone-accueil-tablet\"><i class=\"icon-comment\" style=\"margin-right:4px;\"></i>".$result_article['nb_comment']." comments</span>
 					        			
-					        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>25 likes</span>
+					        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>".$result_article['nb_like']." likes</span>
         							</div>
 			        			</div>
 			        			
@@ -167,9 +167,9 @@ mysql_query("SET NAMES UTF8");
         			<br>
         			<span id=\"categorie\" ><i class=\"icon-tasks\" id=\"icone-accueil\" ></i>High-Tech</span>
         			<br>
-        			<span id=\"nombre_commentaire\" ><i class=\"icon-comment\" id=\"icone-accueil\" ></i>10 comments</span>
+        			<span id=\"nombre_commentaire\" ><i class=\"icon-comment\" id=\"icone-accueil\" ></i>".$result_article['nb_comment']." comments</span>
         			<br>
-        			<span id=\"nombre_likes\" ><i class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>25 likes</span>
+        			<span id=\"nombre_likes\" ><i class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
         		</div>
         		<div id=\"post-accueil\">
         			<header>
@@ -185,9 +185,9 @@ mysql_query("SET NAMES UTF8");
 			        			
 			        			<span id=\"categorie\" id=\"icone-accueil-tablet\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>High-Tech</span>
 			        			
-			        			<span id=\"nombre_commentaire\" id=\"icone-accueil-tablet\"><i class=\"icon-comment\" style=\"margin-right:4px;\"></i>10 comments</span>
+			        			<span id=\"nombre_commentaire\" id=\"icone-accueil-tablet\"><i class=\"icon-comment\" style=\"margin-right:4px;\"></i>".$result_article['nb_comment']." comments</span>
 			        			
-			        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>25 likes</span>
+			        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>".$result_article['nb_like']." likes</span>
         				</div>
         				<a>Read more<i class=\"icon-chevron-right\"></i></a>
         			</div>
@@ -208,15 +208,21 @@ mysql_query("SET NAMES UTF8");
 				    <button type="submit" class="btn">Search</button>
 				  </div>
 				 </form>
-        		<h4>Catégorie</h4>
-        		<br>
-        		<p>A la une</p>
-        		<hr>
-        		<p>High-Tech</p>
-        		<hr>
-        		<p>Sport</p>
-        		<hr>
-        		<p>Politique</p>
+				 <div style="width:100px;text-align:center;">
+	        		<h4>Catégorie</h4>
+	        		<br>
+	        		<a href="php/liste_article.php?id_cat=0">A la une</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=2">High-Tech</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=3">Sport</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=1">Politique</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=4">Economie</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=0">People</a>
+	        	</div>
         	</aside>
         </div><!--span10 content -->
         

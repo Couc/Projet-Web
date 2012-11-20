@@ -132,15 +132,21 @@ mysql_query("SET NAMES UTF8");
 				    <button type="submit" class="btn">Search</button>
 				  </div>
 				 </form>
-        		<h4>Catégorie</h4>
-        		<br>
-        		<p>A la une</p>
-        		<hr>
-        		<p>High-Tech</p>
-        		<hr>
-        		<p>Sport</p>
-        		<hr>
-        		<p>Politique</p>
+        		<div style="width:100px;text-align:center;">
+	        		<h4>Catégorie</h4>
+	        		<br>
+	        		<a href="php/liste_article.php?id_cat=0">A la une</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=2">High-Tech</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=3">Sport</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=1">Politique</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=4">Economie</a>
+	        		<hr style="margin-bottom:4px;">
+	        		<a href="php/liste_article.php?id_cat=0">People</a>
+	        	</div>
         	</aside>
         
      	</div><!--span12-->
