@@ -50,8 +50,8 @@ mysql_query("SET NAMES UTF8");
           
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="../index.php">Accueil</a></li>
-              <li><a href="#about">Catégorie</a></li>
+              <li><a href="../index.php">Accueil</a></li>
+              <li class="active"><a href="#about">Catégorie</a></li>
               <li><a href="#contact">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -173,7 +173,7 @@ mysql_query("SET NAMES UTF8");
 			        			
 			        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>".$result_article['nb_like']." likes</span>
         				</div>
-        				<a>Read more<i class=\"icon-chevron-right\"></i></a>
+        				<a href=\"article.php?id_art=".$result_article['id_art']."\">Read more<i class=\"icon-chevron-right\"></i></a>
         			</div>
         			
         		</div>

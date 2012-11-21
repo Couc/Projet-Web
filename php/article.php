@@ -50,8 +50,8 @@ mysql_query("SET NAMES UTF8");
           
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="../index.php">Accueil</a></li>
-              <li><a href="#about">Catégorie</a></li>
+              <li><a href="../index.php">Accueil</a></li>
+              <li class="active" ><a href="#about">Catégorie</a></li>
               <li><a href="#contact">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -64,196 +64,224 @@ mysql_query("SET NAMES UTF8");
         </div>
       </div>
     </div>
-    <div class="row-fluid">
-
-		<div class="span8" style="margin-left:20px;">
-			<div class="accordion" id="accordion2">
-    <?php
-//Connexion à la base
-
-
-//recuperation des paramêtres :
-		//Categorie
-		//login (si existant)
-
-		
-//Lecture de la table categorie
-	//Si la derniere maj est plus vieille que 10min,
-		//apelle maj_rss($categorie);
-//lecture de la table article avec cette catégorie (jointure categorie -> source)
-		//Si login existant, prendre les liens choisit par l'utilisateur (tous par défault)
-
-	//Construction de la liste
-	
-	//fin de script;
-
-
-
-//Fonction maj_rss($categorie)
-	//Select de chaque source de la categorie à mettre à jour
-	//pour chaque source :
-		//Recuperer le fichier flux.xml
-		//le parser
-		//ajouter chaque news dans la table
-		
-	//mettre à jour la date_maj dans categorie
-	//sa irais mieux en JAVA !!!
-//fin de fonction
-
-
-
-//Comment gerer les 'articles favoris' : fonction php ? ( comment l'apellé?) autre page ne generant aucun affichage ? + javascript ( etoile qui devient jaune ou autre....)
-
-$sql = "SELECT * FROM SOURCE WHERE id_cat=".$_GET['id'].";";
-//exécution de notre requête SQL:
-$query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-//récupération avec mysql_fetch_array() et affichage du résultat :
-$id_src="";
-$sepa=", ";
-$i=0;
-while ($result = mysql_fetch_assoc($query)) {
-	if($i==0){
-		$id_src=$result['id_source'];
-	}
-	else{
-		$id_src=$id_src."".$sepa."".$result['id_source'];
-	}
-	$i++;
-}
-echo ('<input type="hidden" class="id_source" value="'.$id_src.'"/>');
-
-	$sql = "SELECT * FROM ARTICLE WHERE id_source IN (".$id_src.") ORDER BY DATE DESC LIMIT 20;";
-	//exécution de notre requête SQL:
-	$query = mysql_query($sql) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");
-	//récupération avec mysql_fetch_array() et affichage du résultat :
-	$i=0;
-	$j=0;
-	while ($result = mysql_fetch_assoc($query)) {
-		$i++;
-		$annee = substr($result['date'],0,4);
-		$mois = substr($result['date'],4,2);
-		$jour = substr($result['date'],6,2);
-		$heure = substr($result['date'],8,2);
-		$minutes = substr($result['date'],10,2);
-		echo '<div class="accordion-group" id="'.$result['date'].'">
-		 			<div class="accordion-heading">
-		 			<table width="100%">
-		 			<tr>
-		 			<td width="">
-							 <a onclick="def_art(this);" id="'.$result['id_art'].'" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse'.$i.'">
-								 '.$result['titre'].'&nbsp;&nbsp;-&nbsp;&nbsp;Le&nbsp;'.$jour.'/'.$mois.'/'.$annee.'&nbsp;à&nbsp;'.$heure.':'.$minutes.'
-							 </a>
-			 				 
- 					</td>
- 					<td width="10%">
-	 						<img align="right" width="35px" src="../img/'.$result['id_source'].'.jpg"/>
-					</td>
-					</tr>
-					</table>
+    <div class="container" id="container" style="margin-left:5%;">
+    	<div class="row-fluid">
+        	<div class="span9" id="span-article">
+        		<?php
+        		$sql_article="SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND a.id_art = ".$_GET['id_art'].";";
+				$query_article=mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+        		 	
+					while($result_article=mysql_fetch_assoc($query_article)){
+						$annee = substr($result_article['date'],0,4);
+						$mois = substr($result_article['date'],4,2);
+						$jour = substr($result_article['date'],6,2);
+						$heure = substr($result_article['date'],8,2);
+						$minutes = substr($result_article['date'],10,2);
+						
+						echo"
+        		
+        		<div id=\"info-post-accueil\" style=\"margin-right:5%;font-size:17px;border-right:1px solid #333;border-bottom:1px solid #333;padding:30px;\">
+        			<i class=\"icon-calendar\" id=\"icone-accueil\" style=\"margin-bottom:10px;\"></i><date>".date("D d M Y",mktime(0,0,0,$mois,$jour,$annee))."</date>
+        			<br>
+        			<span id=\"author\" ><i style=\"margin-bottom:10px;\" class=\"icon-user\" id=\"icone-accueil\" ></i>".$result_article['libelle']."</span>
+        			<br>";
+        			switch($result_article['id_cat']){
+									case 1:
+										echo"<span id=\"categorie\" ><i style=\"margin-bottom:10px;\" class=\"icon-tasks\" id=\"icone-accueil\"></i>Politique</span>";
+										break;
+									case 2:
+										echo"<span id=\"categorie\" ><i style=\"margin-bottom:10px;\" class=\"icon-tasks\" id=\"icone-accueil\"></i>High-Tech</span>";
+										break;
+									case 3:
+										echo"<span id=\"categorie\" ><i style=\"margin-bottom:10px;\" class=\"icon-tasks\" id=\"icone-accueil\"></i>Sport</span>";
+										break;
+									case 4:
+										echo"<span id=\"categorie\" ><i style=\"margin-bottom:10px;\" class=\"icon-tasks\" id=\"icone-accueil\"></i>Economie</span>";
+										break;
+									case 5:
+										echo"<span id=\"categorie\" ><i style=\"margin-bottom:10px;\" class=\"icon-tasks\" id=\"icone-accueil\"></i>People</span>";
+										break;
+								}
+        			echo"<br>
+        			<span id=\"nombre_commentaire\" ><i style=\"margin-bottom:10px;\" class=\"icon-comment\" id=\"icone-accueil\" ></i>".$result_article['nb_comment']." comments</span>
+        			<br>
+        			<span id=\"nombre_likes\" ><i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
+        		</div>
+        		
+        		<header>
+        				<h1>".html_entity_decode($result_article['titre'])."</h1>
+        		</header>
+        		<div style=\"height:90px;\">
+        				<h4>Like etc...</h4>
+        		</div>
+        		<article id=\"article-cat\">
+        			
+        				<p>".html_entity_decode($result_article['contenu'])."</p>
+        				<a>Source <i class=\"icon-chevron-right\"></i></a>
+        			
+        			
+        		</article>";
+						
+					}
+        		?>
+        	</div><!--span10 content -->	
+        	<aside class="span3" id="scroll-cat-art" >
+        		
+        		<hr>
+	        	<div id="comment_general">
+					<div id="addCommentContainer">
+						<?php
+						$query_comment = mysql_query("SELECT * FROM commentaires WHERE id_art=".$_GET['id_art'].";") or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");;
+			
+							while($result_comment = mysql_fetch_assoc($query_comment))				
+							{
+								$annee = substr($result_comment['date'],0,4);
+								$mois = substr($result_comment['date'],4,2);
+								$jour = substr($result_comment['date'],6,2);
+											
+			    				echo '
+						<div class="comment">
+							<div class="name">'.$result_comment['nom'].'</div>
+							<div class="date">'.$jour.' '.date("F",mktime($mois)).' '.$annee.'</div>
+							<p>'.$result_comment['body'].'</p>
+						</div>';
+							}
+						?>
+					    <p>Add a Comment</p>
+					    <form id="addCommentForm" method="post" action="">
+					        <div>
+					            <label for="name">Your Name</label>
+					            <input type="text" name="name" id="name" />
+					
+					            <label for="email">Your Email</label>
+					            <input type="text" name="email" id="email" />
+					
+					
+					            <label for="body">Comment Body</label>
+					            <textarea name="body" id="body" cols="20" rows="5"></textarea>
+					
+					            <input type="reset" id="submit" value="Submit" onclick="Change();"/>
+					            <?php
+					            echo "<input type=\"hidden\" id=\"id_art\" value=".$_GET['id_art']." />";
+								
+								?>
+					            
+					        </div>
+	    				</form>
 					</div>
-	 				<div id="collapse'.$i.'" class="accordion-body collapse">
-	 					<div class="span11">	
-							 <div class="accordion-inner"><div class="span11">'.htmlspecialchars_decode($result['contenu']).'</div>
-		 					</div>
-		 				</div>
-		 				<div class="span1">	
-							 <div class="accordion-inner">
-		 						<img src="./img/facebook.jpg"/><br/><br/>
-		 						<img src="./img/google_plus.png"/><br/><br/>
-		 					</div>
-		 				</div>
-	 				</div>
-		 		</div>';
-	}
-echo'<input type="hidden" class="increment" value="'.$i.'"/>';
-		?>
-		</div>
-</div>
-<div class="span3 hidden-phone" style="margin-left:20px;">
-	<div id="comment_general">
+				</div>
+        	</aside>
+        
+     </div><!--row-fluid-->
+    </div> <!-- /container -->
+    
+	<div id="extra" style="background-color:#222;border-top:1px solid;color:white;padding:20px;margin-top:20px;">
+	
+	<div class="inner">
 		
-	</div>
-	<div id="addCommentContainer" style="display: none;">
-    <p>Add a Comment</p>
-    <form id="addCommentForm" method="post" action="">
-        <div>
-            <label for="name">Your Name</label>
-            <input type="text" name="name" id="name" />
-
-            <label for="email">Your Email</label>
-            <input type="text" name="email" id="email" />
-
-
-            <label for="body">Comment Body</label>
-            <textarea name="body" id="body" cols="20" rows="5"></textarea>
-
-            <input type="reset" id="submit" value="Submit" onclick="Change();"/>
-            <input type="hidden" id="id_art" value="" onchange="id_article();" />
-        </div>
-    </form>
-</div>
-
-
-</div>
-		</div><!-- row  -->
-		</div><!--/.fluid-container-->
-
-		<!-- Le javascript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script type="text/javascript" src ="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-		<script src="../js/bootstrap.js"></script>
-		<script type='text/javascript'>
-			    
+		<div class="container">
 			
-		</script>
-		<!--<script src="js/bootstrap-alert.js"></script>-->
-		<script type="text/javascript">
-		var id_temp=0;
-		function id_article(){
-		
-		var id_art = document.getElementById('id_art').value;
-		
-		xmlhttp=new XMLHttpRequest();
-
-            xmlhttp.onreadystatechange=function()
-            {
-                if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                    {
-                        document.getElementById("comment_general").innerHTML+=xmlhttp.responseText;
+			<div class="row-fluid">
+				
+				<div class="span3">
+					
+					<h3><span class="slash">>></span></span> About Us</h3>
+					
+					<p>ENEW est un site créé par 2 étudiants en licence informatique a l'IUT de Belfort.<br>Ce site a pour but de centraliser toutes vos news.</p>
+					
+				</div> <!-- /span4 -->
+				
+				
+				<div class="span3 offset1">
+					
+					<h3><span class="slash">>></span> Explore</h3>				
+					
+					<ul class="footer-links clearfix">
+						<li><a href="/" style="text-decoration: none;color:#777;list-style:none;">Accueil</a></li>
+                        <li><a href="/themes" style="text-decoration: none;color:#777;list-style:none;">Catégories</a></li>
+                        <li><a href="/faq" style="text-decoration: none;color:#777;list-style:none;">A propos</a></li>
                         
-                    }
-            }
-            xmlhttp.open("GET","liste_comment.php?id_art="+id_art,true);
-            xmlhttp.send();
-		}
-		
-		
-		function def_art(obj){
-			var id;
-			id=obj.id;
-			document.getElementById('id_art').value = id;
+                    </ul>
+					
+				</div> <!-- /span3 -->
+				
+				
+				<div class="span3">
+					
+										
+				</div> <!-- /span3 -->
+				
+				
+				<div class="span2">
+					
+					<h3><span class="slash">>></span> Social</h3>				
+					
+					<ul class="footer-links clearfix">
+                        <li><a href="http://facebook.com/" style="text-decoration: none;color:#777;list-style:none;">Facebook</a></li>
+                        <li><a href="http://twitter.com/" style="text-decoration: none;color:#777;list-style:none;">Twitter</a></li>
+                    </ul>
+					
+				</div> <!-- /span3 -->
+				
+				
+				
+			</div> <!-- /row -->
 			
-			if(id_temp!= id)
-			{
-				document.getElementById('comment_general').innerHTML="";
-				document.getElementById('id_art').onchange();
-				document.getElementById('addCommentContainer').style.display="block";
-				document.getElementById('comment_general').style.display="block";
-				id_temp=id;
-			}
-			else
-			{
-				document.getElementById('comment_general').innerHTML="";
-				document.getElementById('addCommentContainer').style.display="none";
-				document.getElementById('comment_general').style.display="none";
-				id_temp=0;
-			}
-			
-		}
+		</div> <!-- /container -->
+		
+	</div> <!-- /inner -->
+	
+</div> <!-- /#extra -->
 
+
+
+<div id="footer" style="background-color: black;color: #333;padding: 20px 0px;">
+					
+	<div class="inner">
+	
+		<div class="container">
+		
+			<div class="row">
+				<div id="footer-copyright" class="span4">
+					&copy; 2012 ENEW, all rights reserved.
+				</div> <!-- /span4 -->
+				
+				<div id="footer-terms" class="span8">
+					<p class="pull-right">Built by<a href=""  style="text-decoration: none;color:white;"> LANTERNIER Thomas & BOULACHIN Clément.</a></p>
+				</div> <!-- /span8 -->
+			</div> <!-- /row -->
 			
-		function Change()
+		</div> <!-- /container -->
+		
+	</div> <!-- /inner -->
+	
+</div> <!-- /#footer -->
+
+
+   
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.js"></script>
+   
+    
+   <script type="text/javascript">
+   
+	window.onscroll = function() {
+	    var scroll = (document.documentElement.scrollTop ||
+	        document.body.scrollTop);
+	        
+	    if(scroll>100){
+	        document.getElementById('scroll-cat-art').style.top = scroll+'px';
+	   	    
+	       }
+	    if(scroll > document.documentElement.scrollHeight - 730)
+	    {	
+	    	document.getElementById('scroll-cat-art').style.top= document.documentElement.scrollHeight - 730 +'px';
+	    }
+	}
+</script>
+
+<script type="text/javascript">
+	function Change()
 			{	
 			
 			var name = document.getElementById('name').value;
@@ -274,71 +302,8 @@ echo'<input type="hidden" class="increment" value="'.$i.'"/>';
             xmlhttp.open("GET","submit.php?name="+name+"&email="+email+"&body="+body+"&id_art="+id_art,true);
             xmlhttp.send();
 		}
-		
-
-		</script>
-		<script type="text/javascript">
- 
-$(document).ready(function(){ // Quand le document est complètement chargé
- 
-	var load = false; // aucun chargement de commentaire n'est en cours
- 
-	/* la fonction offset permet de récupérer la valeur X et Y d'un élément
-	dans une page. Ici on récupère la position du dernier div qui 
-	a pour classe : ".commentaire" */
-	var offset = $('.accordion-group:last').offset(); 
- 
-	$(window).scroll(function(){ // On surveille l'évènement scroll
- 
-		/* Si l'élément offset est en bas de scroll, si aucun chargement 
-		n'est en cours, si le nombre de commentaire affiché est supérieur 
-		à 5 et si tout les commentaires ne sont pas affichés, alors on 
-		lance la fonction. */
-		if((offset.top-$(window).height() <= $(window).scrollTop()) 
-		&& load==false && ($('.accordion-group').size()>=5) && 
-		($('.accordion-group').size()!=$('.nb_com').text())){
- 
-			// la valeur passe à vrai, on va charger
-			load = true;
- 
-			//On récupère l'id du dernier commentaire affiché
-			var last_id = $('.accordion-group:last').attr('id');
-			var idsrc = $('.id_source').attr('value');
-			var i = $('.increment').attr('value');
- 
-			//On affiche un loader
-			$('.loadmore').show();
- 
-			//On lance la fonction ajax
-			$.ajax({
-				url: './article_ajax.php',
-				type: 'get',
-				data: 'last='+last_id+'&idsrc='+idsrc+'&increment='+i,
- 
-				//Succès de la requête
-				success: function(data) {
- 
-					//On masque le loader
-					$('.loadmore').fadeOut(500);
-					/* On affiche le résultat après
-					le dernier commentaire */
-					$('.accordion-group:last').after(data);
-					/* On actualise la valeur offset
-					du dernier commentaire */
-					$('.increment').val(parseInt(i)+20);
-					offset = $('.accordion-group:last').offset();
-					//On remet la valeur à faux car c'est fini
-					load = false;
-				}
-			});
-		}
- 
- 
-	});
- 
-});
- 
 </script>
-		
+
+  
 	</body>
 </html>

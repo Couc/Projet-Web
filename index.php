@@ -141,7 +141,7 @@ mysql_query("SET NAMES UTF8");
 			        			
 			        			<div id=\"article\">
 			        				<p>".html_entity_decode($result_article['description'])."</p>
-			        				<a>Read more<i class=\"icon-chevron-right\"></i></a>
+			        				<a href=\"php/article.php?id_art=".$result_article['id_art']."\">Read more<i class=\"icon-chevron-right\"></i></a>
 			        				
 			        				<div id=\"info-post-tablet\">	
 		        						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\"></i><date style=\"float:left;\">".date("D d M Y",mktime(0,0,0,$mois,$jour,$annee))."</date>
@@ -169,6 +169,7 @@ mysql_query("SET NAMES UTF8");
 					        			
 					        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>".$result_article['nb_like']." likes</span>
         							</div>
+        							
 			        			</div>
 			        			
 			        		</div>
@@ -264,7 +265,7 @@ mysql_query("SET NAMES UTF8");
 			        			
 			        			<span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>".$result_article['nb_like']." likes</span>
         				</div>
-        				<a>Read more<i class=\"icon-chevron-right\"></i></a>
+        				<a href=\"php/article.php?id_art=".$result_article['id_art']."\">Read more<i class=\"icon-chevron-right\"></i></a>
         			</div>
         			
         		</div>

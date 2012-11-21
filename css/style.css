@@ -128,22 +128,29 @@ aside{
 	position: absolute;
 	left:75%;
 }
+#scroll-cat-art{
+	top:100px;
+	padding-top:50px;
+	position: absolute;
+	left:65%;
+}
 @media (max-width:768px) {
 	
 	#scroll{
 		display:none;
 		
 	}
-
-}
-@media (max-width:768px) {
-	
 	#scroll-cat{
+		display:none;
+		
+	}
+	#scroll-cat-art{
 		display:none;
 		
 	}
 
 }
+
 @media (max-width:1200px) {
 	#info-post-accueil{
 		display:none;
@@ -196,4 +203,10 @@ aside{
 #article p img{
 	visibility:hidden;
 	display:none;
+	
+}
+#article-cat p img{
+	
+	float: left; 
+	margin: 0 6px 6px 0;
 }
