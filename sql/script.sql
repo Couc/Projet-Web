@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS USER ;
 
 CREATE TABLE USER (login CHAR(16) NOT NULL,
 password CHAR(32),
+email CHAR(255),
 derniere_connexion CHAR(12),
 PRIMARY KEY (login) ) ENGINE=InnoDB;
 
