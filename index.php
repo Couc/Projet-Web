@@ -58,7 +58,7 @@ session_start();
 </button>
 <ul class=\"dropdown-menu\">
 <li>
-<a href=\"profil.php\">Profil</a>
+<a href=\"php/profil.php\">Profil</a>
 </li>
 <li class=\"divider\"></li>
 <li>
