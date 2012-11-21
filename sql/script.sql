@@ -44,7 +44,9 @@ id_source INT,
 titre CHAR(100),
 contenu TEXT,
 date CHAR(12),
-description CHAR(255),
+description TEXT,
+nb_like INT,
+nb_comment INT,
 PRIMARY KEY (id_art) ) ENGINE=InnoDB;
 ALTER TABLE ARTICLE ADD CONSTRAINT FK_ART_idsource FOREIGN KEY (id_source) REFERENCES SOURCE (id_source);
 
@@ -97,7 +99,6 @@ INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,4,'le_monde_econ
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,1,'le_parisien_politique','www.leparisien.fr/politique/rss.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'le_parisien_sciencetech','www.leparisien.fr/high-tech/rss.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,3,'le_parisien_sport','www.leparisien.fr/sports/rss.xml');
-INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,5,'le_parisien_people','www.leparisien.fr/actualite-people-medias/rss.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,4,'le_parisien_economie','www.leparisien.fr/economie/rss.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'euro_news_tech','feeds.feedburner.com/euronews/fr/sci-tech/');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,4,'euro_news_eco','feeds.feedburner.com/euronews/fr/business/');
@@ -106,7 +107,6 @@ INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,4,'europe1_eco',
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,4,'france24_eco','www.france24.com/fr/economie/rss');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,3,'france24_sport','www.france24.com/fr/sports/rss');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,3,'metro_france_sport','www.metrofrance.com/rss.xml?c=1157379271-45');
-INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,5,'metro_france_people','www.metrofrance.com/rss.xml?c=1341917533-1');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'metro_france_science','www.metrofrance.com/rss.xml?c=1157379272-44');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,1,'metro_france_politique','www.metrofrance.com/rss.xml?c=1157379272-44');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,4,'presse_europe_eco','www.presseurop.eu/fr/taxonomy/term/3/%2A/feed');
@@ -121,5 +121,8 @@ INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'iphonneaddict
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'phonandroid','feeds.feedburner.com/phonandroid');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'pointgphone','feeds.feedburner.com/pointgphone');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,2,'tomsguide','www.tomsguide.fr/feeds/rss2/tom-s-guide-fr,20-0.xml');
+INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,5,'le_parisien_people','www.leparisien.fr/actualite-people-medias/rss.xml');
+INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,5,'metro_france_people','www.metrofrance.com/rss.xml?c=1341917533-1');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,5,'public','www.public.fr/var/exports/rss_news.xml');
 INSERT INTO SOURCE (id_source,id_cat,libelle,lien) VALUES (null,5,'dontmiss','feeds.feedburner.com/dmpeople');
+
