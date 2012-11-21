@@ -93,14 +93,20 @@ mysql_query("SET NAMES UTF8");
         	<div class="slider_content" style="width:100%;">
         		 <ul class="rslides" id="slider2" style="width:100%;">
         		 	<?php
-        		 	$sql_article="SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art DESC LIMIT 5;";
+        		 	$sql_article="SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art LIMIT 5;";
 					$query_article = mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 					
+					
 					while($result_article=mysql_fetch_assoc($query_article)){
+						$annee = substr($result_article['date'],0,4);
+						$mois = substr($result_article['date'],4,2);
+						$jour = substr($result_article['date'],6,2);
+						$heure = substr($result_article['date'],8,2);
+						$minutes = substr($result_article['date'],10,2);
 						echo"<li class=\"article-accueil-slide\" style=\"float:left;position:relative;list-style-type:none;\">
         				        		
 			        		<div id=\"info-post-accueil\">
-			        			<i class=\"icon-calendar\" id=\"icone-accueil\"></i><date>Mon 06 Nov 2012</date>
+			        			<i class=\"icon-calendar\" id=\"icone-accueil\"></i><date>".date("D d M Y",mktime(0,0,0,$mois,$jour,$annee))."</date>
 			        			<br>
 			        			<span id=\"author\" ><i class=\"icon-user\" id=\"icone-accueil\"></i>".$result_article['libelle']."</span>
 			        			<br>";
@@ -130,15 +136,15 @@ mysql_query("SET NAMES UTF8");
 			        		</div>
 			        		<div id=\"post-accueil\">
 			        			<header>
-			        				<h4>".addslashes($result_article['titre'])."</h4>
+			        				<h4>".html_entity_decode($result_article['titre'])."</h4>
 			        			</header>
 			        			
 			        			<div id=\"article\">
-			        				<p>".addslashes($result_article['description'])."</p>
+			        				<p>".html_entity_decode($result_article['description'])."</p>
 			        				<a>Read more<i class=\"icon-chevron-right\"></i></a>
 			        				
 			        				<div id=\"info-post-tablet\">	
-		        						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\"></i><date style=\"float:left;\">Mon 06 Nov 2012</date>
+		        						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\"></i><date style=\"float:left;\">".date("D d M Y",mktime(0,0,0,$mois,$jour,$annee))."</date>
 					        			
 					        			<span id=\"author\" id=\"icone-accueil-tablet\"><i class=\"icon-user\" style=\"margin-right:4px;\"></i>".$result_article['libelle']."</span>";
 					        			
@@ -185,16 +191,21 @@ mysql_query("SET NAMES UTF8");
         		</div>
         		
         		<?php
-        		$sql_article="SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art DESC LIMIT 30;";
+        		$sql_article="SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art LIMIT 30;";
 				$query_article=mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
         		 	
 					while($result_article=mysql_fetch_assoc($query_article)){
 						
+						$annee = substr($result_article['date'],0,4);
+						$mois = substr($result_article['date'],4,2);
+						$jour = substr($result_article['date'],6,2);
+						$heure = substr($result_article['date'],8,2);
+						$minutes = substr($result_article['date'],10,2);
 						
 						echo"<article id=\"article-accueil\">
         		
         		<div id=\"info-post-accueil\" >
-        			<i class=\"icon-calendar\" id=\"icone-accueil\" ></i><date>Mon 06 Nov 2012</date>
+        			<i class=\"icon-calendar\" id=\"icone-accueil\" ></i><date>".date("D d M Y",mktime(0,0,0,$mois,$jour,$annee))."</date>
         			<br>
         			<span id=\"author\" ><i class=\"icon-user\" id=\"icone-accueil\" ></i>".$result_article['libelle']."</span>
         			<br>";
@@ -228,7 +239,7 @@ mysql_query("SET NAMES UTF8");
         			<div id=\"article\">
         				<p>".html_entity_decode($result_article['description'])."</p>
         				<div id=\"info-post-tablet\">	
-        						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\"></i><date style=\"float:left;\">Mon 06 Nov 2012</date>
+        						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\"></i><date style=\"float:left;\">".date("D d M Y",mktime(0,0,0,$mois,$jour,$annee))."</date>
 			        			
 			        			<span id=\"author\" id=\"icone-accueil-tablet\" ><i class=\"icon-user\" style=\"margin-right:4px;\"></i>".$result_article['libelle']."</span>";
 					        			
@@ -272,7 +283,7 @@ mysql_query("SET NAMES UTF8");
 				    <button type="submit" class="btn">Search</button>
 				  </div>
 				 </form>
-				 <div style="width:100px;text-align:center;">
+				 <div style="width:150px;text-align:center;">
 	        		<h4>Catégorie</h4>
 	        		<br>
 	        		<a href="php/liste_article.php?id_cat=0">A la une</a>
@@ -384,7 +395,7 @@ mysql_query("SET NAMES UTF8");
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/slider.js"></script>
+    
    <script type="text/javascript">
 	window.onscroll = function() {
 	    var scroll = (document.documentElement.scrollTop ||
