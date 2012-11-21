@@ -64,7 +64,7 @@ mysql_query("SET NAMES UTF8");
         </div>
       </div>
     </div>
-    <div class="container" id="container" style="margin-left:5%;">
+    <div class="container" id="container" style="margin-left:5%;min-height: 460px;">
     	<div class="row-fluid">
         	<div class="span9" id="span-article">
         		<?php
@@ -127,8 +127,7 @@ mysql_query("SET NAMES UTF8");
         	</div><!--span10 content -->	
         	<aside class="span3" id="scroll-cat-art" >
         		
-        		<hr>
-	        	<div id="comment_general">
+        		<div id="comment_general">
 					<div id="addCommentContainer">
 						<?php
 						$query_comment = mysql_query("SELECT * FROM commentaires WHERE id_art=".$_GET['id_art'].";") or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");;

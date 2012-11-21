@@ -297,7 +297,7 @@ mysql_query("SET NAMES UTF8");
 	        		<hr style="margin-bottom:4px;">
 	        		<a href="php/liste_article.php?id_cat=4">Economie</a>
 	        		<hr style="margin-bottom:4px;">
-	        		<a href="php/liste_article.php?id_cat=0">People</a>
+	        		<a href="php/liste_article.php?id_cat=5">People</a>
 	        	</div>
         	</aside>
         </div><!--span10 content -->
