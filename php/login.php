@@ -60,6 +60,11 @@ include ('_A8s2f9g714ef.php');
 Error, please try again ! 
 </div>');
 						}
+						else{
+							echo('	<div style="display:block;height:47px;" class="">&nbsp;
+									</div>');
+							
+						}
 						?>
 						<p>
 							<h3 style='margin-bottom:30px;'>Se connecter</h3>
@@ -83,6 +88,11 @@ Error, please try again !
 							echo('	<div class="alert alert-success">
 									Succes, You can now login ;-)
 									</div>');
+						}
+else{
+							echo('	<div style="display:block;height:47px;" class="">&nbsp;
+									</div>');
+							
 						}
 						?>
 						<p>

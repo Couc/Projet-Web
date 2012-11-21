@@ -11,7 +11,8 @@ while ($result = mysql_fetch_assoc($query)) {
 }
 
 if($pwbase==md5($pw)){
-	
+	session_start();
+	$_SESSION['user']=$user;
 	header('Location: ../index.php');
 	
 }else{
