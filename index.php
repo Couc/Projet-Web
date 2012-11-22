@@ -50,22 +50,22 @@ session_start();
 						</ul>
 						<ul class="nav pull-right">
 							<?php
-							if (isset($_SESSION['user'])) {echo("<div class=\"btn-group\">
-
-<button class=\"btn btn-primary\">" . $_SESSION['user'] . "</button>
-<button class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
-<span class=\"caret\"></span>
-</button>
-<ul class=\"dropdown-menu\">
-<li>
+							if (isset($_SESSION['user'])) {echo("
+							    <div class=\"btn-group\">
+    								<a class=\"btn btn-primary\" href=\"php/profil.php\" >" . $_SESSION['user'] . "</a>
+									<button class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
+   										<span class=\"caret\"></span>
+    								</button>
+    								<ul class=\"dropdown-menu\">
+    									<li>
 <a href=\"php/profil.php\">Profil</a>
 </li>
 <li class=\"divider\"></li>
 <li>
 <a href=\"php/logout.php\">Logout</a>
 </li>
-</ul>
-</div>");
+									</ul>
+    							</div>");
 							} else {
 								echo("<a href=\"php/login.php\" class=\"btn btn-primary\"><i class=\"icon-user icon-white\"></i>Se connecter</a>");
 							}
@@ -428,5 +428,6 @@ session_start();
 			});
 
 		</script>
+		
 	</body>
 </html>
