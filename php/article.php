@@ -64,9 +64,21 @@ mysql_query("SET NAMES UTF8");
         </div>
       </div>
     </div>
+    
     <div class="container" id="container" style="margin-left:5%;min-height: 460px;">
     	<div class="row-fluid">
-        	<div class="span9" id="span-article">
+    		<div id="like" class="alert alert-success" style="display:none;">
+				  <button type="button" class="close" data-dismiss="alert">×</button>
+				  <h4>Bien Joué!</h4>
+				  Vous avez aimé cet article, il est maintenant enregistré dans votre espace personnel sous la section "Like"
+				</div>
+				<div id="dislike" class="alert alert-error" style="display:none;">
+				  <button type="button" class="close" data-dismiss="alert">×</button>
+				  <h4>OHHHHHHH!</h4>
+				  Cet article est-il si mauvais ?
+				</div>
+        	<div class="span9" id="span-article" style="background-color: white;padding:10px;">
+        		
         		<?php
         		$sql_article="SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND a.id_art = ".$_GET['id_art'].";";
 				$query_article=mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
@@ -107,17 +119,18 @@ mysql_query("SET NAMES UTF8");
         			<br>
         			<span id=\"nombre_likes\" ><i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
         		</div>
-        		
-        		<header>
+        		<div class=\"pull-right\">
+        			<img id=\"like_button\" src=\"../img/like.png\" style=\"float:left;width:50px;height:50px;\"/>
+        			<img id=\"dislike_button\" src=\"../img/dislike.png\" style=\"margin-right:20px;margin-left:50px;width:50px;height:50px;\"/>
+        		</div>
+        		<header style=\"margin-top:70px;margin-bottom:40px;\">
         				<h1>".html_entity_decode($result_article['titre'])."</h1>
         		</header>
-        		<div style=\"height:90px;\">
-        				<h4>Like etc...</h4>
-        		</div>
+        		
         		<article id=\"article-cat\">
         			
         				<p>".html_entity_decode($result_article['contenu'])."</p>
-        				<a>Source <i class=\"icon-chevron-right\"></i></a>
+        				<a target=\"_blank\" href=".$result_article['link'].">Source <i class=\"icon-chevron-right\"></i></a>
         			
         			
         		</article>";
@@ -125,8 +138,13 @@ mysql_query("SET NAMES UTF8");
 					}
         		?>
         	</div><!--span10 content -->	
-        	<aside class="span3" id="scroll-cat-art" >
-        		
+        	<aside class="span3" id="scroll-cat-art" style="margin-top:0px;">
+	        		<div id="social" style="margin-bottom:50px;">
+		        		<a name="fb_share" type="box_count" expr:share_url='data:post.url' href="http://www.facebook.com/sharer.php">Partager</a>
+		        		<a style="margin-left:10px;" href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="TWITTER-USERNAME">Tweet</a>
+		        		<g:plusone size="tall"></g:plusone>
+		        		<script type="in/share" data-counter="top"></script>
+	        		</div>
         		<div id="comment_general">
 					<div id="addCommentContainer">
 						<?php
@@ -149,12 +167,7 @@ mysql_query("SET NAMES UTF8");
 					    <p>Add a Comment</p>
 					    <form id="addCommentForm" method="post" action="">
 					        <div>
-					            <label for="name">Your Name</label>
-					            <input type="text" name="name" id="name" />
-					
-					            <label for="email">Your Email</label>
-					            <input type="text" name="email" id="email" />
-					
+					            				
 					
 					            <label for="body">Comment Body</label>
 					            <textarea name="body" id="body" cols="20" rows="5"></textarea>
@@ -260,8 +273,12 @@ mysql_query("SET NAMES UTF8");
    
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
-   
-    
+    <script src= "http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+{lang: 'fr'}
+</script>
+<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
    <script type="text/javascript">
    
 	window.onscroll = function() {
@@ -272,9 +289,9 @@ mysql_query("SET NAMES UTF8");
 	        document.getElementById('scroll-cat-art').style.top = scroll+'px';
 	   	    
 	       }
-	    if(scroll > document.documentElement.scrollHeight - 730)
+	    if(scroll > document.documentElement.scrollHeight - 830)
 	    {	
-	    	document.getElementById('scroll-cat-art').style.top= document.documentElement.scrollHeight - 730 +'px';
+	    	document.getElementById('scroll-cat-art').style.top= document.documentElement.scrollHeight - 830 +'px';
 	    }
 	}
 </script>
@@ -301,6 +318,24 @@ mysql_query("SET NAMES UTF8");
             xmlhttp.open("GET","submit.php?name="+name+"&email="+email+"&body="+body+"&id_art="+id_art,true);
             xmlhttp.send();
 		}
+		
+		 $("#like_button").click(function () {
+      		$("#like").fadeIn("slow",like);
+    	});
+		 function like(){
+		 	
+      		$("#like").delay(10000).fadeOut("slow");
+    
+		 }
+		 
+		  $("#dislike_button").click(function () {
+      		$("#dislike").fadeIn("slow",dislike);
+    	});
+		 function dislike(){
+		 	
+      		$("#dislike").delay(5000).fadeOut("slow");
+    
+		 }
 </script>
 
   

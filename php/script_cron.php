@@ -33,7 +33,7 @@ while ($result = mysql_fetch_assoc($query)) {
 	foreach ($rss as $tab) {
 		if (doubleval(date("YmdHi", strtotime($tab[3]))) > doubleval($derdate)) {
 			echo ('je rentre là');
-			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . addslashes($tab[0]) . "','" . mysql_real_escape_string(convert_chars_to_entities(strip_tags(strip_cdata(htmlspecialchars_decode($tab[2])),"<p><br><a><img>"))) . "','" . date("YmdHi", strtotime($tab[3])) . "',null,0,0)";
+			$sqlInsert = " INSERT INTO ARTICLE VALUES(null," . $idsrc . ",'" . addslashes($tab[0]) . "','" . mysql_real_escape_string(convert_chars_to_entities(strip_tags(strip_cdata(htmlspecialchars_decode($tab[2])),"<p><br><a><img>"))) . "','" . date("YmdHi", strtotime($tab[3])) . "',null,0,0,'".$tab[1]."')";
 			$queryInsert = mysql_query($sqlInsert) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 			$sqlInsert1 = " UPDATE ARTICLE set description = '". mysql_real_escape_string(convert_chars_to_entities(strip_tags(strip_cdata(htmlspecialchars_decode(${'desc'.$jj})),"<p><br><img><a>")))."' WHERE id_art = LAST_INSERT_ID();";
 			$queryInsert1 = mysql_query($sqlInsert1) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
