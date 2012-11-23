@@ -10,6 +10,16 @@ if ($email == $email2) {
 	if ($pw == $pw2) {
 		$requete = 'INSERT INTO USER VALUES("' . $user . '","' . md5($pw) . '","'.$email.'","")';
 		$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+		$requete = 'SELECT MAX(ID_SOURCE) FROM SOURCE';
+		$id_max=0;
+		$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+		while ($result = mysql_fetch_assoc($query)) {
+			$id_max=$result['MAX(ID_SOURCE)'];
+		}
+		for($i=0;$i<=$id_max;$i++){
+			$requete = 'INSERT INTO SOURCE_FAV VALUES("' . $user . '",' . $i . ')';
+			$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+		}
 		header('Location: login.php?msginsuc=suc');
 	} else {
 		header('Location: login.php?msginerr=error');

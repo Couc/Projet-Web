@@ -80,26 +80,52 @@ session_start();
 				<h1>Profil</h1>
 				<div class='span1'></div>
 				<div class='span3'>
-					<form>
 					<?php
-					$requete = 'SELECT * FROM USER WHERE login="' . $_SESSION['user'] . '"';
-					$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-					while ($result = mysql_fetch_assoc($query)) {
-						echo("<label>Login</label><input type='text' value='" . $result['login'] . "' required/><br>
-<label>E-mail</label><input type='email' value='" . $result['email'] . "' required/><br>");
+					if (isset($_GET['msgsuca'])) {
+						echo('	<div class="alert alert-success">
+Vos informations ont été mise à jour
+</div>');
+					} elseif (isset($_GET['msgfaia'])) {
+						echo('	<div class="alert alert-error">
+Les nouveaux mot de passes ne sont pas identique !
+</div>');
+					} elseif (isset($_GET['msgfaic'])) {
+						echo('	<div class="alert alert-error">
+Le mot de passe fournit n\'est pas correct
+</div>');
+					} elseif (isset($_GET['msgfaid'])) {
+						echo('	<div class="alert alert-error">
+Erreur, veuillez recommencer.
+</div>');
+					} else {
+						echo('	<div style="display:block;height:47px;" class="">&nbsp;
+</div>');
 
 					}
-					
 					?>
-					<br>
-					<label>Ancien mot de passe</label><input type='password' name='lastpw' required/>
-					<input type='text' class='btn btn-primary' value='Change password' onclick='loadPassword()'/>
-					<div id='chgpwd' style='display:none'>
-						
-						<label>Nouveau mot de passe</label><input type='password' name='newpw1'/>
-						<label>Confirmez le nouveau mot de passe</label><input type='password' name='newpw2'/>
-					</div>
-					<button type="submit" class="btn">Submit</button>
+					<form action='submit_profil.php' action='POST'>
+						<?php
+						$requete = 'SELECT * FROM USER WHERE login="' . $_SESSION['user'] . '"';
+						$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+						while ($result = mysql_fetch_assoc($query)) {
+							echo("<label>Login</label><input type='text' name='login' value='" . $result['login'] . "' required readonly/><br>
+<label>E-mail</label><input type='email' name='emailuser' value='" . $result['email'] . "' required/><br>");
+
+						}
+						?>
+						<br>
+						<label>Mot de passe</label>
+						<input type='password' name='lastpw' required/>
+						<input type='text' class='btn btn-primary' value='Change password' onclick='loadPassword()'/>
+						<div id='chgpwd' style='display:none'>
+							<label>Nouveau mot de passe</label>
+							<input type='password' name='newpw1'/>
+							<label>Confirmez le nouveau mot de passe</label>
+							<input type='password' name='newpw2'/>
+						</div>
+						<button type="submit" class="btn">
+							Submit
+						</button>
 					</form>
 				</div>
 				<div class='span7'>
@@ -112,7 +138,7 @@ session_start();
 							echo("<li ");
 							if ($i == 0) {echo("class=\"active\"");
 							}
-							echo("><a href=\"#\" onclick='loadSources(".$result['id_cat'].")'>" . $result['libelle'] . "</a></li>");
+							echo("><a href=\"#\" onclick='loadSources(" . $result['id_cat'] . ")'>" . $result['libelle'] . "</a></li>");
 							$i++;
 						}
 						?>
@@ -126,7 +152,17 @@ session_start();
 							$requete = 'SELECT * FROM SOURCE WHERE ID_CAT=1';
 							$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 							while ($result = mysql_fetch_assoc($query)) {
-								echo("<tr><td>" . $result['libelle'] . "</td><td>" . $result['lien'] . "</td><td style='text-align:center'><input type='checkbox' checked='checked'/></td></tr>");
+								echo("<tr><td>" . $result['libelle'] . "</td><td>" . $result['lien'] . "</td><td style='text-align:center'>");
+								$requete2 = 'SELECT * FROM SOURCE_FAV WHERE login="' . $_SESSION['user'] . '" AND id_source=' . $result['id_source'] . ';';
+								$query2 = mysql_query($requete2) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+								if ($result2 = mysql_fetch_assoc($query2)) {
+
+									echo("<input type='checkbox' value='" . $result['id_source'] . "' onClick='updateSources(this)' checked='checked'/>");
+								} else {
+									echo("<input type='checkbox' value='" . $result['id_source'] . "' onClick='updateSources(this)' />");
+								}
+
+								echo("</td></tr>");
 							}
 							?>
 						</table>
@@ -224,20 +260,45 @@ session_start();
 			}
 		</script>
 		<script type='text/javascript'>
-		function loadSources(id){
-			xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
-				if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
-					//document.getElementById("form_joueur_click").innerHTML=;
-					document.getElementById("receive_sources").innerHTML = xmlhttp.responseText;
+			function loadSources(id) {
+				xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+					if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+						//document.getElementById("form_joueur_click").innerHTML=;
+						document.getElementById("receive_sources").innerHTML = xmlhttp.responseText;
+				}
+				xmlhttp.open("GET", "profil_ajax.php?id=" + id, true);
+				xmlhttp.send();
 			}
-			xmlhttp.open("GET", "profil_ajax.php?id=" + id, true);
-			xmlhttp.send();
-		}
-		function loadPassword(){
-			document.getElementById("chgpwd").style.display = 'block';
-		}
 
+			function loadPassword() {
+				document.getElementById("chgpwd").style.display = 'block';
+			}
+
+			function updateSources(id) {
+				var valu = id.value;
+				if(id.checked) {
+					xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						}
+						//document.getElementById("form_joueur_click").innerHTML=;
+						//document.getElementById("receive_sources").innerHTML = xmlhttp.responseText;
+					}
+					xmlhttp.open("GET", "sources_ajax.php?source=" + valu + "&action=1", true);
+					xmlhttp.send();
+				} else {
+					xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						}
+						//document.getElementById("form_joueur_click").innerHTML=;
+						//document.getElementById("receive_sources").innerHTML = xmlhttp.responseText;
+					}
+					xmlhttp.open("GET", "sources_ajax.php?source=" + valu + "&action=0", true);
+					xmlhttp.send();
+				}
+			}
 		</script>
 		<script src="../js/responsiveslides.js"></script>
 		<script>
