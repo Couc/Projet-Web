@@ -1,6 +1,7 @@
 <?php
+session_start();
 include ('_A8s2f9g714ef.php');
-include ('comment.class.php');
+
 mysql_query("SET NAMES UTF8");
 ?>
 <!DOCTYPE html>
@@ -56,8 +57,27 @@ mysql_query("SET NAMES UTF8");
               <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
-              <a href="php/login.php" class="btn btn-primary"><i class="icon-user icon-white"></i>  Se connecter</a>
-              
+              <?php
+							if (isset($_SESSION['user'])) {echo("
+							    <div class=\"btn-group\">
+    								<a class=\"btn btn-primary\" href=\"profil.php\" >" . $_SESSION['user'] . "</a>
+									<button class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
+   										<span class=\"caret\"></span>
+    								</button>
+    								<ul class=\"dropdown-menu\">
+    									<li>
+<a href=\"profil.php\">Profil</a>
+</li>
+<li class=\"divider\"></li>
+<li>
+<a href=\"logout.php\">Logout</a>
+</li>
+									</ul>
+    							</div>");
+							} else {
+								echo("<a href=\"login.php\" class=\"btn btn-primary\"><i class=\"icon-user icon-white\"></i>Se connecter</a>");
+							}
+							?>
             </ul>
            </div><!--/.nav-collapse -->
            
@@ -66,8 +86,30 @@ mysql_query("SET NAMES UTF8");
     </div>
     <div class="container" id="container">
     	<div class="row-fluid">
-       	
-       
+       	<div class="accordion" id="accordion2">
+			  <div class="accordion-group">
+			    <div class="accordion-heading">
+			      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" style="background-color: #333;">
+			        <span style="color: white;text-decoration: none;">Sélectionnez vos sources</span> <i class="icon-arrow-down icon-white pull-right"></i>
+			      </a>
+			    </div>
+			    <div id="collapseOne" class="accordion-body collapse in">
+			      <div class="accordion-inner">
+			        <form>
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
+			        	
+			        </form>
+			      </div>
+			    </div>
+			  </div>
+      	</div>
         <div class="span12">
         	<div class="span10" id="span-article">
         		<div class="slider_control">
@@ -100,7 +142,7 @@ mysql_query("SET NAMES UTF8");
         		</div>
         		
         		<?php
-        		$sql_article="SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND s.id_cat = ".$_GET['id_cat']." ORDER BY id_art;";
+        		$sql_article="SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND s.id_cat = ".$_GET['id_cat']." ORDER BY id_art DESC;";
 				$query_article=mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
         		 	
 					while($result_article=mysql_fetch_assoc($query_article)){

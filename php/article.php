@@ -1,6 +1,6 @@
 <?php
+session_start();
 include ('_A8s2f9g714ef.php');
-include ('comment.class.php');
 mysql_query("SET NAMES UTF8");
 ?>
 <!DOCTYPE html>
@@ -56,8 +56,27 @@ mysql_query("SET NAMES UTF8");
               <li><a href="#contact">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
-              <a href="php/login.php" class="btn btn-primary"><i class="icon-user icon-white"></i>  Se connecter</a>
-              
+              <?php
+							if (isset($_SESSION['user'])) {echo("
+							    <div class=\"btn-group\">
+    								<a class=\"btn btn-primary\" href=\"profil.php\" >" . $_SESSION['user'] . "</a>
+									<button class=\"btn btn-primary dropdown-toggle\" data-toggle=\"dropdown\">
+   										<span class=\"caret\"></span>
+    								</button>
+    								<ul class=\"dropdown-menu\">
+    									<li>
+<a href=\"profil.php\">Profil</a>
+</li>
+<li class=\"divider\"></li>
+<li>
+<a href=\"logout.php\">Logout</a>
+</li>
+									</ul>
+    							</div>");
+							} else {
+								echo("<a href=\"login.php\" class=\"btn btn-primary\"><i class=\"icon-user icon-white\"></i>Se connecter</a>");
+							}
+							?>
             </ul>
            </div><!--/.nav-collapse -->
            
@@ -76,6 +95,11 @@ mysql_query("SET NAMES UTF8");
 				  <button type="button" class="close" data-dismiss="alert">×</button>
 				  <h4>OHHHHHHH!</h4>
 				  Cet article est-il si mauvais ?
+				</div>
+				<div id="dejalike" class="alert alert-info" style="display:none;">
+				  <button type="button" class="close" data-dismiss="alert">×</button>
+				  <h4>Bien Joué mais vous aimez déjà cet article !</h4>
+				  
 				</div>
         	<div class="span9" id="span-article" style="background-color: white;padding:10px;">
         		
@@ -117,13 +141,13 @@ mysql_query("SET NAMES UTF8");
         			echo"<br>
         			<span id=\"nombre_commentaire\" ><i style=\"margin-bottom:10px;\" class=\"icon-comment\" id=\"icone-accueil\" ></i>".$result_article['nb_comment']." comments</span>
         			<br>
-        			<span id=\"nombre_likes\" ><i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
+        			<span id=\"nombre_likes\"><i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
         		</div>
-        		<div class=\"pull-right\">
-        			<img id=\"like_button\" src=\"../img/like.png\" style=\"float:left;width:50px;height:50px;\"/>
-        			<img id=\"dislike_button\" src=\"../img/dislike.png\" style=\"margin-right:20px;margin-left:50px;width:50px;height:50px;\"/>
+        		<div class=\"pull-right\" id=\"like_div\">
+        			<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/like.png\" style=\"float:left;width:50px;height:50px;\"/>
+        			<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/dislike.png\" style=\"margin-right:20px;margin-left:50px;width:50px;height:50px;\"/>
         		</div>
-        		<header style=\"margin-top:70px;margin-bottom:40px;\">
+        		<header style=\"margin-top:70px;margin-bottom:90px;\">
         				<h1>".html_entity_decode($result_article['titre'])."</h1>
         		</header>
         		
@@ -140,14 +164,40 @@ mysql_query("SET NAMES UTF8");
         	</div><!--span10 content -->	
         	<aside class="span3" id="scroll-cat-art" style="margin-top:0px;">
 	        		<div id="social" style="margin-bottom:50px;">
-		        		<a name="fb_share" type="box_count" expr:share_url='data:post.url' href="http://www.facebook.com/sharer.php">Partager</a>
-		        		<a style="margin-left:10px;" href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="TWITTER-USERNAME">Tweet</a>
-		        		<g:plusone size="tall"></g:plusone>
-		        		<script type="in/share" data-counter="top"></script>
+		        		<span style="margin-left:30px;">
+		        			<a name="fb_share" type="box_count" expr:share_url='data:post.url' href="http://www.facebook.com/sharer.php">Partager</a>
+		        		</span>
+		        		<span style="margin-left:20px;">
+		        			<a  href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="TWITTER-USERNAME">Tweet</a>
+		        		</span>
+		        		<span style="margin-left:20px;">
+		        			<g:plusone size="tall"></g:plusone>
+		        		</span>
+		        		<span style="margin-left:20px;">
+		        			<script type="in/share" data-counter="top"></script>
+		        		</span>
 	        		</div>
         		<div id="comment_general">
-					<div id="addCommentContainer">
-						<?php
+        			<div id="addCommentContainer">
+					    <p>Add a Comment</p>
+					    <form id="addCommentForm" method="post" action="">
+					        <div>
+					            				
+					            <label for="body">Comment Body</label>
+					            <textarea name="body" id="body" cols="20" rows="5"></textarea>
+					
+					            <input type="reset" id="submit" value="Submit" onclick="Change();"/>
+					            <?php
+					            echo "<input type=\"hidden\" id=\"id_art\" value=".$_GET['id_art']." />";
+								echo "<input type=\"hidden\" id=\"login\" value=".$_SESSION['user']." />";
+								
+								?>
+					            
+					        </div>
+	    				</form>
+	    				
+					</div>
+					<?php
 						$query_comment = mysql_query("SELECT * FROM commentaires WHERE id_art=".$_GET['id_art'].";") or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");;
 			
 							while($result_comment = mysql_fetch_assoc($query_comment))				
@@ -158,29 +208,12 @@ mysql_query("SET NAMES UTF8");
 											
 			    				echo '
 						<div class="comment">
-							<div class="name">'.$result_comment['nom'].'</div>
+							<div class="name">'.$result_comment['login'].'</div>
 							<div class="date">'.$jour.' '.date("F",mktime($mois)).' '.$annee.'</div>
 							<p>'.$result_comment['body'].'</p>
 						</div>';
 							}
 						?>
-					    <p>Add a Comment</p>
-					    <form id="addCommentForm" method="post" action="">
-					        <div>
-					            				
-					
-					            <label for="body">Comment Body</label>
-					            <textarea name="body" id="body" cols="20" rows="5"></textarea>
-					
-					            <input type="reset" id="submit" value="Submit" onclick="Change();"/>
-					            <?php
-					            echo "<input type=\"hidden\" id=\"id_art\" value=".$_GET['id_art']." />";
-								
-								?>
-					            
-					        </div>
-	    				</form>
-					</div>
 				</div>
         	</aside>
         
@@ -279,63 +312,10 @@ mysql_query("SET NAMES UTF8");
 {lang: 'fr'}
 </script>
 <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
-   <script type="text/javascript">
-   
-	window.onscroll = function() {
-	    var scroll = (document.documentElement.scrollTop ||
-	        document.body.scrollTop);
-	        
-	    if(scroll>100){
-	        document.getElementById('scroll-cat-art').style.top = scroll+'px';
-	   	    
-	       }
-	    if(scroll > document.documentElement.scrollHeight - 830)
-	    {	
-	    	document.getElementById('scroll-cat-art').style.top= document.documentElement.scrollHeight - 830 +'px';
-	    }
-	}
-</script>
+  
 
-<script type="text/javascript">
-	function Change()
-			{	
-			
-			var name = document.getElementById('name').value;
-        	var email = document.getElementById('email').value;
-        	var body = document.getElementById('body').value;
-        	var id_art = document.getElementById('id_art').value;
-        	
-            xmlhttp=new XMLHttpRequest();
-
-            xmlhttp.onreadystatechange=function()
-            {
-                if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                    {
-                        document.getElementById("comment_general").innerHTML+=xmlhttp.responseText;
-                        
-                    }
-            }
-            xmlhttp.open("GET","submit.php?name="+name+"&email="+email+"&body="+body+"&id_art="+id_art,true);
-            xmlhttp.send();
-		}
-		
-		 $("#like_button").click(function () {
-      		$("#like").fadeIn("slow",like);
-    	});
-		 function like(){
-		 	
-      		$("#like").delay(10000).fadeOut("slow");
-    
-		 }
-		 
-		  $("#dislike_button").click(function () {
-      		$("#dislike").fadeIn("slow",dislike);
-    	});
-		 function dislike(){
-		 	
-      		$("#dislike").delay(5000).fadeOut("slow");
-    
-		 }
+<script type="text/javascript" src="../js/article.js">
+	
 </script>
 
   

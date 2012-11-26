@@ -10,7 +10,7 @@ include ('_A8s2f9g714ef.php');
 								
     				echo '
 			<div class="comment">
-				<div class="name">'.$result['nom'].'</div>
+				<div class="name">'.$result['login'].'</div>
 				<div class="date">'.$jour.' '.date("F",mktime($mois)).' '.$annee.'</div>
 				<p>'.$result['body'].'</p>
 			</div>';

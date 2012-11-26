@@ -122,7 +122,7 @@ session_start();
 					<div class="slider_content" style="width:100%;">
 						<ul class="rslides" id="slider2" style="width:100%;">
 							<?php
-							$sql_article = "SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art LIMIT 5;";
+							$sql_article = "SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art DESC LIMIT 5;";
 							$query_article = mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 
 							while ($result_article = mysql_fetch_assoc($query_article)) {
@@ -214,7 +214,7 @@ session_start();
 							<h3 class="drapeau"><span>A la une</span></h3>
 						</div>
 						<?php
-						$sql_article = "SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art LIMIT 30;";
+						$sql_article = "SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art DESC LIMIT 30;";
 						$query_article = mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 
 						while ($result_article = mysql_fetch_assoc($query_article)) {
