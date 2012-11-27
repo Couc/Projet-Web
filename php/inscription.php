@@ -16,7 +16,7 @@ if ($email == $email2) {
 		while ($result = mysql_fetch_assoc($query)) {
 			$id_max=$result['MAX(ID_SOURCE)'];
 		}
-		for($i=0;$i<=$id_max;$i++){
+		for($i=1;$i<=$id_max;$i++){
 			$requete = 'INSERT INTO SOURCE_FAV VALUES("' . $user . '",' . $i . ')';
 			$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 		}
