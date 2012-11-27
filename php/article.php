@@ -144,8 +144,8 @@ mysql_query("SET NAMES UTF8");
         			<span id=\"nombre_likes\"><i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
         		</div>
         		<div class=\"pull-right\" id=\"like_div\">
-        			<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/like.png\" style=\"float:left;width:50px;height:50px;\"/>
-        			<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/dislike.png\" style=\"margin-right:20px;margin-left:50px;width:50px;height:50px;\"/>
+        			<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/_icon_like.png\" style=\"float:left;width:50px;height:50px;\"/>
+        			<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/_icon_dislike.png\" style=\"margin-right:20px;margin-left:50px;width:50px;height:50px;\"/>
         		</div>
         		<header style=\"margin-top:70px;margin-bottom:90px;\">
         				<h1>".html_entity_decode($result_article['titre'])."</h1>
