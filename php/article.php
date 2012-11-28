@@ -148,10 +148,7 @@ mysql_query("SET NAMES UTF8");
         			<br>
         			<span id=\"nombre_likes\"><i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
         		</div>
-        		<div class=\"pull-right\" id=\"like_div\">
-        			<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/_icon_like.png\" style=\"float:left;\"/>
-        			<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/_icon_dislike.png\" style=\"margin-right:20px;margin-left:50px;\"/>
-        		</div>
+      
         		<header style=\"margin-top:70px;margin-bottom:90px;\">
         				<h1>".html_entity_decode($result_article['titre'])."</h1>
         		</header>
@@ -168,19 +165,28 @@ mysql_query("SET NAMES UTF8");
         		?>
         	</div><!--span10 content -->	
         	<aside class="span3" id="scroll-cat-art" style="margin-top:0px;">
-	        		<div id="social" style="margin-bottom:50px;">
-		        		<span style="margin-left:30px;">
-		        			<a name="fb_share" type="box_count" expr:share_url='data:post.url' href="http://www.facebook.com/sharer.php">Partager</a>
-		        		</span>
-		        		<span style="margin-left:20px;">
-		        			<a  href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="TWITTER-USERNAME">Tweet</a>
-		        		</span>
-		        		<span style="margin-left:20px;">
-		        			<g:plusone size="tall"></g:plusone>
-		        		</span>
-		        		<span style="margin-left:20px;">
-		        			<script type="in/share" data-counter="top"></script>
-		        		</span>
+	        		<div id="addCommentContainer" style="margin-bottom:50px;margin-left:50px;width:240px;height:140px;">
+	        			<?php
+	        			echo "<div id=\"like_div\" style=\"margin-bottom:20px;margin-left:45px;\">
+        					<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/_icon_like.png\" style=\"float:left;width:80px;height:50px;border-right:1px solid #333;\"/>
+        					<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/_icon_dislike.png\" style=\"width:80px;height:50px;\"/>
+        				</div>";
+        				?>
+        				<hr>
+        				<div id="partage" style="margin-left:20px;">
+			        		<span style="float:left;margin-right:2px;">
+			        			<a name="fb_share" type="button_count" expr:share_url='data:post.url' href="http://www.facebook.com/sharer.php">Partager</a>
+			        		</span>
+			        		<span style="">
+			        			<a  href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="TWITTER-USERNAME">Tweet</a>
+			        		</span>
+			        		<span style="float:left;margin-right:2px;">
+			        			<g:plusone size="standard"></g:plusone>
+			        		</span>
+			        		<span style="float:left;">
+			        			<script type="in/share" data-counter="right"></script>
+			        		</span>
+		        		</div>
 	        		</div>
         		<div id="comment_general">
         			<div id="addCommentContainer">
