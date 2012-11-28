@@ -19,13 +19,11 @@ if ($result = mysql_fetch_assoc($query)) {
 			exit();
 		}
 		header('Location: profil.php?msgsuca=success');
-	}
-	else{
+	} else {
 		header('Location: profil.php?msgfaic=error');
 	}
-	
+
 } else {
 	header('Location: profil.php?msgfaid=error');
 }
-
 ?>
