@@ -98,12 +98,12 @@ mysql_query("SET NAMES UTF8");
 				</div>
 				<div id="dejalike" class="alert alert-info" style="display:none;">
 				  <button type="button" class="close" data-dismiss="alert">×</button>
-				  <h4>Bien Joué mais vous aimez déjà cet article !</h4>
+				  <h4>Vous n'aimez plus cet article ?</h4>
 				  
 				</div>
 				<div id="dejadislike" class="alert alert-info" style="display:none;">
 				  <button type="button" class="close" data-dismiss="alert">×</button>
-				  <h4>Vous devez vraiment détesté cet article mais vous l'avez déjà détesté!</h4>
+				  <h4>Finalement pas si mal ?</h4>
 				  
 				</div>
         	<div class="span9" id="span-article" style="background-color: white;padding:10px;">
@@ -165,27 +165,66 @@ mysql_query("SET NAMES UTF8");
         		?>
         	</div><!--span10 content -->	
         	<aside class="span3" id="scroll-cat-art" style="margin-top:0px;">
-	        		<div id="addCommentContainer" style="margin-bottom:50px;margin-left:50px;width:240px;height:140px;">
+	        		<div id="addCommentContainer" style="margin-bottom:50px;width:242px;height:100px;padding:0px;">
 	        			<?php
-	        			echo "<div id=\"like_div\" style=\"margin-bottom:20px;margin-left:45px;\">
-        					<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/_icon_like.png\" style=\"float:left;width:80px;height:50px;border-right:1px solid #333;\"/>
-        					<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/_icon_dislike.png\" style=\"width:80px;height:50px;\"/>
-        				</div>";
+	        			if(isset($_SESSION['user'])){
+	        			$query_like = mysql_query("SELECT * FROM ARTICLE_FAV WHERE login = '".$_SESSION['user']."' and id_art = ".$_GET['id_art'].";");
+						$query_dislike = mysql_query("SELECT * FROM ARTICLE_DISLIKE WHERE login = '".$_SESSION['user']."' and id_art = ".$_GET['id_art'].";");
+						
+						if(mysql_num_rows($query_like)!=0)
+						{
+			        			echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/smile_yellow.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/>
+		        					<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div>";
+						}
+						else if(mysql_num_rows($query_dislike)!=0){
+							
+							echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/>
+		        					<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile_yellow.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div>";
+						}else{
+							
+							echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/>
+		        					<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div>";
+						}
+						
+						}
+else {
+	echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<a href=\"#myModal\" role=\"button\" data-toggle=\"modal\"><img id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/></a>
+		        					<a href=\"#myModal\" role=\"button\" data-toggle=\"modal\"><img  id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div></a>";
+}
         				?>
-        				<hr>
+        			
         				<div id="partage" style="margin-left:20px;">
-			        		<span style="float:left;margin-right:2px;">
+			        		<span style="float:left;margin-right:10px;">
 			        			<a name="fb_share" type="button_count" expr:share_url='data:post.url' href="http://www.facebook.com/sharer.php">Partager</a>
 			        		</span>
 			        		<span style="">
 			        			<a  href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="TWITTER-USERNAME">Tweet</a>
 			        		</span>
-			        		<span style="float:left;margin-right:2px;">
-			        			<g:plusone size="standard"></g:plusone>
-			        		</span>
-			        		<span style="float:left;">
-			        			<script type="in/share" data-counter="right"></script>
-			        		</span>
+			        		
 		        		</div>
 	        		</div>
         		<div id="comment_general">
@@ -196,11 +235,18 @@ mysql_query("SET NAMES UTF8");
 					            				
 					            <label for="body">Comment Body</label>
 					            <textarea name="body" id="body" cols="20" rows="5"></textarea>
-					
-					            <input type="reset" id="submit" value="Submit" onclick="Change();"/>
-					            <?php
-					            echo "<input type=\"hidden\" id=\"id_art\" value=".$_GET['id_art']." />";
-								echo "<input type=\"hidden\" id=\"login\" value=".$_SESSION['user']." />";
+					 <?php
+					 			if(isset($_SESSION['user'])){
+						            echo"<input type=\"reset\" id=\"submit\" value=\"Submit\" onclick=\"Change();\"/>";
+						           
+						            echo "<input type=\"hidden\" id=\"id_art\" value=".$_GET['id_art']." />";
+									echo "<input type=\"hidden\" id=\"login\" value=".$_SESSION['user']." />";
+								}
+								else {
+									
+									echo"<a href=\"#myModal\" role=\"button\" data-toggle=\"modal\"><input type=\"reset\" id=\"submit\" value=\"Submit\"/></a>";
+										
+									}
 								
 								?>
 					            
@@ -230,7 +276,26 @@ mysql_query("SET NAMES UTF8");
         
      </div><!--row-fluid-->
     </div> <!-- /container -->
-    
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-header">
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h3 id="myModalLabel">Connectez-Vous !</h3>
+		  </div>
+		  <div class="modal-body">
+		    <form style='text-align:left;' action='connexion.php' method='POST'>
+						<label style='float:left;width:45%;margin-right:30px;'>Login</label>
+						<input style='float:left;' type='text' name='username' required placeholder='username'/>
+						<label style='float:left;width:45%;margin-right:30px;'>Mot de passe</label>
+						<input style='float:left;' type='password' name='password' required placeholder='password'/>
+						<?php echo "<input type=\"hidden\" name=\"id_art\" value=".$_GET['id_art'].">"; ?>
+				
+		  </div>
+		  <div class="modal-footer">
+		    <p style="width:300px;float:left;">Pour pouvoir profitez de toutes nos fonctionnalitées, il faut que vous vous connectiez. Si vous n'avez pas de compte c'est <a href="inscription.php">par la <i class="icon-chevron-right"></a></i></p>
+		    <input type='submit' class='btn btn-primary' style="float:left;width:30%;margin-top:30px;margin-left:20px;" value="Connexion"/>
+		  </div>
+		  </form>
+	</div>
 	<div id="extra" style="background-color:#222;border-top:1px solid;color:white;padding:20px;margin-top:20px;">
 	
 	<div class="inner">

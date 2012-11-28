@@ -11,9 +11,15 @@ while ($result = mysql_fetch_assoc($query)) {
 }
 
 if($pwbase==md5($pw)){
+	
 	session_start();
 	$_SESSION['user']=$user;
-	header('Location: ../index.php');
+	if(isset($_POST['id_art'])){
+		header('Location: article.php?id_art='.$_POST['id_art'].'');
+	}
+	else{
+		header('Location: ../index.php');
+	}
 	
 }else{
 	header('Location: login.php?msgco=error');
