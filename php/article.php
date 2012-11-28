@@ -101,6 +101,11 @@ mysql_query("SET NAMES UTF8");
 				  <h4>Bien Joué mais vous aimez déjà cet article !</h4>
 				  
 				</div>
+				<div id="dejadislike" class="alert alert-info" style="display:none;">
+				  <button type="button" class="close" data-dismiss="alert">×</button>
+				  <h4>Vous devez vraiment détesté cet article mais vous l'avez déjà détesté!</h4>
+				  
+				</div>
         	<div class="span9" id="span-article" style="background-color: white;padding:10px;">
         		
         		<?php

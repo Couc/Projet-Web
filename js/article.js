@@ -49,6 +49,15 @@ function Change()
 		 	$("#dejalike").delay(5000).fadeOut("slow");
 		 }
 		 
+		 function dejadislike(){
+		 	
+      		$("#dejadislike").fadeIn("slow",dejadislike1);
+    
+		 }
+		 function dejadislike1(){
+		 	$("#dejadislike").delay(5000).fadeOut("slow");
+		 }
+		 
 
 		function like_base(valeur){
 			
@@ -91,10 +100,18 @@ function Change()
             {
                 if (xmlhttp.readyState==4 && xmlhttp.status==200)
                     {
-                    	dislike();
-                         nb_likes = nb_likes -= 1;
-                         document.getElementById("nombre_likes").innerHTML ="<i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>" + nb_likes + " likes"   ;                                     
-                    	 document.getElementById("like_div").innerHTML ="<img onclick =\"like_base("+nb_likes+");\" id=\"like_button\" src=\"../img/like.png\" style=\"float:left;width:50px;height:50px;\"/><img onclick =\"dislike_base("+nb_likes+");\" id=\"dislike_button\" src=\"../img/dislike.png\" style=\"margin-right:20px;margin-left:50px;width:50px;height:50px;\"/>"   ;
+                    	
+                    	if(xmlhttp.responseText == "dejadislike")
+                    	{
+                    		
+                    		dejadislike();
+                    	}
+                    	else{
+	                    	dislike();
+	                         nb_likes = nb_likes -= 1;
+	                         document.getElementById("nombre_likes").innerHTML ="<i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>" + nb_likes + " likes"   ;                                     
+	                    	 document.getElementById("like_div").innerHTML ="<img onclick =\"like_base("+nb_likes+");\" id=\"like_button\" src=\"../img/like.png\" style=\"float:left;width:50px;height:50px;\"/><img onclick =\"dislike_base("+nb_likes+");\" id=\"dislike_button\" src=\"../img/dislike.png\" style=\"margin-right:20px;margin-left:50px;width:50px;height:50px;\"/>"   ;
+                    	}
                     }
             }
             xmlhttp.open("GET","like.php?login="+login+"&id_art="+id_art+"&type=dislike",true);

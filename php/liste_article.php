@@ -103,8 +103,7 @@ mysql_query("SET NAMES UTF8");
 			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
 			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
 			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	
+			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>      	
 			        </form>
 			      </div>
 			    </div>
