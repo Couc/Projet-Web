@@ -1,5 +1,5 @@
 <?php
-include ('./_A8s2f9g714ef.php');
+include ('_A8s2f9g714ef.php');
 mysql_query("SET NAMES UTF8");
 session_start();
 ?>

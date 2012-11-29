@@ -1,7 +1,9 @@
 <?php
-include ('php/_A8s2f9g714ef.php');
-mysql_query("SET NAMES UTF8");
 session_start();
+include ('php/_A8s2f9g714ef.php');
+include ('php/script.php');
+mysql_query("SET NAMES UTF8");
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -122,7 +124,7 @@ session_start();
 					<div class="slider_content" style="width:100%;">
 						<ul class="rslides" id="slider2" style="width:100%;">
 							<?php
-							$sql_article = "SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art DESC LIMIT 5;";
+							$sql_article = "SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source= s.id_source AND s.id_source IN (".getSources().") ORDER BY nb_like DESC LIMIT 5";
 							$query_article = mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 
 							while ($result_article = mysql_fetch_assoc($query_article)) {
@@ -214,7 +216,7 @@ session_start();
 							<h3 class="drapeau"><span>A la une</span></h3>
 						</div>
 						<?php
-						$sql_article = "SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source = s.id_source ORDER BY a.id_art DESC LIMIT 30;";
+						$sql_article = "SELECT * FROM ARTICLE a, SOURCE s WHERE a.id_source= s.id_source AND s.id_source IN (".getSources().") ORDER BY DATE DESC LIMIT 20;";
 						$query_article = mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 
 						while ($result_article = mysql_fetch_assoc($query_article)) {
