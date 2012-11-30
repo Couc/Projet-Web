@@ -96,14 +96,24 @@ mysql_query("SET NAMES UTF8");
 			    <div id="collapseOne" class="accordion-body collapse in">
 			      <div class="accordion-inner">
 			        <form>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>
-			        	<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>      	
+			        	<?php
+			        	$requete = 'SELECT * FROM SOURCE WHERE ID_CAT='.$_GET['id_cat'];
+							$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+							while ($result = mysql_fetch_assoc($query)) {
+								
+								$requete2 = 'SELECT * FROM SOURCE_FAV WHERE login="'.$_SESSION['user'].'" AND id_source='.$result['id_source'].';';
+								$query2 = mysql_query($requete2) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+								if($result2 = mysql_fetch_assoc($query2)) {
+								
+									echo("<input type='checkbox' value='".$result['id_source']."' onClick='' style=\"float:left;margin-right: 5px;\" /><p style=\"float:left;margin-right:75px;\">".$result['libelle']."</p>");
+									}
+								else{
+									echo("<input type='checkbox' value='".$result['id_source']."' onClick='' style=\"float:left;margin-right: 5px;\" /><p style=\"float:left;margin-right:75px;\">".$result['libelle']."</p>");
+								}
+								}
+							?>	
+			        	<!--<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>-->
+			        	    	
 			        </form>
 			      </div>
 			    </div>
