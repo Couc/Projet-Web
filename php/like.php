@@ -13,7 +13,7 @@ mysql_query("SET NAMES UTF8");
 			
 			if(mysql_num_rows($query_dejadislike1)!=0){
 				
-				
+				echo "dejadislike1";
 				mysql_query(" UPDATE ARTICLE SET nb_like = nb_like + 2 WHERE id_art = ".$_GET['id_art'].";");
 			
 				mysql_query("INSERT INTO ARTICLE_FAV(login,id_art) VALUES('".$_GET['login']."',".$_GET['id_art'].");");
@@ -56,7 +56,7 @@ mysql_query("SET NAMES UTF8");
 		
 		if(mysql_num_rows($query_dejadislike)==0){
 			if(mysql_num_rows($query_dejalike1)!=0){
-				
+				echo "dejalike1";
 				mysql_query("UPDATE ARTICLE SET nb_like = nb_like - 2 WHERE id_art = ".$_GET['id_art'].";");
 				
 				mysql_query("INSERT INTO ARTICLE_DISLIKE(login,id_art) VALUES('".$_GET['login']."',".$_GET['id_art'].");");

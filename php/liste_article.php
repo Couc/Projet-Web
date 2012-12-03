@@ -34,7 +34,7 @@ mysql_query("SET NAMES UTF8");
    
   </head>
 
-  <body>
+  <body onload="filtre_source1();">
       <div class="navbar navbar-inverse navbar-fixed-top">
     	
       <div class="navbar-inner">
@@ -52,9 +52,9 @@ mysql_query("SET NAMES UTF8");
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="../index.php">Accueil</a></li>
-              <li class="active"><a href="#about">Catégorie</a></li>
-              <li><a href="#contact">A propos</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li class="active"><a href="categorie.php">Catégorie</a></li>
+              <li><a href="apropos.php">A propos</a></li>
+              <li><a href="contact.php">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
               <?php
@@ -105,12 +105,12 @@ mysql_query("SET NAMES UTF8");
 								$query2 = mysql_query($requete2) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 								if($result2 = mysql_fetch_assoc($query2)) {
 								
-									echo("<input type='checkbox' value='".$result['id_source']."' onClick='' style=\"float:left;margin-right: 5px;\" /><p style=\"float:left;margin-right:75px;\">".$result['libelle']."</p>");
+									echo("<input class=\"check_source\" onclick=\"filtre_source(this);\" type='checkbox' value='".$result['id_source']."' style=\"float:left;margin-right: 5px;\" checked/><p style=\"float:left;margin-right:67px;\">".$result['libelle']."</p>");
 									}
 								else{
-									echo("<input type='checkbox' value='".$result['id_source']."' onClick='' style=\"float:left;margin-right: 5px;\" /><p style=\"float:left;margin-right:75px;\">".$result['libelle']."</p>");
+									echo("<input class=\"check_source\" onclick=\"filtre_source(this);\" type='checkbox' value='".$result['id_source']."' style=\"float:left;margin-right: 5px;\" /><p style=\"float:left;margin-right:67px;\">".$result['libelle']."</p>");
 								}
-								}
+							}
 							?>	
 			        	<!--<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>-->
 			        	    	
@@ -161,7 +161,7 @@ mysql_query("SET NAMES UTF8");
 						$heure = substr($result_article['date'],8,2);
 						$minutes = substr($result_article['date'],10,2);
 						
-						echo"<article id=\"article-accueil\">
+						echo"<article id=\"article-accueil\" class=".$result_article['id_source'].">
         		
         		<div id=\"info-post-accueil\" >
         			<i class=\"icon-calendar\" id=\"icone-accueil\" ></i><date>".date("D d M Y",mktime(0,0,0,$mois,$jour,$annee))."</date>
@@ -287,10 +287,10 @@ mysql_query("SET NAMES UTF8");
 					<h3><span class="slash">>></span> Explore</h3>				
 					
 					<ul class="footer-links clearfix">
-						<li><a href="/" style="text-decoration: none;color:#777;list-style:none;">Accueil</a></li>
-                        <li><a href="/themes" style="text-decoration: none;color:#777;list-style:none;">Catégories</a></li>
-                        <li><a href="/faq" style="text-decoration: none;color:#777;list-style:none;">A propos</a></li>
-                        
+						<li><a href="../index.php" style="text-decoration: none;color:#777;list-style:none;">Accueil</a></li>
+                        <li><a href="categorie.php" style="text-decoration: none;color:#777;list-style:none;">Catégories</a></li>
+                        <li><a href="apropos.php" style="text-decoration: none;color:#777;list-style:none;">A propos</a></li>
+                        <li><a href="contact.php" style="text-decoration: none;color:#777;list-style:none;">Contact</a></li>
                     </ul>
 					
 				</div> <!-- /span3 -->
@@ -307,8 +307,11 @@ mysql_query("SET NAMES UTF8");
 					<h3><span class="slash">>></span> Social</h3>				
 					
 					<ul class="footer-links clearfix">
-                        <li><a href="http://facebook.com/" style="text-decoration: none;color:#777;list-style:none;">Facebook</a></li>
-                        <li><a href="http://twitter.com/" style="text-decoration: none;color:#777;list-style:none;">Twitter</a></li>
+						
+                        <a href="http://facebook.com/" style="float:left;margin-right:10px;" ><img onmouseover="this.src='../img/facebook-c.png'; " onmouseout="this.src='../img/facebook.png'; " src="../img/facebook.png"/></a>
+                        <a href="http://twitter.com/" style="float:left;margin-right:10px;"><img onmouseover="this.src='../img/twitter-c.png'; " onmouseout="this.src='../img/twitter.png'; " src="../img/twitter.png"/></a>
+                    	<a href="http://google.com/" style="float:left;"><img onmouseover="this.src='../img/google-c.png'; " onmouseout="this.src='../img/google.png'; " src="../img/google.png"/></a>
+					
                     </ul>
 					
 				</div> <!-- /span3 -->
@@ -367,6 +370,43 @@ mysql_query("SET NAMES UTF8");
 	    	document.getElementById('scroll-cat').style.top= document.documentElement.scrollHeight - 730 +'px';
 	    }
 	}
+</script>
+
+<script type="text/javascript">
+	
+	function filtre_source(id){
+				
+				var value = id.value;
+				var elements = document.getElementsByClassName(value);
+				if(id.checked){
+				    for(var i = 0, length = elements.length; i < length; i++) {
+				       
+				          elements[i].style.display = 'block';
+				     }
+				}
+				else{
+					for(var i = 0, length = elements.length; i < length; i++) {
+				       
+				          elements[i].style.display = 'none';
+				     }
+					
+				}
+				
+				
+			}
+			
+			function filtre_source1(){
+				
+				var elements = document.getElementsByClassName('check_source');
+				
+					for(var i = 0, length = elements.length; i < length; i++) {
+				       
+				          //elements[i].style.display = 'none';
+				     	filtre_source(elements[i]);			
+				}
+						
+			}
+	
 </script>
 
   
