@@ -43,6 +43,11 @@ mysql_query("SET NAMES UTF8");
 							<li>
 								<a href="php/categorie.php">Catégorie</a>
 							</li>
+							 <?php
+              if(isset($_SESSION['user'])){
+              	echo "<li><a href=\"php/liste_like.php\">Like</a></li>";
+			  }
+              ?>
 							<li>
 								<a href="php/apropos.php">A propos</a>
 							</li>
