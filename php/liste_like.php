@@ -96,8 +96,8 @@ mysql_query("SET NAMES UTF8");
     <div class="container" id="container" style="margin-left:5%;min-height: 460px;">
     	<div class="row-fluid">
        	
-        <div class="span12">
-        	<div class="span10" id="span-article">
+        
+        	<div id="span-article">
         		<div class="slider_control">
 	        		<h3 class="drapeau">
 	        			
@@ -191,7 +191,7 @@ mysql_query("SET NAMES UTF8");
 					}
         		?>
         	</div><!--span10 content -->	
-        	<aside class="span2" id="scroll-cat" >
+        	<aside class="span2" id="scroll-cat" style="top:100px;">
         		<form class="form-search" >
 				  <div class="input-append" >
 				    <input type="text" class="span2 search-query" style="width:150px;margin-bottom:20px;">
@@ -215,7 +215,7 @@ mysql_query("SET NAMES UTF8");
 	        	</div>
         	</aside>
         
-     	</div><!--span12-->
+     	
       </div>
 
       

@@ -77,6 +77,7 @@ mysql_query("SET NAMES UTF8");
 								echo("<a href=\"login.php\" class=\"btn btn-primary\"><i class=\"icon-user icon-white\"></i>Se connecter</a>");
 							}
 							?>
+
 						</ul>
 					</div><!--/.nav-collapse -->
 				</div>

@@ -124,6 +124,7 @@ aside{
 }
 #scroll{
 	top:600px;
+	
 }
 #scroll-cat{
 	top:300px;
@@ -132,26 +133,10 @@ aside{
 	left:75%;
 }
 #scroll-cat-art{
-	top:100px;
+	top:20px;
 	/*padding-top:50px;*/
 	position: absolute;
 	left:70%;
-}
-@media (max-width:768px) {
-	
-	#scroll{
-		display:none;
-		
-	}
-	#scroll-cat{
-		display:none;
-		
-	}
-	#scroll-cat-art{
-		display:none;
-		
-	}
-
 }
 
 @media (max-width:1200px) {
@@ -222,13 +207,55 @@ aside{
 
 /************************************************************/
 
-#span_article{
+#span-article{
+	width:90%;
+}
+
+@media (max-width:1024px){
+	#span-article{
+	width:100%;
+}
+#scroll-cat{
+	display:none;
+}
+#scroll{
+		display:none;
+		
+	}
+	#scroll-cat-art{
+		display:none;
+		
+	}
+}
+
+@media (min-width:1024px) and (max-width:1200px) {
+	#span-article{
+	width:68%;
+}
+}
+
+
+@media (min-width:1200px) and (max-width:1350px) {
+	#span-article{
+	width:70%;
+}
+}
+
+@media (min-width:1350px) and  (max-width:1480px) {
+	#span-article{
 	width:80%;
 }
 
-@media (max-width:1600px) {
-	#span_article{
-	width:60%;
 }
+
+@media (min-width:1480px) {
+	#scroll{
+	left:80%;
+	
+}
+#scroll-cat-art{
+	left:73%;
+}
+
 }
 
