@@ -84,6 +84,11 @@ PRIMARY KEY(login,date)) ENGINE = InnoDB;
 ALTER TABLE COMMENTAIRES ADD CONSTRAINT FK_id_art FOREIGN KEY (id_art) REFERENCES ARTICLE (id_art);
 ALTER TABLE COMMENTAIRES ADD CONSTRAINT FK_login FOREIGN KEY (login) REFERENCES USER (login);
 
+CREATE TABLE CONTACT (
+increment INT AUTO_INCREMENT,
+mail CHAR(255),
+message TEXT,
+PRIMARY KEY(increment)) ENGINE = InnoDB;
 
 
 INSERT INTO CATEGORIE (id_cat,libelle,description,date_maj,image) VALUES (null,'Politique','descr',Now(),null);

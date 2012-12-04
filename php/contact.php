@@ -15,6 +15,7 @@ session_start();
 		<link href="../css/bootstrap.css" rel="stylesheet">
 		<link href="../css/style.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/responsiveslides.css" />
+		<link rel="stylesheet" href="../css/style_comment.css" />
 		<style type="text/css">
 			body {
 				padding-top: 60px;
@@ -75,101 +76,33 @@ session_start();
 				</div>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container" style='min-height:460px;'>
 			<div class="row-fluid">
-				<h1>Profil</h1>
-				<div class='span1'></div>
-				<div class='span3'>
-					<?php
-					if (isset($_GET['msgsuca'])) {
+				<h2>Nous Contacter</h2>
+				<h4>E-Mail</h4>
+				<a target='blank' href='mailto:couc.boulac@gmail.com?Subject=Contact about Enew'>Clément Boulachin</a><br/>
+				<a target='blank' href='mailto:thomaslanternier3@gmail.com?Subject=Contact about Enew'>Thomas Lanternier</a> 
+ 			<br/><br/>
+ 			<h4>Formulaire</h4>
+ 			<div id="addCommentContainer">
+ 							<form action='submit_contact.php' method='POST'>
+ 			<?php
+ 			if (isset($_GET['msgsend'])) {
 						echo('	<div class="alert alert-success">
-Vos informations ont été mise à jour
+Message Enregistré. Vous recevrez une réponse sous 7 jours ouvrable. 
 </div>');
-					} elseif (isset($_GET['msgfaia'])) {
-						echo('	<div class="alert alert-error">
-Les nouveaux mot de passes ne sont pas identique !
-</div>');
-					} elseif (isset($_GET['msgfaic'])) {
-						echo('	<div class="alert alert-error">
-Le mot de passe fournit n\'est pas correct
-</div>');
-					} elseif (isset($_GET['msgfaid'])) {
-						echo('	<div class="alert alert-error">
-Erreur, veuillez recommencer.
-</div>');
-					} else {
-						echo('	<div style="display:block;height:47px;" class="">&nbsp;
-</div>');
-
-					}
+					} 
 					?>
-					<form action='submit_profil.php' action='POST'>
-						<?php
-						$requete = 'SELECT * FROM USER WHERE login="' . $_SESSION['user'] . '"';
-						$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-						while ($result = mysql_fetch_assoc($query)) {
-							echo("<label>Login</label><input type='text' name='login' value='" . $result['login'] . "' required readonly/><br>
-<label>E-mail</label><input type='email' name='emailuser' value='" . $result['email'] . "' required/><br>");
-
-						}
-						?>
-						<br>
-						<label>Mot de passe</label>
-						<input type='password' name='lastpw' required/>
-						<input type='text' class='btn btn-primary' value='Change password' onclick='loadPassword()'/>
-						<div id='chgpwd' style='display:none'>
-							<label>Nouveau mot de passe</label>
-							<input type='password' name='newpw1'/>
-							<label>Confirmez le nouveau mot de passe</label>
-							<input type='password' name='newpw2'/>
-						</div>
-						<button type="submit" class="btn">
-							Submit
+ 			<label>Votre e-mail</label><br/>
+ 			<input type='email' required name='mail'/>
+ 			<label>Message</label><br/>
+ 			<textarea required name='msg' rows='5' cols='50'></textarea>
+ 			<button type="submit" id='submit' >
+							Envoyer
 						</button>
-					</form>
+ 							</form>
+ 			</div>
 				</div>
-				<div class='span7'>
-					<ul id='tabBar' class="nav nav-tabs">
-						<?php
-						$requete = 'SELECT * FROM CATEGORIE ORDER BY ID_CAT';
-						$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-						$i = 0;
-						while ($result = mysql_fetch_assoc($query)) {
-							echo("<li ");
-							if ($i == 0) {echo("class=\"active\"");
-							}
-							echo("><a href=\"#\" onclick='loadSources(" . $result['id_cat'] . ")'>" . $result['libelle'] . "</a></li>");
-							$i++;
-						}
-						?>
-					</ul>
-					<div id='receive_sources'>
-						<table class="table table-striped">
-							<tr>
-								<td style='text-align:center'><b>Libellé</b></td><td style='text-align:center'><b>Flux rss</b></td><td style='text-align:center'><b>Active</b></td>
-							</tr>
-							<?php
-							$requete = 'SELECT * FROM SOURCE WHERE ID_CAT=1';
-							$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-							while ($result = mysql_fetch_assoc($query)) {
-								echo("<tr><td>" . $result['libelle'] . "</td><td>" . $result['lien'] . "</td><td style='text-align:center'>");
-								$requete2 = 'SELECT * FROM SOURCE_FAV WHERE login="' . $_SESSION['user'] . '" AND id_source=' . $result['id_source'] . ';';
-								$query2 = mysql_query($requete2) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-								if ($result2 = mysql_fetch_assoc($query2)) {
-
-									echo("<input type='checkbox' value='" . $result['id_source'] . "' onClick='updateSources(this)' checked='checked'/>");
-								} else {
-									echo("<input type='checkbox' value='" . $result['id_source'] . "' onClick='updateSources(this)' />");
-								}
-
-								echo("</td></tr>");
-							}
-							?>
-						</table>
-					</div>
-				</div>
-				<div class='span1'></div>
-			</div>
 		</div>
 		<!--Footer-->
 		<div id="extra" style="background-color:#222;border-top:1px solid;color:white;padding:20px;margin-top:20px;">
