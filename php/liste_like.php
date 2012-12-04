@@ -52,10 +52,10 @@ mysql_query("SET NAMES UTF8");
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="../index.php">Accueil</a></li>
-              <li class="active"><a href="categorie.php">Catégorie</a></li>
-               <?php
+              <li><a href="categorie.php">Catégorie</a></li>
+              <?php
               if(isset($_SESSION['user'])){
-              	echo "<li><a href=\"liste_like.php\">Like</a></li>";
+              	echo "<li class=\"active\"><a href=\"liste_like.php\">Like</a></li>";
 			  }
               ?>
               <li><a href="apropos.php">A propos</a></li>
@@ -71,12 +71,16 @@ mysql_query("SET NAMES UTF8");
     								</button>
     								<ul class=\"dropdown-menu\">
     									<li>
-<a href=\"profil.php\">Profil</a>
-</li>
-<li class=\"divider\"></li>
-<li>
-<a href=\"logout.php\">Logout</a>
-</li>
+											<a href=\"profil.php\">Profil</a>
+										</li>
+										<li>
+											<a href=\"liste_like.php\">Like</a>
+										</li>
+										<li class=\"divider\"></li>
+										<li>
+											<a href=\"logout.php\">Logout</a>
+										</li>
+										
 									</ul>
     							</div>");
 							} else {
@@ -91,73 +95,20 @@ mysql_query("SET NAMES UTF8");
     </div>
     <div class="container" id="container" style="margin-left:5%;min-height: 460px;">
     	<div class="row-fluid">
-       	<div class="accordion" id="accordion2">
-			  <div class="accordion-group">
-			    <div class="accordion-heading">
-			      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne" style="background-color: #333;">
-			        <span style="color: white;text-decoration: none;">Sélectionnez vos sources</span> <i class="icon-arrow-down icon-white pull-right"></i>
-			      </a>
-			    </div>
-			    <div id="collapseOne" class="accordion-body collapse in">
-			      <div class="accordion-inner">
-			        <form>
-			        	<?php
-			        	$requete = 'SELECT * FROM SOURCE WHERE ID_CAT='.$_GET['id_cat'];
-							$query = mysql_query($requete) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-							while ($result = mysql_fetch_assoc($query)) {
-								
-								$requete2 = 'SELECT * FROM SOURCE_FAV WHERE login="'.$_SESSION['user'].'" AND id_source='.$result['id_source'].';';
-								$query2 = mysql_query($requete2) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
-								if($result2 = mysql_fetch_assoc($query2)) {
-								
-									echo("<input class=\"check_source\" onclick=\"filtre_source(this);\" type='checkbox' value='".$result['id_source']."' style=\"float:left;margin-right: 5px;\" checked/><p style=\"float:left;margin-right:67px;\">".$result['libelle']."</p>");
-									}
-								else{
-									echo("<input class=\"check_source\" onclick=\"filtre_source(this);\" type='checkbox' value='".$result['id_source']."' style=\"float:left;margin-right: 5px;\" /><p style=\"float:left;margin-right:67px;\">".$result['libelle']."</p>");
-								}
-							}
-							?>	
-			        	<!--<input type="checkbox" style="float:left;margin-right: 5px;" value="Source" checked> <p style="float:left;margin-right:75px;">Source</p>-->
-			        	    	
-			        </form>
-			      </div>
-			    </div>
-			  </div>
-      	</div>
-       
-        	
-        	<div id="span-article">
+       	
+        <div class="span12">
+        	<div class="span10" id="span-article">
         		<div class="slider_control">
 	        		<h3 class="drapeau">
-	        			<?php
-	        			switch($_GET['id_cat'])
-						{
-							case 0:
-	        					echo"<span>A la une</span>";
-								break;
-							case 1:
-								echo"<span>Politique</span>";
-								break;
-							case 2:
-								echo"<span>High-Tech</span>";
-								break;
-							case 3:
-								echo"<span>Sport</span>";
-								break;
-							case 4:
-								echo"<span>Economie</span>";
-								break;
-							case 5:
-								echo"<span>People</span>";
-								break;
-						}
-	        			?>
+	        			
+	        					<span>Like</span>
+								
 	        		</h3>
 	        		
         		</div>
         		
         		<?php
-        		$sql_article="SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND s.id_cat = ".$_GET['id_cat']." ORDER BY id_art DESC;";
+        		$sql_article="SELECT * FROM ARTICLE a,SOURCE s, ARTICLE_FAV af WHERE a.id_source = s.id_source AND af.id_art = a.id_art AND af.login= '".$_SESSION['user']."' ORDER BY date DESC;";
 				$query_article=mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
         		 	
 					while($result_article=mysql_fetch_assoc($query_article)){
@@ -240,7 +191,6 @@ mysql_query("SET NAMES UTF8");
 					}
         		?>
         	</div><!--span10 content -->	
-        	
         	<aside class="span2" id="scroll-cat" >
         		<form class="form-search" >
 				  <div class="input-append" >
@@ -265,7 +215,7 @@ mysql_query("SET NAMES UTF8");
 	        	</div>
         	</aside>
         
-     	
+     	</div><!--span12-->
       </div>
 
       
@@ -379,42 +329,6 @@ mysql_query("SET NAMES UTF8");
 	}
 </script>
 
-<script type="text/javascript">
-	
-	function filtre_source(id){
-				
-				var value = id.value;
-				var elements = document.getElementsByClassName(value);
-				if(id.checked){
-				    for(var i = 0, length = elements.length; i < length; i++) {
-				       
-				          elements[i].style.display = 'block';
-				     }
-				}
-				else{
-					for(var i = 0, length = elements.length; i < length; i++) {
-				       
-				          elements[i].style.display = 'none';
-				     }
-					
-				}
-				
-				
-			}
-			
-			function filtre_source1(){
-				
-				var elements = document.getElementsByClassName('check_source');
-				
-					for(var i = 0, length = elements.length; i < length; i++) {
-				       
-				          //elements[i].style.display = 'none';
-				     	filtre_source(elements[i]);			
-				}
-						
-			}
-	
-</script>
 
   
 	</body>

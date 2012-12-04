@@ -41,13 +41,18 @@ mysql_query("SET NAMES UTF8");
 								<a href="index.php">Accueil</a>
 							</li>
 							<li>
-								<a href="php/liste_article.php">Catégorie</a>
+								<a href="php/categorie.php">Catégorie</a>
+							</li>
+							 <?php
+              if(isset($_SESSION['user'])){
+              	echo "<li><a href=\"php/liste_like.php\">Like</a></li>";
+			  }
+              ?>
+							<li>
+								<a href="php/apropos.php">A propos</a>
 							</li>
 							<li>
-								<a href="#contact">A propos</a>
-							</li>
-							<li>
-								<a href="#contact">Contact</a>
+								<a href="php/contact.php">Contact</a>
 							</li>
 						</ul>
 						<ul class="nav pull-right">
@@ -77,44 +82,25 @@ mysql_query("SET NAMES UTF8");
 				</div>
 			</div>
 		</div>
-		<!--<div class="hero-unit hidden-phone">
-		<div class="container">
-
-		*******************************************
-		* ****************************************
-		<button class="btn btn-primary">Action</button>
-		<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-		<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu">
-		<li>
-		<a href="#">Action</a>
-		</li>
-		<li>
-		<a href="#">Another action</a>
-		</li>
-		<li>
-		<a href="#">Something else here</a>
-		</li>
-		<li class="divider"></li>
-		<li>
-		<a href="#">Separated link</a>
-		</li>
-		</ul>
-		</div>
-
-		**********************************************************
-		<div class="texte" style="float:left;">
-		<h1>Incroyablement simple<br> et intuitif,<br>toutes vos news<br> à portée de clic</h1>
-
-		<p><a class="btn btn-primary btn-large">S'inscrire &raquo;</a></p>
-		</div>
-		<div class="image-hero hidden-phone hidden-tablet">
-		<img src="img/visual1.png" alt="image" style="opacity: 0.7;"/>
-		</div>
-
-		</div>
-		</div>-->
+		<?php
+		if(!isset($_SESSION['user'])){
+			
+				echo "<div class=\"hero-unit hidden-phone\">
+				<div class=\"container\">	
+				
+				<div class=\"texte\" style=\"float:left;\">
+				<h1>Incroyablement simple<br> et intuitif,<br>toutes vos news<br> à portée de clic</h1>
+		
+				<p><a class=\"btn btn-primary btn-large\">S'inscrire &raquo;</a></p>
+				</div>
+				<div class=\"image-hero hidden-phone hidden-tablet\">
+				<img src=\"img/visual1.png\" alt=\"image\" style=\"opacity: 0.7;\"/>
+				</div>
+		
+				</div>
+				</div>";
+				}
+		?>
 		<div class="container">
 			<div class="row-fluid">
 				<div class="span12" id="div-slider">
@@ -345,13 +331,16 @@ mysql_query("SET NAMES UTF8");
 							<h3><span class="slash">>></span> Explore</h3>
 							<ul class="footer-links clearfix">
 								<li>
-									<a href="/" style="text-decoration: none;color:#777;list-style:none;">Accueil</a>
+									<a href="index.php" style="text-decoration: none;color:#777;list-style:none;">Accueil</a>
 								</li>
 								<li>
-									<a href="/themes" style="text-decoration: none;color:#777;list-style:none;">Catégories</a>
+									<a href="php/categorie.php" style="text-decoration: none;color:#777;list-style:none;">Catégories</a>
 								</li>
 								<li>
-									<a href="/faq" style="text-decoration: none;color:#777;list-style:none;">A propos</a>
+									<a href="php/apropos.php" style="text-decoration: none;color:#777;list-style:none;">A propos</a>
+								</li>
+								<li>
+									<a href="php/contact.php" style="text-decoration: none;color:#777;list-style:none;">Contact</a>
 								</li>
 							</ul>
 						</div>
@@ -360,14 +349,10 @@ mysql_query("SET NAMES UTF8");
 						<!-- /span3 -->
 						<div class="span2">
 							<h3><span class="slash">>></span> Social</h3>
-							<ul class="footer-links clearfix">
-								<li>
-									<a href="http://facebook.com/" style="text-decoration: none;color:#777;list-style:none;">Facebook</a>
-								</li>
-								<li>
-									<a href="http://twitter.com/" style="text-decoration: none;color:#777;list-style:none;">Twitter</a>
-								</li>
-							</ul>
+							 <a href="http://facebook.com/" style="float:left;margin-right:10px;" ><img onmouseover="this.src='img/facebook-c.png'; " onmouseout="this.src='img/facebook.png'; " src="img/facebook.png"/></a>
+		                     <a href="http://twitter.com/" style="float:left;margin-right:10px;"><img onmouseover="this.src='img/twitter-c.png'; " onmouseout="this.src='img/twitter.png'; " src="img/twitter.png"/></a>
+		                     <a href="http://google.com/" style="float:left;"><img onmouseover="this.src='img/google-c.png'; " onmouseout="this.src='img/google.png'; " src="img/google.png"/></a>
+					
 						</div>
 						<!-- /span3 -->
 					</div>
@@ -408,7 +393,7 @@ mysql_query("SET NAMES UTF8");
 		<script type="text/javascript">
 			window.onscroll = function() {
 				var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
-				if(scroll > 320)
+				if(scroll > 600)
 					document.getElementById('scroll').style.top = scroll + 'px';
 				if(scroll > document.documentElement.scrollHeight - 730) {
 					document.getElementById('scroll').style.top = document.documentElement.scrollHeight - 730 + 'px';

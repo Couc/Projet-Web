@@ -52,6 +52,11 @@ mysql_query("SET NAMES UTF8");
             <ul class="nav">
               <li><a href="../index.php">Accueil</a></li>
               <li class="active" ><a href="#about">Catégorie</a></li>
+               <?php
+              if(isset($_SESSION['user'])){
+              	echo "<li><a href=\"liste_like.php\">Like</a></li>";
+			  }
+              ?>
               <li><a href="#contact">A propos</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -88,29 +93,19 @@ mysql_query("SET NAMES UTF8");
     	<div class="row-fluid">
     		<div id="like" class="alert alert-success" style="display:none;">
 				  <button type="button" class="close" data-dismiss="alert">×</button>
-				  <h4>Bien Joué!</h4>
-				  Vous avez aimé cet article, il est maintenant enregistré dans votre espace personnel sous la section "Like"
+				  <h4>Cet article est maintenant enregistré dans votre espace personnel sous la section "Like"</h4>
+				 
 				</div>
-				<div id="dislike" class="alert alert-error" style="display:none;">
-				  <button type="button" class="close" data-dismiss="alert">×</button>
-				  <h4>OHHHHHHH!</h4>
-				  Cet article est-il si mauvais ?
-				</div>
-				<div id="dejalike" class="alert alert-info" style="display:none;">
-				  <button type="button" class="close" data-dismiss="alert">×</button>
-				  <h4>Vous n'aimez plus cet article ?</h4>
-				  
-				</div>
-				<div id="dejadislike" class="alert alert-info" style="display:none;">
-				  <button type="button" class="close" data-dismiss="alert">×</button>
-				  <h4>Finalement pas si mal ?</h4>
-				  
-				</div>
+				
         	<div class="span9" id="span-article" style="background-color: white;padding:10px;">
         		
         		<?php
+        	if(!empty($_GET['id_art']))
+			{
         		$sql_article="SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND a.id_art = ".$_GET['id_art'].";";
 				$query_article=mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
+        		 
+        		 if(mysql_num_rows($query_article)!=0){
         		 	
 					while($result_article=mysql_fetch_assoc($query_article)){
 						$annee = substr($result_article['date'],0,4);
@@ -162,22 +157,54 @@ mysql_query("SET NAMES UTF8");
         		</article>";
 						
 					}
+
+			}
+else{
+	echo "<div class=\"container\" id=\"container\" style=\"margin-left:5%;min-height: 460px;\">
+		    	<div class=\"row-fluid\">
+		    		<div class=\"span9\" id=\"span-article\" style=\"padding:10px;\">
+		    			
+		    			<h1 style=\"margin-top:20%;\">404 ERROR, l'article auquel vous essayez d'accèder n'existe pas !!</h1>
+		    			
+		    		</div>
+		    	</div>
+    	
+    	 </div>";
+}
+
+}
+else{
+	echo "<div class=\"container\" id=\"container\" style=\"margin-left:5%;min-height: 460px;\">
+		    	<div class=\"row-fluid\">
+		    		<div class=\"span9\" id=\"span-article\" style=\"padding:10px;\">
+		    			
+		    			<h1 style=\"margin-top:20%;\">404 ERROR, l'article auquel vous essayez d'accèder n'existe pas !!</h1>
+		    			
+		    		</div>
+		    	</div>
+    	
+    	 </div>";
+}
+
         		?>
         	</div><!--span10 content -->	
         	<aside class="span3" id="scroll-cat-art" style="margin-top:0px;">
 	        		<div id="addCommentContainer" style="margin-bottom:50px;width:242px;height:100px;padding:0px;">
 	        			<?php
+	        		if(!empty($_GET['id_art'])){
+	        			
 	        			if(isset($_SESSION['user'])){
 	        			$query_like = mysql_query("SELECT * FROM ARTICLE_FAV WHERE login = '".$_SESSION['user']."' and id_art = ".$_GET['id_art'].";");
 						$query_dislike = mysql_query("SELECT * FROM ARTICLE_DISLIKE WHERE login = '".$_SESSION['user']."' and id_art = ".$_GET['id_art'].";");
-						
+						$query_nb_like = mysql_query("SELECT nb_like FROM ARTICLE WHERE id_art = ".$_GET['id_art'].";");
+						$result_nb_like = mysql_fetch_assoc($query_nb_like);
 						if(mysql_num_rows($query_like)!=0)
 						{
 			        			echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
-		        					<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/smile_yellow.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		        					<img onclick =\"like_base(".$result_nb_like['nb_like'].");\" id=\"like_button\" src=\"../img/smile_yellow.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
 		-moz-border-radius-topleft: 10px;
 		border-top-left-radius: 10px;\"/>
-		        					<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		        					<img onclick =\"dislike_base(".$result_nb_like['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
 		-moz-border-radius-topright: 10px;
 		border-top-right-radius: 10px;\"/>
 		        				</div>";
@@ -185,20 +212,20 @@ mysql_query("SET NAMES UTF8");
 						else if(mysql_num_rows($query_dislike)!=0){
 							
 							echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
-		        					<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		        					<img onclick =\"like_base(".$result_nb_like['nb_like'].");\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
 		-moz-border-radius-topleft: 10px;
 		border-top-left-radius: 10px;\"/>
-		        					<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile_yellow.png\" style=\"-webkit-border-top-right-radius: 10px;
+		        					<img onclick =\"dislike_base(".$result_nb_like['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile_yellow.png\" style=\"-webkit-border-top-right-radius: 10px;
 		-moz-border-radius-topright: 10px;
 		border-top-right-radius: 10px;\"/>
 		        				</div>";
 						}else{
 							
 							echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
-		        					<img onclick =\"like_base(".$result_article['nb_like'].");\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		        					<img onclick =\"like_base(".$result_nb_like['nb_like'].");\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
 		-moz-border-radius-topleft: 10px;
 		border-top-left-radius: 10px;\"/>
-		        					<img onclick =\"dislike_base(".$result_article['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		        					<img onclick =\"dislike_base(".$result_nb_like['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
 		-moz-border-radius-topright: 10px;
 		border-top-right-radius: 10px;\"/>
 		        				</div>";
@@ -215,6 +242,21 @@ else {
 		border-top-right-radius: 10px;\"/>
 		        				</div></a>";
 }
+
+
+}
+else {
+	echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<img onclick =\"like_base();\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/>
+		        					<img onclick =\"dislike_base();\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div>";
+}
+
+	
         				?>
         			
         				<div id="partage" style="margin-left:20px;">
@@ -255,6 +297,8 @@ else {
 	    				
 					</div>
 					<?php
+					if(!empty($_GET['id_art']))
+					{
 						$query_comment = mysql_query("SELECT * FROM commentaires WHERE id_art=".$_GET['id_art'].";") or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");;
 			
 							while($result_comment = mysql_fetch_assoc($query_comment))				
@@ -270,6 +314,7 @@ else {
 							<p>'.$result_comment['body'].'</p>
 						</div>';
 							}
+					}
 						?>
 				</div>
         	</aside>
@@ -287,7 +332,11 @@ else {
 						<input style='float:left;' type='text' name='username' required placeholder='username'/>
 						<label style='float:left;width:45%;margin-right:30px;'>Mot de passe</label>
 						<input style='float:left;' type='password' name='password' required placeholder='password'/>
-						<?php echo "<input type=\"hidden\" name=\"id_art\" value=".$_GET['id_art'].">"; ?>
+						<?php 
+						if(!empty($_GET['id_art'])){
+						echo "<input type=\"hidden\" name=\"id_art\" value=".$_GET['id_art'].">"; 
+						}
+						?>
 				
 		  </div>
 		  <div class="modal-footer">
@@ -318,9 +367,10 @@ else {
 					<h3><span class="slash">>></span> Explore</h3>				
 					
 					<ul class="footer-links clearfix">
-						<li><a href="/" style="text-decoration: none;color:#777;list-style:none;">Accueil</a></li>
-                        <li><a href="/themes" style="text-decoration: none;color:#777;list-style:none;">Catégories</a></li>
-                        <li><a href="/faq" style="text-decoration: none;color:#777;list-style:none;">A propos</a></li>
+						<li><a href="../index.php" style="text-decoration: none;color:#777;list-style:none;">Accueil</a></li>
+                        <li><a href="categorie.php" style="text-decoration: none;color:#777;list-style:none;">Catégories</a></li>
+                        <li><a href="apropos.php" style="text-decoration: none;color:#777;list-style:none;">A propos</a></li>
+                        <li><a href="contact.php" style="text-decoration: none;color:#777;list-style:none;">Contact</a></li>
                         
                     </ul>
 					
