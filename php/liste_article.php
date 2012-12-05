@@ -98,7 +98,7 @@ mysql_query("SET NAMES UTF8");
 			        <span style="color: white;text-decoration: none;">Sélectionnez vos sources</span> <i class="icon-arrow-down icon-white pull-right"></i>
 			      </a>
 			    </div>
-			    <div id="collapseOne" class="accordion-body collapse in">
+			    <div id="collapseOne" class="accordion-body collapse out">
 			      <div class="accordion-inner">
 			        <form>
 			        	<?php

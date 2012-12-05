@@ -97,7 +97,7 @@ mysql_query("SET NAMES UTF8");
 				 
 				</div>
 				
-        	<div class="span9" id="span-article" style="background-color: white;padding:10px;">
+        	<div id="span-article" style="background-color: white;padding:10px;">
         		
         		<?php
         	if(!empty($_GET['id_art']))
@@ -143,11 +143,39 @@ mysql_query("SET NAMES UTF8");
         			<br>
         			<span id=\"nombre_likes\"><i style=\"margin-bottom:10px;\" class=\"icon-thumbs-up\" id=\"icone-accueil-last\" ></i>".$result_article['nb_like']." likes</span>
         		</div>
+        		
+        		
       
-        		<header style=\"margin-top:70px;margin-bottom:90px;\">
+        		<header style=\"margin-top:70px;margin-bottom:40px;\">
         				<h1>".html_entity_decode($result_article['titre'])."</h1>
         		</header>
-        		
+        		<div id=\"info-post-tablet\" style=\"padding:10px;height:120px;border-top:1px solid #C2C2C2;border-bottom:1px solid #C2C2C2;font-size:16px;\">	
+        						<i class=\"icon-calendar\" id=\"icone-accueil-tablet-first\" style=\"margin-left:20px;\"></i><date style=\"float:left;\">".date("D d M Y",mktime(0,0,0,$mois,$jour,$annee))."</date>
+			        			<br>
+			        			<span id=\"author\" id=\"icone-accueil-tablet\" style=\"margin-left:20px;\"><i class=\"icon-user\" style=\"margin-right:4px;\"></i>".$result_article['libelle']."</span>";
+			        			
+			        			switch($result_article['id_cat']){
+											case 1:
+												echo "<br><span id=\"categorie\" id=\"icone-accueil-tablet\" style=\"margin-left:20px;\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>Politique</span>";
+												break;
+											case 2:
+												echo "<br><span id=\"categorie\" id=\"icone-accueil-tablet\" style=\"margin-left:20px;\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>High-Tech</span>";
+												break;
+											case 3:
+												echo "<br><span id=\"categorie\" id=\"icone-accueil-tablet\" style=\"margin-left:20px;\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>Sport</span>";
+												break;
+											case 4:
+												echo "<br><span id=\"categorie\" id=\"icone-accueil-tablet\" style=\"margin-left:20px;\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>Economie</span>";
+												break;
+											case 5:
+												echo "<br><span id=\"categorie\" id=\"icone-accueil-tablet\" style=\"margin-left:20px;\"><i class=\"icon-tasks\" style=\"margin-right:4px;\"></i>People</span>";
+												break;
+										}
+			        			
+			        			echo "<br><span id=\"nombre_commentaire\" id=\"icone-accueil-tablet\" style=\"margin-left:20px;\"><i class=\"icon-comment\" style=\"margin-right:4px;\"></i>".$result_article['nb_comment']." comments</span>
+			        			
+			        			<br><span id=\"nombre_likes\" id=\"icone-accueil-tablet-last\" style=\"margin-left:20px;\"><i class=\"icon-thumbs-up\" style=\"margin-right:4px;\"></i>".$result_article['nb_like']." likes</span>
+        				</div>
         		<article id=\"article-cat\">
         			
         				<p>".html_entity_decode($result_article['contenu'])."</p>
@@ -187,7 +215,138 @@ else{
 }
 
         		?>
-        	</div><!--span10 content -->	
+        		
+        	</div><!--span10 content -->
+        	<div class="span10">	
+        	<div id="addCommentContainer" style="margin-bottom:50px;width:242px;height:100px;padding:0px;">
+	        			<?php
+	        		if(!empty($_GET['id_art'])){
+	        			
+	        			if(isset($_SESSION['user'])){
+	        			$query_like = mysql_query("SELECT * FROM ARTICLE_FAV WHERE login = '".$_SESSION['user']."' and id_art = ".$_GET['id_art'].";");
+						$query_dislike = mysql_query("SELECT * FROM ARTICLE_DISLIKE WHERE login = '".$_SESSION['user']."' and id_art = ".$_GET['id_art'].";");
+						$query_nb_like = mysql_query("SELECT nb_like FROM ARTICLE WHERE id_art = ".$_GET['id_art'].";");
+						$result_nb_like = mysql_fetch_assoc($query_nb_like);
+						if(mysql_num_rows($query_like)!=0)
+						{
+			        			echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<img onclick =\"like_base(".$result_nb_like['nb_like'].");\" id=\"like_button\" src=\"../img/smile_yellow.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/>
+		        					<img onclick =\"dislike_base(".$result_nb_like['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div>";
+						}
+						else if(mysql_num_rows($query_dislike)!=0){
+							
+							echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<img onclick =\"like_base(".$result_nb_like['nb_like'].");\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/>
+		        					<img onclick =\"dislike_base(".$result_nb_like['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile_yellow.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div>";
+						}else{
+							
+							echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<img onclick =\"like_base(".$result_nb_like['nb_like'].");\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/>
+		        					<img onclick =\"dislike_base(".$result_nb_like['nb_like'].");\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div>";
+						}
+						
+						}
+else {
+	echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<a href=\"#myModal\" role=\"button\" data-toggle=\"modal\"><img id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/></a>
+		        					<a href=\"#myModal\" role=\"button\" data-toggle=\"modal\"><img  id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div></a>";
+}
+
+
+}
+else {
+	echo "<div id=\"like_div\" style=\"margin-bottom:10px;border-bottom:1px solid #C2C2C2;\">
+		        					<img onclick =\"like_base();\" id=\"like_button\" src=\"../img/smile.png\" style=\"float:left;border-right:1px solid #828282;-webkit-border-top-left-radius: 10px;
+		-moz-border-radius-topleft: 10px;
+		border-top-left-radius: 10px;\"/>
+		        					<img onclick =\"dislike_base();\" id=\"dislike_button\" src=\"../img/no_smile.png\" style=\"-webkit-border-top-right-radius: 10px;
+		-moz-border-radius-topright: 10px;
+		border-top-right-radius: 10px;\"/>
+		        				</div>";
+}
+
+	
+        				?>
+        			
+        				<div id="partage" style="margin-left:20px;">
+			        		<span style="float:left;margin-right:10px;">
+			        			<a name="fb_share" type="button_count" expr:share_url='data:post.url' href="http://www.facebook.com/sharer.php">Partager</a>
+			        		</span>
+			        		<span style="">
+			        			<a  href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="TWITTER-USERNAME">Tweet</a>
+			        		</span>
+			        		
+		        		</div>
+	        		</div>
+        		<div id="comment_general">
+        			<div id="addCommentContainer">
+					    <p>Add a Comment</p>
+					    <form id="addCommentForm" method="post" action="">
+					        <div>
+					            				
+					            <label for="body">Comment Body</label>
+					            <textarea name="body" id="body" cols="20" rows="5"></textarea>
+					 <?php
+					 			if(isset($_SESSION['user'])){
+						            echo"<input type=\"reset\" id=\"submit\" value=\"Submit\" onclick=\"Change();\"/>";
+						           
+						            echo "<input type=\"hidden\" id=\"id_art\" value=".$_GET['id_art']." />";
+									echo "<input type=\"hidden\" id=\"login\" value=".$_SESSION['user']." />";
+								}
+								else {
+									
+									echo"<a href=\"#myModal\" role=\"button\" data-toggle=\"modal\"><input type=\"reset\" id=\"submit\" value=\"Submit\"/></a>";
+										
+									}
+								
+								?>
+					            
+					        </div>
+	    				</form>
+	    				
+					</div>
+					<?php
+					if(!empty($_GET['id_art']))
+					{
+						$query_comment = mysql_query("SELECT * FROM commentaires WHERE id_art=".$_GET['id_art'].";") or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br> Dans la requete".$sql."\n");;
+			
+							while($result_comment = mysql_fetch_assoc($query_comment))				
+							{
+								$annee = substr($result_comment['date'],0,4);
+								$mois = substr($result_comment['date'],4,2);
+								$jour = substr($result_comment['date'],6,2);
+											
+			    				echo '
+						<div class="comment">
+							<div class="name">'.$result_comment['login'].'</div>
+							<div class="date">'.$jour.' '.date("F",mktime($mois)).' '.$annee.'</div>
+							<p>'.$result_comment['body'].'</p>
+						</div>';
+							}
+					}
+						?>
+				</div>
+				</div>
         	<aside class="span3" id="scroll-cat-art" style="margin-top:0px;">
 	        		<div id="addCommentContainer" style="margin-bottom:50px;width:242px;height:100px;padding:0px;">
 	        			<?php
