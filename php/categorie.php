@@ -17,6 +17,7 @@ mysql_query("SET NAMES UTF8");
     <link href="../css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/responsiveslides.css" />
     <link rel="stylesheet" href="../css/style_comment.css" />
+    <link rel="stylesheet" href="../css/nivo-slider.css" />
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -94,7 +95,102 @@ mysql_query("SET NAMES UTF8");
     		
         		<div class="span12" id="span-article" style="background-color: white;padding:10px;">
         			
-        		
+        	 <div class="row-fluid">
+            <ul class="thumbnails">
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider" class="nivoSlider">
+			                <img src="../img/politique.jpg" alt="" />
+			                <img src="../img/politique1.jpg" alt="" />
+			                
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>Politique</h3>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a href="liste_article.php?id_cat=1" class="btn btn-primary">Action</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider2" class="nivoSlider">
+			                <img src="../img/economie.jpg" alt="" />
+			                <img src="../img/economie1.jpg" alt="" />
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>Economie</h3>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a href="liste_article.php?id_cat=4" class="btn btn-primary">Action</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider3" class="nivoSlider">
+			                <img src="../img/techno.jpg" alt="" />
+			                <img src="../img/techno1.jpg" alt="" />
+			                <img src="../img/techno2.jpg" alt="" />
+			                <img src="../img/techno3.jpg" alt="" />
+			                <img src="../img/science.jpg" alt="" />
+			                <img src="../img/science1.jpg" alt="" />
+			                <img src="../img/science2.jpg" alt="" />
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>Sciences & Tech</h3>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a href="liste_article.php?id_cat=2" class="btn btn-primary">Action</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider4" class="nivoSlider">
+			                 <img src="../img/sport.jpg" alt="" />
+			                <img src="../img/sport1.jpg" alt="" />
+			                <img src="../img/sport2.jpg" alt="" />
+			                <img src="../img/sport3.jpg" alt="" />
+			                <img src="../img/sport4.jpg" alt="" />
+			                
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>Sport</h3>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a href="liste_article.php?id_cat=3" class="btn btn-primary">Action</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider5" class="nivoSlider">
+			                 <img src="../img/people.jpg" alt="" />
+			                <img src="../img/people1.jpg" alt="" />
+			                <img src="../img/people2.jpg" alt="" />
+			                <img src="../img/people3.jpg" alt="" />
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>People</h3>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p><a href="liste_article.php?id_cat=5" class="btn btn-primary">Action</a> </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
 				</div>
         	
      </div><!--row-fluid-->
@@ -187,6 +283,7 @@ mysql_query("SET NAMES UTF8");
    
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/jquery.nivo.slider.js"></script>
     <script src= "http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
@@ -195,9 +292,24 @@ mysql_query("SET NAMES UTF8");
 <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script>
   
 
-<script type="text/javascript" src="../js/article.js">
-	
-</script>
+<script type="text/javascript" src="../js/article.js"></script>
+ <script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    $(window).load(function() {
+        $('#slider2').nivoSlider();
+    });
+    $(window).load(function() {
+        $('#slider3').nivoSlider();
+    });
+    $(window).load(function() {
+        $('#slider4').nivoSlider();
+    });
+    $(window).load(function() {
+        $('#slider5').nivoSlider();
+    });
+    </script>
 
   
 	</body>
