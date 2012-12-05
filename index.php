@@ -82,44 +82,25 @@ mysql_query("SET NAMES UTF8");
 				</div>
 			</div>
 		</div>
-		<!--<div class="hero-unit hidden-phone">
-		<div class="container">
-
-		*******************************************
-		* ****************************************
-		<button class="btn btn-primary">Action</button>
-		<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-		<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu">
-		<li>
-		<a href="#">Action</a>
-		</li>
-		<li>
-		<a href="#">Another action</a>
-		</li>
-		<li>
-		<a href="#">Something else here</a>
-		</li>
-		<li class="divider"></li>
-		<li>
-		<a href="#">Separated link</a>
-		</li>
-		</ul>
-		</div>
-
-		**********************************************************
-		<div class="texte" style="float:left;">
-		<h1>Incroyablement simple<br> et intuitif,<br>toutes vos news<br> à portée de clic</h1>
-
-		<p><a class="btn btn-primary btn-large">S'inscrire &raquo;</a></p>
-		</div>
-		<div class="image-hero hidden-phone hidden-tablet">
-		<img src="img/visual1.png" alt="image" style="opacity: 0.7;"/>
-		</div>
-
-		</div>
-		</div>-->
+		<?php
+		if(!isset($_SESSION['user'])){
+			
+				echo "<div class=\"hero-unit hidden-phone\">
+				<div class=\"container\">	
+				
+				<div class=\"texte\" style=\"float:left;\">
+				<h1>Incroyablement simple<br> et intuitif,<br>toutes vos news<br> à portée de clic</h1>
+		
+				<p><a class=\"btn btn-primary btn-large\">S'inscrire &raquo;</a></p>
+				</div>
+				<div class=\"image-hero hidden-phone hidden-tablet\">
+				<img src=\"img/visual1.png\" alt=\"image\" style=\"opacity: 0.7;\"/>
+				</div>
+		
+				</div>
+				</div>";
+				}
+		?>
 		<div class="container">
 			<div class="row-fluid">
 				<div class="span12" id="div-slider">
@@ -412,7 +393,7 @@ mysql_query("SET NAMES UTF8");
 		<script type="text/javascript">
 			window.onscroll = function() {
 				var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
-				if(scroll > 320)
+				if(scroll > 600)
 					document.getElementById('scroll').style.top = scroll + 'px';
 				if(scroll > document.documentElement.scrollHeight - 730) {
 					document.getElementById('scroll').style.top = document.documentElement.scrollHeight - 730 + 'px';

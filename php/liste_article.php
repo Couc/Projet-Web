@@ -124,8 +124,9 @@ mysql_query("SET NAMES UTF8");
 			    </div>
 			  </div>
       	</div>
-        <div class="span12">
-        	<div class="span10" id="span-article">
+       
+        	
+        	<div id="span-article">
         		<div class="slider_control">
 	        		<h3 class="drapeau">
 	        			<?php
@@ -239,6 +240,7 @@ mysql_query("SET NAMES UTF8");
 					}
         		?>
         	</div><!--span10 content -->	
+        	
         	<aside class="span2" id="scroll-cat" >
         		<form class="form-search" >
 				  <div class="input-append" >
@@ -263,7 +265,7 @@ mysql_query("SET NAMES UTF8");
 	        	</div>
         	</aside>
         
-     	</div><!--span12-->
+     	
       </div>
 
       
