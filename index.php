@@ -286,9 +286,9 @@ mysql_query("SET NAMES UTF8");
 						?>
 					</div><!--span10 des articles-->
 					<aside class="span2" id="scroll" >
-						<form class="form-search" >
+						<form class="form-search" action='php/liste_article.php' method='POST'>
 							<div class="input-append" >
-								<input type="text" class="span2 search-query" style="width:150px;margin-bottom:20px;">
+								<input type="text" name='searching' class="span2 search-query" style="width:150px;margin-bottom:20px;">
 								<button type="submit" class="btn">
 									Search
 								</button>
