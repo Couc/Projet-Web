@@ -39,13 +39,13 @@ session_start();
 								<a href="../index.php">Accueil</a>
 							</li>
 							<li>
-								<a href="./liste_article.php">Catégorie</a>
+								<a href="categorie.php">Catégorie</a>
 							</li>
 							<li>
-								<a href="#contact">A propos</a>
+								<a href="apropos.php">A propos</a>
 							</li>
 							<li>
-								<a href="#contact">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 						<ul class="nav pull-right">
@@ -141,6 +141,7 @@ Erreur, veuillez recommencer.
 							echo("><a href=\"#\" onclick='loadSources(" . $result['id_cat'] . ")'>" . $result['libelle'] . "</a></li>");
 							$i++;
 						}
+						echo("<li><a href=\"#\" onclick='loadSources(9999)'>Personalisé</a></li>");
 						?>
 					</ul>
 					<div id='receive_sources'>
@@ -190,6 +191,7 @@ Erreur, veuillez recommencer.
 							<ul class="footer-links clearfix">
 								<li>
 									<a href="../index.php" style="text-decoration: none;color:#777;list-style:none;">Accueil</a>
+
 								</li>
 								<li>
 									<a href="categorie.php" style="text-decoration: none;color:#777;list-style:none;">Catégories</a>
@@ -207,14 +209,10 @@ Erreur, veuillez recommencer.
 						<!-- /span3 -->
 						<div class="span2">
 							<h3><span class="slash">>></span> Social</h3>
-							<ul class="footer-links clearfix">
-								<li>
-									<a href="http://facebook.com/" style="text-decoration: none;color:#777;list-style:none;">Facebook</a>
-								</li>
-								<li>
-									<a href="http://twitter.com/" style="text-decoration: none;color:#777;list-style:none;">Twitter</a>
-								</li>
-							</ul>
+							<a href="http://facebook.com/" style="float:left;margin-right:10px;" ><img onmouseover="this.src='../img/facebook-c.png'; " onmouseout="this.src='../img/facebook.png'; " src="../img/facebook.png"/></a>
+                        <a href="http://twitter.com/" style="float:left;margin-right:10px;"><img onmouseover="this.src='../img/twitter-c.png'; " onmouseout="this.src='../img/twitter.png'; " src="../img/twitter.png"/></a>
+                    	<a href="http://google.com/" style="float:left;"><img onmouseover="this.src='../img/google-c.png'; " onmouseout="this.src='../img/google.png'; " src="../img/google.png"/></a>
+					
 						</div>
 						<!-- /span3 -->
 					</div>
@@ -252,16 +250,7 @@ Erreur, veuillez recommencer.
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="../js/jquery.js"></script>
 		<script src="../js/bootstrap.js"></script>
-		<script type="text/javascript">
-			window.onscroll = function() {
-				var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
-				if(scroll > 320)
-					document.getElementById('scroll').style.top = scroll + 'px';
-				if(scroll > document.documentElement.scrollHeight - 730) {
-					document.getElementById('scroll').style.top = document.documentElement.scrollHeight - 730 + 'px';
-				}
-			}
-		</script>
+		
 		<script type='text/javascript'>
 			function loadSources(id) {
 				xmlhttp = new XMLHttpRequest();
@@ -301,6 +290,30 @@ Erreur, veuillez recommencer.
 					xmlhttp.open("GET", "sources_ajax.php?source=" + valu + "&action=0", true);
 					xmlhttp.send();
 				}
+			}
+			
+			function ajout_xml() {
+					var source = document.getElementById("source").value;
+					var id_cat = document.getElementById("id_cat").value;
+					var libelle = document.getElementById("libelle").value;
+					
+					xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						
+							if(xmlhttp.responseText=="ok"){
+								document.getElementById("ok").style.display="block";
+							}
+							else
+							{
+								document.getElementById("no-ok").style.display="block";
+							}
+						}
+						
+					}
+					xmlhttp.open("GET", "ajout_xml.php?id_cat=" + id_cat + "&libelle=" + libelle + "&source=" + source, true);
+					xmlhttp.send();
+				
 			}
 		</script>
 		<script src="../js/responsiveslides.js"></script>

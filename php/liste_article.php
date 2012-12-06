@@ -87,6 +87,7 @@ mysql_query("SET NAMES UTF8");
 			<div class="row-fluid">
 				<?php
 if (!isset($_POST['searching'])) {
+	if (isset($_SESSION['user'])) {
 				?>
 				<div class="accordion" id="accordion2">
 					<div class="accordion-group">
@@ -120,6 +121,7 @@ if (!isset($_POST['searching'])) {
 				</div>
 				<?php
 				}
+				}
 				?>
 				<div id="span-article">
 					<div class="slider_control">
@@ -152,9 +154,9 @@ if (!isset($_POST['searching'])) {
 					</div>
 					<?php
 					if (isset($_POST['searching'])) {
-						$sql_article = "SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND a.titre LIKE '%" . $_POST['searching'] . "%' AND a.contenu LIKE '%" . $_POST['searching'] . "%' AND a.description LIKE '%" . $_POST['searching'] . "%' ORDER BY id_art DESC;";
+						$sql_article = "SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND a.titre LIKE '%" . $_POST['searching'] . "%' AND a.contenu LIKE '%" . $_POST['searching'] . "%' AND a.description LIKE '%" . $_POST['searching'] . "%' ORDER BY DATE DESC;";
 					} else {
-						$sql_article = "SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND s.id_cat = " . $_GET['id_cat'] . " ORDER BY id_art DESC;";
+						$sql_article = "SELECT * FROM ARTICLE a,SOURCE s WHERE a.id_source = s.id_source AND s.id_cat = " . $_GET['id_cat'] . " ORDER BY DATE DESC;";
 					}
 					$query_article = mysql_query($sql_article) or die("ERREUR MYSQL numéro: " . mysql_errno() . "<br>Type de cette erreur: " . mysql_error() . "<br>\n");
 
