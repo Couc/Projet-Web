@@ -39,13 +39,13 @@ session_start();
 								<a href="../index.php">Accueil</a>
 							</li>
 							<li>
-								<a href="./liste_article.php">Catégorie</a>
+								<a href="categorie.php">Catégorie</a>
 							</li>
 							<li>
-								<a href="#contact">A propos</a>
+								<a href="apropos.php">A propos</a>
 							</li>
 							<li>
-								<a href="#contact">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 						<ul class="nav pull-right">
@@ -108,12 +108,17 @@ session_start();
 							<h3><span class="slash">>></span> Explore</h3>
 							<ul class="footer-links clearfix">
 								<li>
-									<a href="/" style="text-decoration: none;color:#777;list-style:none;">Accueil</a>
+									<a href="../index.php" style="text-decoration: none;color:#777;list-style:none;">Accueil</a>
 								</li>
 								<li>
-									<a href="/themes" style="text-decoration: none;color:#777;list-style:none;">Catégories</a>
+									<a href="categorie.php" style="text-decoration: none;color:#777;list-style:none;">Catégories</a>
 								</li>
-								<li>
+								 <?php
+              if(isset($_SESSION['user'])){
+              	echo "<li><a href=\"liste_like.php\">Like</a></li>";
+			  }
+              ?>
+								<li class="active">
 									<a href="apropos.php" style="text-decoration: none;color:#777;list-style:none;">A propos</a>
 								</li>
 								<li>
@@ -126,14 +131,12 @@ session_start();
 						<!-- /span3 -->
 						<div class="span2">
 							<h3><span class="slash">>></span> Social</h3>
-							<ul class="footer-links clearfix">
-								<li>
-									<a href="http://facebook.com/" style="text-decoration: none;color:#777;list-style:none;">Facebook</a>
-								</li>
-								<li>
-									<a href="http://twitter.com/" style="text-decoration: none;color:#777;list-style:none;">Twitter</a>
-								</li>
-							</ul>
+							
+								 <a href="http://facebook.com/" style="float:left;margin-right:10px;" ><img onmouseover="this.src='../img/facebook-c.png'; " onmouseout="this.src='../img/facebook.png'; " src="../img/facebook.png"/></a>
+                        <a href="http://twitter.com/" style="float:left;margin-right:10px;"><img onmouseover="this.src='../img/twitter-c.png'; " onmouseout="this.src='../img/twitter.png'; " src="../img/twitter.png"/></a>
+                    	<a href="http://google.com/" style="float:left;"><img onmouseover="this.src='../img/google-c.png'; " onmouseout="this.src='../img/google.png'; " src="../img/google.png"/></a>
+					
+							
 						</div>
 						<!-- /span3 -->
 					</div>

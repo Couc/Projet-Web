@@ -39,13 +39,13 @@ session_start();
 								<a href="../index.php">Accueil</a>
 							</li>
 							<li>
-								<a href="./liste_article.php">Catégorie</a>
+								<a href="categorie.php">Catégorie</a>
 							</li>
 							<li>
-								<a href="#contact">A propos</a>
+								<a href="apropos.php">A propos</a>
 							</li>
 							<li>
-								<a href="#contact">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 						<ul class="nav pull-right">
@@ -141,6 +141,7 @@ Erreur, veuillez recommencer.
 							echo("><a href=\"#\" onclick='loadSources(" . $result['id_cat'] . ")'>" . $result['libelle'] . "</a></li>");
 							$i++;
 						}
+						echo("<li><a href=\"#\" onclick='loadSources(9999)'>Personalisé</a></li>");
 						?>
 					</ul>
 					<div id='receive_sources'>
@@ -189,10 +190,10 @@ Erreur, veuillez recommencer.
 							<h3><span class="slash">>></span> Explore</h3>
 							<ul class="footer-links clearfix">
 								<li>
-									<a href="/" style="text-decoration: none;color:#777;list-style:none;">Accueil</a>
+									<a href="../accueil.php" style="text-decoration: none;color:#777;list-style:none;">Accueil</a>
 								</li>
 								<li>
-									<a href="/themes" style="text-decoration: none;color:#777;list-style:none;">Catégories</a>
+									<a href="categorie.php" style="text-decoration: none;color:#777;list-style:none;">Catégories</a>
 								</li>
 								<li>
 									<a href="apropos.php" style="text-decoration: none;color:#777;list-style:none;">A propos</a>
@@ -301,6 +302,22 @@ Erreur, veuillez recommencer.
 					xmlhttp.open("GET", "sources_ajax.php?source=" + valu + "&action=0", true);
 					xmlhttp.send();
 				}
+			}
+			
+			function ajout_xml(source) {
+				var source = source.value;
+				
+					xmlhttp = new XMLHttpRequest();
+					xmlhttp.onreadystatechange = function() {
+						if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						
+						
+						}
+						
+					}
+					xmlhttp.open("GET", "ajout_xml.php?source=" + source , true);
+					xmlhttp.send();
+				
 			}
 		</script>
 		<script src="../js/responsiveslides.js"></script>

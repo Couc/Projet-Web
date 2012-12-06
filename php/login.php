@@ -37,13 +37,13 @@ include ('_A8s2f9g714ef.php');
 								<a href="../index.php">Accueil</a>
 							</li>
 							<li>
-								<a href="#about">Catégorie</a>
+								<a href="categorie.php">Catégorie</a>
 							</li>
 							<li>
-								<a href="#contact">A propos</a>
+								<a href="apropos.php">A propos</a>
 							</li>
 							<li>
-								<a href="#contact">Contact</a>
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 					</div><!--/.nav-collapse -->

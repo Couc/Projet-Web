@@ -36,17 +36,22 @@ session_start();
 					<a class="brand" href="#"><img src="../img/logo blanc.png" alt=""/></a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="active">
+							<li>
 								<a href="../index.php">Accueil</a>
 							</li>
 							<li>
-								<a href="./liste_article.php">Catégorie</a>
+								<a href="categorie.php">Catégorie</a>
 							</li>
+							 <?php
+              if(isset($_SESSION['user'])){
+              	echo "<li><a href=\"liste_like.php\">Like</a></li>";
+			  }
+              ?>
 							<li>
-								<a href="#contact">A propos</a>
+								<a href="apropos.php">A propos</a>
 							</li>
-							<li>
-								<a href="#contact">Contact</a>
+							<li class="active" >
+								<a href="contact.php">Contact</a>
 							</li>
 						</ul>
 						<ul class="nav pull-right">

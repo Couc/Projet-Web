@@ -3,7 +3,25 @@ include ('_A8s2f9g714ef.php');
 mysql_query("SET NAMES UTF8");
 session_start();
 ?>
-<table class="table table-striped">
+
+							<?php
+							
+							if($_GET['id']==9999)
+							{
+								echo("<p>
+										<h3 style='margin-bottom:30px;'>Ajouter votre source d'informations</h3>
+									  </p>
+									  <p>Cette source doit être de la forme 'www.lemonde.fr/rss/tag/politique.xml' avec un fichier possédant une extention xml</p>
+						<form style='text-align:left;' action=''>
+							
+							<input style='float:left;' type='text' name='source' required placeholder='Source.xml'/>
+							<input type='reset' onclick='ajout_xml();' class='btn btn-primary' style=\"width:30%;margin-top:30px;margin-left:50%\" value=\"Ajouter\"/>
+						</form>");
+						
+							}
+							else{
+								?>
+								<table class="table table-striped">
 							<tr>
 								<td style='text-align:center'><b>Libellé</b></td><td style='text-align:center'><b>Flux rss</b></td><td style='text-align:center'><b>Active</b></td>
 							</tr>
@@ -23,5 +41,7 @@ session_start();
 								}
 								
 								echo("</td></tr>");							}
+								?>
+								</table><?php
+								}
 							?>
-</table>

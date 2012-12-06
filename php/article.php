@@ -51,14 +51,14 @@ mysql_query("SET NAMES UTF8");
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="../index.php">Accueil</a></li>
-              <li class="active" ><a href="#about">Catégorie</a></li>
+              <li class="active" ><a href="categorie.php">Catégorie</a></li>
                <?php
               if(isset($_SESSION['user'])){
               	echo "<li><a href=\"liste_like.php\">Like</a></li>";
 			  }
               ?>
-              <li><a href="#contact">A propos</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="apropos.php">A propos</a></li>
+              <li><a href="contact.php">Contact</a></li>
             </ul>
             <ul class="nav pull-right">
               <?php

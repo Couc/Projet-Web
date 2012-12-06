@@ -87,6 +87,7 @@ mysql_query("SET NAMES UTF8");
 			<div class="row-fluid">
 				<?php
 if (!isset($_POST['searching'])) {
+	if (isset($_SESSION['user'])) {
 				?>
 				<div class="accordion" id="accordion2">
 					<div class="accordion-group">
@@ -119,6 +120,7 @@ if (!isset($_POST['searching'])) {
 					</div>
 				</div>
 				<?php
+				}
 				}
 				?>
 				<div id="span-article">

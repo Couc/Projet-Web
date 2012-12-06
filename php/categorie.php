@@ -219,9 +219,10 @@ mysql_query("SET NAMES UTF8");
 					<h3><span class="slash">>></span> Explore</h3>				
 					
 					<ul class="footer-links clearfix">
-						<li><a href="/" style="text-decoration: none;color:#777;list-style:none;">Accueil</a></li>
-                        <li><a href="/themes" style="text-decoration: none;color:#777;list-style:none;">Catégories</a></li>
-                        <li><a href="/faq" style="text-decoration: none;color:#777;list-style:none;">A propos</a></li>
+						<li><a href="../accueil.php" style="text-decoration: none;color:#777;list-style:none;">Accueil</a></li>
+                        <li><a href="categorie.php" style="text-decoration: none;color:#777;list-style:none;">Catégories</a></li>
+                        <li><a href="apropos.php" style="text-decoration: none;color:#777;list-style:none;">A propos</a></li>
+                        <li><a href="contact.php" style="text-decoration: none;color:#777;list-style:none;">Contact</a></li>
                         
                     </ul>
 					
