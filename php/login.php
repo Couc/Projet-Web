@@ -100,16 +100,16 @@ else{
 						</p>
 						<form style='text-align:left;' action='inscription.php' method='POST'>
 							<label style='float:left;width:45%;margin-right:30px;'>E-mail</label>
-							<input style='float:left;' type='email' name='email' placeholder='email@example.com' required/>
+							<input style='float:left;' type='email' name='email' placeholder='email@example.com' required autocomplete ="off"/>
 							<label style='float:left;width:45%;margin-right:30px;'>Confirmation E-mail</label>
-							<input style='float:left;' type='email' name='email2' placeholder='email@example.com' required/>
+							<input style='float:left;' type='email' name='email2' placeholder='email@example.com' required autocomplete ="off"/>
 							<label style='float:left;width:45%;margin-right:30px;'>Login</label>
-							<input style='float:left;' type='text' name='username' required placeholder='username'/>
+							<input style='float:left;' type='text' name='username' required placeholder='username' autocomplete ="off"/>
 							<label style='float:left;width:45%;margin-right:30px;'>Mot de passe</label>
-							<input style='float:left;' type='password' name='password' required placeholder='password'/>
+							<input style='float:left;' type='password' name='password' required placeholder='password' autocomplete ="off"/>
 							<label style='float:left;width:45%;margin-right:30px;'>Confirmation Mot de passe</label>
 							<input style='float:left;' type='password' name='password2' required placeholder='password'/>
-							<input type='submit' class='btn btn-primary' style="width:30%;margin-top:30px;margin-left:50%" value="Inscription"/>
+							<input type='submit' class='btn btn-primary' style="width:30%;margin-top:30px;margin-left:50%" value="Inscription" autocomplete ="off"/>
 						</form>
 					</div>
 				</div>

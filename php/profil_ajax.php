@@ -8,15 +8,29 @@ session_start();
 							
 							if($_GET['id']==9999)
 							{
-								echo("<p>
+								$query=mysql_query("SELECT id_cat,libelle FROM CATEGORIE");
+								echo"
+								<div class=\"alert alert-error\" id=\"no-ok\" style=\"display:none;\">
+									Error, please try again ! 
+								</div>
+								<div class=\"alert alert-success\" id=\"ok\" style=\"display:none;\">
+									Votre source à bien été ajoutée 
+								</div>
+								<p>
 										<h3 style='margin-bottom:30px;'>Ajouter votre source d'informations</h3>
 									  </p>
 									  <p>Cette source doit être de la forme 'www.lemonde.fr/rss/tag/politique.xml' avec un fichier possédant une extention xml</p>
 						<form style='text-align:left;' action=''>
-							
-							<input style='float:left;' type='text' name='source' required placeholder='Source.xml'/>
+							<label for='libelle'></label><input type='text' id='libelle' name='libelle' required placeholder='Libellé source'/>
+							<input style='float:left;' type='text' id='source' name='source' required placeholder='Source.xml'/>
+							<select id=\"id_cat\">";
+									while($result=mysql_fetch_assoc($query)){
+										
+										echo "<option required value=".$result['id_cat'].">".$result['libelle']."</option>";
+									}					
+							echo "</select>
 							<input type='reset' onclick='ajout_xml();' class='btn btn-primary' style=\"width:30%;margin-top:30px;margin-left:50%\" value=\"Ajouter\"/>
-						</form>");
+						</form>";
 						
 							}
 							else{

@@ -35,13 +35,18 @@ session_start();
 					<a class="brand" href="#"><img src="../img/logo blanc.png" alt=""/></a>
 					<div class="nav-collapse collapse">
 						<ul class="nav">
-							<li class="active">
+							<li>
 								<a href="../index.php">Accueil</a>
 							</li>
 							<li>
 								<a href="categorie.php">Catégorie</a>
 							</li>
-							<li>
+							 <?php
+              if(isset($_SESSION['user'])){
+              	echo "<li><a href=\"liste_like.php\">Like</a></li>";
+			  }
+              ?>
+							<li class="active">
 								<a href="apropos.php">A propos</a>
 							</li>
 							<li>

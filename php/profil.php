@@ -208,14 +208,10 @@ Erreur, veuillez recommencer.
 						<!-- /span3 -->
 						<div class="span2">
 							<h3><span class="slash">>></span> Social</h3>
-							<ul class="footer-links clearfix">
-								<li>
-									<a href="http://facebook.com/" style="text-decoration: none;color:#777;list-style:none;">Facebook</a>
-								</li>
-								<li>
-									<a href="http://twitter.com/" style="text-decoration: none;color:#777;list-style:none;">Twitter</a>
-								</li>
-							</ul>
+							<a href="http://facebook.com/" style="float:left;margin-right:10px;" ><img onmouseover="this.src='../img/facebook-c.png'; " onmouseout="this.src='../img/facebook.png'; " src="../img/facebook.png"/></a>
+                        <a href="http://twitter.com/" style="float:left;margin-right:10px;"><img onmouseover="this.src='../img/twitter-c.png'; " onmouseout="this.src='../img/twitter.png'; " src="../img/twitter.png"/></a>
+                    	<a href="http://google.com/" style="float:left;"><img onmouseover="this.src='../img/google-c.png'; " onmouseout="this.src='../img/google.png'; " src="../img/google.png"/></a>
+					
 						</div>
 						<!-- /span3 -->
 					</div>
@@ -253,16 +249,7 @@ Erreur, veuillez recommencer.
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="../js/jquery.js"></script>
 		<script src="../js/bootstrap.js"></script>
-		<script type="text/javascript">
-			window.onscroll = function() {
-				var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
-				if(scroll > 320)
-					document.getElementById('scroll').style.top = scroll + 'px';
-				if(scroll > document.documentElement.scrollHeight - 730) {
-					document.getElementById('scroll').style.top = document.documentElement.scrollHeight - 730 + 'px';
-				}
-			}
-		</script>
+		
 		<script type='text/javascript'>
 			function loadSources(id) {
 				xmlhttp = new XMLHttpRequest();
@@ -304,18 +291,26 @@ Erreur, veuillez recommencer.
 				}
 			}
 			
-			function ajout_xml(source) {
-				var source = source.value;
-				
+			function ajout_xml() {
+					var source = document.getElementById("source").value;
+					var id_cat = document.getElementById("id_cat").value;
+					var libelle = document.getElementById("libelle").value;
+					
 					xmlhttp = new XMLHttpRequest();
 					xmlhttp.onreadystatechange = function() {
 						if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 						
-						
+							if(xmlhttp.responseText=="ok"){
+								document.getElementById("ok").style.display="block";
+							}
+							else
+							{
+								document.getElementById("no-ok").style.display="block";
+							}
 						}
 						
 					}
-					xmlhttp.open("GET", "ajout_xml.php?source=" + source , true);
+					xmlhttp.open("GET", "ajout_xml.php?id_cat=" + id_cat + "&libelle=" + libelle + "&source=" + source, true);
 					xmlhttp.send();
 				
 			}

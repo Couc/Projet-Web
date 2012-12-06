@@ -91,7 +91,7 @@ mysql_query("SET NAMES UTF8");
 				<div class=\"texte\" style=\"float:left;\">
 				<h1>Incroyablement simple<br> et intuitif,<br>toutes vos news<br> à portée de clic</h1>
 		
-				<p><a class=\"btn btn-primary btn-large\">S'inscrire &raquo;</a></p>
+				<p><a href=\"php/login.php\" class=\"btn btn-primary btn-large\">S'inscrire &raquo;</a></p>
 				</div>
 				<div class=\"image-hero hidden-phone hidden-tablet\">
 				<img src=\"img/visual1.png\" alt=\"image\" style=\"opacity: 0.7;\"/>
