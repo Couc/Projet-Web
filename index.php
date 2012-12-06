@@ -17,6 +17,7 @@ mysql_query("SET NAMES UTF8");
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/responsiveslides.css" />
+		<link rel="stylesheet" href="css/nivo-slider.css" />
 		<style type="text/css">
 			body {
 				padding-top: 60px;
@@ -103,6 +104,12 @@ mysql_query("SET NAMES UTF8");
 		?>
 		<div class="container">
 			<div class="row-fluid">
+				
+				<?php 
+				
+				if(!empty($_SESSION['user'])){
+					
+					?>
 				<div class="span12" id="div-slider">
 					<div class="slider_control" style="width:100%;">
 						<h3 class="drapeau"><span>Les articles les plus aimés</span></h3>
@@ -283,8 +290,12 @@ mysql_query("SET NAMES UTF8");
 </article>";
 
 						}
+
+
 						?>
 					</div><!--span10 des articles-->
+					
+					
 					<aside class="span2" id="scroll" >
 						<form class="form-search" action='php/liste_article.php' method='POST'>
 							<div class="input-append" >
@@ -310,6 +321,117 @@ mysql_query("SET NAMES UTF8");
 							<a href="php/liste_article.php?id_cat=5">People</a>
 						</div>
 					</aside>
+					
+					
+					<?php }
+
+else{
+	
+	 ?>
+	 <div class="span12" id="span-article" style="background-color: white;padding:10px;">
+        			
+        	 <div class="row-fluid">
+            <ul class="thumbnails">
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider" class="nivoSlider">
+			                <img src="img/politique.jpg" alt="" />
+			                <img src="img/politique1.jpg" alt="" />
+			                
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>Politique</h3>
+                    <p>Retrouvez toutes vos actualités Politique préférés</p>
+                    <p><a href="php/liste_article.php?id_cat=1" class="btn btn-primary">Accéder</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider6" class="nivoSlider">
+			                <img src="img/economie.jpg" alt="" />
+			                <img src="img/economie1.jpg" alt="" />
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>Economie</h3>
+                    <p>Retrouvez toutes vos actualités Economie préférés</p>
+                    <p><a href="php/liste_article.php?id_cat=4" class="btn btn-primary">Accéder</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider3" class="nivoSlider">
+			                <img src="img/techno.jpg" alt="" />
+			                <img src="img/techno1.jpg" alt="" />
+			                <img src="img/techno2.jpg" alt="" />
+			                <img src="img/techno3.jpg" alt="" />
+			                <img src="img/science.jpg" alt="" />
+			                <img src="img/science1.jpg" alt="" />
+			                <img src="img/science2.jpg" alt="" />
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>Sciences & Tech</h3>
+                    <p>Retrouvez toutes vos actualités Sciences et Technologie préférés</p>
+                    <p><a href="php/liste_article.php?id_cat=2" class="btn btn-primary">Accéder</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider4" class="nivoSlider">
+			                 <img src="img/sport.jpg" alt="" />
+			                <img src="img/sport1.jpg" alt="" />
+			                <img src="img/sport2.jpg" alt="" />
+			                <img src="img/sport3.jpg" alt="" />
+			                <img src="img/sport4.jpg" alt="" />
+			                
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>Sport</h3>
+                    <p>Retrouvez toutes vos actualités Sport préférés</p>
+                    <p><a href="php/liste_article.php?id_cat=3" class="btn btn-primary">Accéder</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <div class="slider-wrapper theme-default">
+			            <div id="slider5" class="nivoSlider">
+			                 <img src="img/people.jpg" alt="" />
+			                <img src="img/people1.jpg" alt="" />
+			                <img src="img/people2.jpg" alt="" />
+			                <img src="img/people3.jpg" alt="" />
+			            </div>
+			            
+			      </div>
+                  <div class="caption">
+                    <h3>People</h3>
+                    <p>Retrouvez toutes vos actualités People préférés</p>
+                    <p><a href="php/liste_article.php?id_cat=5" class="btn btn-primary">Accéder</a> </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+				</div>
+	 
+	 
+	 
+	 
+	 <?php }  ?>
 				</div><!--span10 content -->
 			
 		</div>
@@ -390,6 +512,7 @@ mysql_query("SET NAMES UTF8");
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="js/jquery.js"></script>
 		<script src="js/bootstrap.js"></script>
+		<script src="js/jquery.nivo.slider.js"></script>
 		<script type="text/javascript">
 			window.onscroll = function() {
 				var scroll = (document.documentElement.scrollTop || document.body.scrollTop);
@@ -415,6 +538,23 @@ mysql_query("SET NAMES UTF8");
 			});
 
 		</script>
+		<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider();
+    });
+    $(window).load(function() {
+        $('#slider6').nivoSlider();
+    });
+    $(window).load(function() {
+        $('#slider3').nivoSlider();
+    });
+    $(window).load(function() {
+        $('#slider4').nivoSlider();
+    });
+    $(window).load(function() {
+        $('#slider5').nivoSlider();
+    });
+    </script>
 		
 	</body>
 </html>

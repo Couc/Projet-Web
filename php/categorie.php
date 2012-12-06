@@ -109,7 +109,7 @@ mysql_query("SET NAMES UTF8");
 			      </div>
                   <div class="caption">
                     <h3>Politique</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p>Retrouvez toutes vos actualités Politique préférés</p>
                     <p><a href="liste_article.php?id_cat=1" class="btn btn-primary">Accéder</a> </p>
                   </div>
                 </div>
@@ -125,7 +125,7 @@ mysql_query("SET NAMES UTF8");
 			      </div>
                   <div class="caption">
                     <h3>Economie</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p>Retrouvez toutes vos actualités Economie préférés</p>
                     <p><a href="liste_article.php?id_cat=4" class="btn btn-primary">Accéder</a> </p>
                   </div>
                 </div>
@@ -146,7 +146,7 @@ mysql_query("SET NAMES UTF8");
 			      </div>
                   <div class="caption">
                     <h3>Sciences & Tech</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p>Retrouvez toutes vos actualités Sciences et Technologie préférés</p>
                     <p><a href="liste_article.php?id_cat=2" class="btn btn-primary">Accéder</a> </p>
                   </div>
                 </div>
@@ -166,7 +166,7 @@ mysql_query("SET NAMES UTF8");
 			      </div>
                   <div class="caption">
                     <h3>Sport</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p>Retrouvez toutes vos actualités Sport préférés</p>
                     <p><a href="liste_article.php?id_cat=3" class="btn btn-primary">Accéder</a> </p>
                   </div>
                 </div>
@@ -184,7 +184,7 @@ mysql_query("SET NAMES UTF8");
 			      </div>
                   <div class="caption">
                     <h3>People</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                    <p>Retrouvez toutes vos actualités People préférés</p>
                     <p><a href="liste_article.php?id_cat=5" class="btn btn-primary">Accéder</a> </p>
                   </div>
                 </div>

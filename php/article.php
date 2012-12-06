@@ -146,7 +146,7 @@ mysql_query("SET NAMES UTF8");
         		
         		
       
-        		<header style=\"margin-top:70px;margin-bottom:40px;\">
+        		<header style=\"margin-top:70px;margin-bottom:90px;\">
         				<h1>".html_entity_decode($result_article['titre'])."</h1>
         		</header>
         		<div id=\"info-post-tablet\" style=\"padding:10px;height:120px;border-top:1px solid #C2C2C2;border-bottom:1px solid #C2C2C2;font-size:16px;\">	

@@ -78,8 +78,8 @@ function Change()
 		
 			var login = document.getElementById('login').value;
         	var id_art = document.getElementById('id_art').value;
+        	var nb_likes = valeur;
         	
-        	alert(valeur);
             xmlhttp=new XMLHttpRequest();
 
             xmlhttp.onreadystatechange=function()
