@@ -86,7 +86,7 @@ mysql_query("SET NAMES UTF8");
 		<?php
 		if(!isset($_SESSION['user'])){
 			
-				echo "<div class=\"hero-unit hidden-phone\">
+				echo "<div class=\"hero-unit\">
 				<div class=\"container\">	
 				
 				<div class=\"texte\" style=\"float:left;\">
